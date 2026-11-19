@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b2b">
+<title>Linux Command Atlas | دليل أوامر لينكس</title>
+<style>
+:root{--ink:#142235;--muted:#627188;--paper:#f3f6fa;--card:#fff;--line:#dfe6ef;--navy:#101b2b;--navy2:#17283d;--blue:#2d73dc;--cyan:#39c4d7;--lime:#b7e36a;--amber:#f1b85a;--red:#d95e68;--green:#1b946d;--shadow:0 14px 40px rgba(25,48,77,.09);--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Segoe UI",Tahoma,Arial,sans-serif;font-size:16px;line-height:1.65}
+button,input{font:inherit}button{cursor:pointer}.shell{max-width:1420px;margin:auto;padding:22px 26px 70px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.brandmark{width:46px;height:46px;border-radius:14px;background:linear-gradient(145deg,#203c5e,#102033);display:grid;place-items:center;color:#bde5ff;font-weight:900;font-size:19px;box-shadow:0 8px 18px #152b4633}.brand strong{display:block;font-size:17px;letter-spacing:.04em}.brand small{display:block;color:var(--muted);font-size:12px}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 13px;border-radius:12px;font-size:13px;font-weight:700}.btn:hover{border-color:#9bb5d8;background:#f7fbff}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.hero{position:relative;overflow:hidden;border-radius:26px;background:linear-gradient(118deg,#101b2b 0%,#173653 58%,#1c6077 100%);color:#fff;padding:32px 34px 30px;box-shadow:0 24px 60px #102b4730}.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(90deg,transparent,#000 35%,#000)}.hero:after{content:"$ _";position:absolute;left:45px;bottom:-40px;color:#b7e36a16;font-size:160px;font-weight:900;letter-spacing:-12px}.hero-inner{position:relative;z-index:1;max-width:900px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#c8ee91;font-size:12px;font-weight:800;letter-spacing:.08em}.eyebrow i{width:7px;height:7px;background:var(--lime);border-radius:50%;box-shadow:0 0 0 5px #b7e36a20}.hero h1{font-size:clamp(30px,4vw,46px);line-height:1.2;margin:12px 0 10px;letter-spacing:-.7px}.hero p{margin:0;color:#d3e1ee;font-size:16px;max-width:780px}.hero-note{display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap}.hero-note span{border:1px solid #ffffff27;background:#ffffff0d;padding:7px 11px;border-radius:999px;color:#e6f0fa;font-size:12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0 20px}.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 5px 20px #1a35500a}.stat small{display:block;color:var(--muted);font-size:12px}.stat strong{font-size:25px;line-height:1.2;display:block;margin-top:3px}.stat em{font-style:normal;font-size:11px;color:var(--muted)}
+.workspace{display:grid;grid-template-columns:245px minmax(0,1fr);gap:18px;align-items:start}.sidebar{position:sticky;top:15px;background:var(--navy);color:#fff;border-radius:19px;padding:14px;box-shadow:var(--shadow)}.side-label{font-size:10px;color:#9aadc2;font-weight:800;letter-spacing:.12em;padding:7px 9px 10px}.navbtn{display:flex;width:100%;align-items:center;gap:10px;border:0;background:transparent;color:#c8d5e2;text-align:right;padding:12px 11px;border-radius:12px;font-weight:700;font-size:14px;margin-bottom:5px}.navbtn .ico{width:28px;height:28px;display:grid;place-items:center;background:#ffffff10;border-radius:9px;font-size:15px}.navbtn.active{background:#254665;color:#fff;box-shadow:inset -3px 0 var(--lime)}.navbtn:hover{background:#ffffff12}.side-tip{margin-top:14px;border-top:1px solid #ffffff20;padding:13px 9px 4px;color:#b7c7d7;font-size:11px;line-height:1.8}.main{min-width:0}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin:4px 0 14px}.section-head h2{margin:0;font-size:24px;line-height:1.25}.section-head p{color:var(--muted);margin:5px 0 0;font-size:14px}.searchbox{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:0 13px;min-width:min(330px,100%);height:46px}.searchbox input{border:0;outline:0;background:transparent;width:100%;font-size:14px;color:var(--ink)}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.filters{display:flex;gap:7px;overflow:auto;padding-bottom:4px}.chip{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:#526177}.chip.active{background:#e6f1ff;border-color:#9ec2f3;color:#205db3}.progress-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:14px}.progress-row{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:13px;font-weight:800}.bar{height:9px;background:#e9eef4;border-radius:999px;overflow:hidden;margin-top:10px}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:999px;transition:width .25s}.progress-sub{font-size:11px;color:var(--muted);margin-top:7px}
+.cardgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.cmdcard{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 4px 18px #19334b08;min-width:0;transition:.18s}.cmdcard:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#bbcee5}.cardtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.cardtitle{display:flex;gap:10px;align-items:flex-start}.num{width:31px;height:31px;border-radius:10px;background:#edf4fc;color:#35699f;display:grid;place-items:center;font-size:11px;font-weight:900;flex:none}.cmdcard h3{font-size:16px;margin:0 0 3px;line-height:1.35}.cmdcard .desc{font-size:13px;color:var(--muted);margin:0}.tag{font-size:10px;font-weight:800;padding:5px 8px;border-radius:999px;white-space:nowrap}.tag.must{background:#e5f6ed;color:#16734f}.tag.add{background:#e7f1ff;color:#235fb6}.tag.danger{background:#fff0e3;color:#a75a12}.codebox{direction:ltr;text-align:left;background:#111f30;color:#e0efff;border-radius:11px;padding:11px 12px;margin:13px 0 9px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}.codebox code{font:13px/1.6 Consolas,"Courier New",monospace;overflow-wrap:anywhere}.copy{flex:none;border:1px solid #ffffff2b;color:#d9efff;background:#ffffff0c;border-radius:8px;padding:5px 9px;font-size:11px}.copy:hover{background:#ffffff20}.why{font-size:12px;color:#44566c;margin:6px 0 0}.why b{color:#1c3856}.cardfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:13px;padding-top:10px;border-top:1px solid #edf1f5}.learncheck{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#40516a}.learncheck input{width:17px;height:17px;accent-color:var(--green)}.more{border:0;background:transparent;color:#2c6cc2;font-weight:800;font-size:12px}.extra{display:none;background:#f5f8fc;border-radius:11px;padding:11px;margin-top:10px;font-size:12px;color:#4b5b70}.extra.show{display:block}.extra code{direction:ltr;display:block;text-align:left;background:#e9f0f8;padding:7px 9px;border-radius:8px;margin:7px 0;color:#17314f;white-space:pre-wrap;overflow-wrap:anywhere}.ref-list{display:grid;gap:9px}.refitem{display:grid;grid-template-columns:minmax(125px,.7fr) minmax(0,2fr) auto;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px 14px}.refcmd{direction:ltr;text-align:left;font:13px Consolas,monospace;font-weight:700;color:#1c4777;overflow-wrap:anywhere}.refitem strong{font-size:13px;display:block}.refitem p{margin:2px 0 0;color:var(--muted);font-size:11px}.refitem .copy{background:#eff5fc;color:#285c96;border-color:#dce8f5}.refitem.warn{border-right:3px solid var(--amber)}.refitem.danger{border-right:3px solid var(--red)}.empty{background:#fff;padding:25px;border:1px dashed #bdcbd9;border-radius:14px;text-align:center;color:var(--muted)}
+.recipegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.recipe{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px}.recipe h3{font-size:16px;margin:0 0 5px}.recipe p{color:var(--muted);font-size:12px;margin:0 0 10px}.recipe pre{direction:ltr;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;background:#111f30;color:#e0efff;border-radius:11px;padding:13px;font:12px/1.7 Consolas,monospace;margin:0}.recipe .copy{margin-top:9px;background:#eef5fc;color:#245a95;border-color:#dce8f5}.notice{background:#fff8e9;border:1px solid #f1dcad;border-radius:15px;padding:13px 15px;color:#6d5525;font-size:12px;margin:12px 0}.notice strong{display:block;color:#775316;margin-bottom:4px}.panel{display:none}.panel.active{display:block}.footer{color:#718097;font-size:11px;text-align:center;margin-top:26px}.hidden{display:none!important}.pill-count{font-size:10px;color:#8191a4;background:#f1f4f8;padding:3px 7px;border-radius:999px}
+@media(max-width:980px){.workspace{grid-template-columns:1fr}.sidebar{position:static;display:flex;gap:5px;overflow:auto;padding:8px}.side-label,.side-tip{display:none}.navbtn{width:auto;white-space:nowrap;margin:0;padding:9px 12px}.navbtn .ico{width:25px;height:25px}.cardgrid{grid-template-columns:1fr}}
+@media(max-width:650px){.shell{padding:12px 12px 45px}.topbar{align-items:flex-start}.top-actions .btn{font-size:11px;padding:8px}.brandmark{width:40px;height:40px}.hero{padding:23px 20px;border-radius:20px}.hero h1{font-size:29px}.hero p{font-size:14px}.stats{grid-template-columns:repeat(2,1fr);gap:8px}.stat{padding:11px}.stat strong{font-size:22px}.section-head{display:block}.searchbox{margin-top:12px;min-width:0;width:100%}.refitem{grid-template-columns:1fr auto;gap:6px}.refcmd{grid-column:1/-1}.recipegrid{grid-template-columns:1fr}.workspace{gap:12px}.sidebar{border-radius:14px}.navbtn{font-size:12px}.cmdcard{padding:14px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="brandmark">$_</div><div><strong>LINUX COMMAND ATLAS</strong><small>دليل الأوامر العملي · Linux & SOC-ready</small></div></div>
+    <div class="top-actions"><button class="btn" id="exportBtn">تصدير تقدمي</button><button class="btn" id="resetBtn">إعادة ضبط العلامات</button></div>
+  </header>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow"><i></i> FIELD GUIDE / COMMAND WORKSPACE</div>
+      <h1>اعرف الأمر. افهمه. استخدمه وقت الحاجة.</h1>
+      <p>صفحة مرجعية مستقلة تجمع أوامر Linux التي تستحق الإتقان، ثم تفصل عنها بقية الأوامر التي تحتاج معرفة وظيفتها والرجوع إليها عند العمل — من غير ما تحفظها كلها.</p>
+      <div class="hero-note"><span>01 / أتقن الأساسيات</span><span>02 / ابحث في المرجع</span><span>03 / طبّق سيناريو عملي</span></div>
+    </div>
+  </section>
+  <section class="stats">
+    <div class="stat"><small>أوامر / أنماط أساسية</small><strong id="essentialCount">40</strong><em>تتقنها وتكرر استخدامها</em></div>
+    <div class="stat"><small>مرجع وقت الحاجة</small><strong id="referenceCount">—</strong><em>لا يلزم حفظها عن ظهر قلب</em></div>
+    <div class="stat"><small>أتقنت من الأساسيات</small><strong id="masteredCount">0</strong><em>تتحدث تلقائيًا مع علاماتك</em></div>
+    <div class="stat"><small>نسبة الإتقان</small><strong id="masteredPct">0%</strong><em>من قائمة الأساسيات فقط</em></div>
+  </section>
+  <div class="workspace">
+    <aside class="sidebar">
+      <div class="side-label">YOUR WORKSPACE</div>
+      <button class="navbtn active" data-panel="essential"><span class="ico">⌘</span> أتقن واحفظ الاستخدام <span class="pill-count" id="essentialNavCount">40</span></button>
+      <button class="navbtn" data-panel="reference"><span class="ico">⌕</span> مرجع عند الحاجة <span class="pill-count" id="referenceNavCount">—</span></button>
+      <button class="navbtn" data-panel="recipes"><span class="ico">⌁</span> تطبيقات وسيناريوهات</button>
+      <div class="side-tip">قاعدة الدراسة: لا تحفظ جميع الخيارات. أتقن الأمر الأساسي، وافهم متى تستخدم بقية الخيارات، ثم ارجع لهذا المرجع عند الحاجة.</div>
+    </aside>
+    <main class="main">
+      <section class="panel active" id="panel-essential">
+        <div class="section-head"><div><h2>الأوامر التي يجب أن تتقنها</h2><p>هذه قائمتك الأساسية. احفظ وظيفة الأمر وطريقة استخدامه الشائعة، وليس كل خياراته.</p></div><div class="searchbox"><span>⌕</span><input id="essentialSearch" placeholder="ابحث باسم الأمر أو وظيفته..." /></div></div>
+        <div class="progress-panel"><div class="progress-row"><span>تقدم الإتقان</span><span id="progressText">0 من 40</span></div><div class="bar"><span id="progressBar" style="width:0%"></span></div><div class="progress-sub">ضع علامة بعد تنفيذ الأمر بنفسك في Linux، وليس بعد مشاهدة شرحه فقط.</div></div>
+        <div class="tools"><div class="filters" id="essentialFilters"></div></div>
+        <div class="cardgrid" id="essentialGrid"></div>
+      </section>
+      <section class="panel" id="panel-reference">
+        <div class="section-head"><div><h2>مرجع الأوامر عند الحاجة</h2><p>تعرف على وظيفة هذه الأدوات، ولا تشغل بالك بحفظها. ابحث هنا عندما تواجه مهمة تحتاجها.</p></div><div class="searchbox"><span>⌕</span><input id="referenceSearch" placeholder="ابحث عن أمر أو مهمة..." /></div></div>
+        <div class="notice"><strong>كيف تستخدم هذا القسم؟</strong> ليس مطلوبًا حفظ القائمة. يكفي أن تعرف أن الأداة موجودة، وتفهم وصفها، وتنسخ الصيغة المناسبة بعد التأكد من بيئتك وصلاحياتك.</div>
+        <div class="tools"><div class="filters" id="referenceFilters"></div></div>
+        <div class="ref-list" id="referenceList"></div>
+      </section>
+      <section class="panel" id="panel-recipes">
+        <div class="section-head"><div><h2>سيناريوهات عملية جاهزة</h2><p>أمثلة تجمع عدة أوامر معًا. استخدمها في معملك وعدّل المسارات حسب التوزيعة.</p></div></div>
+        <div class="notice"><strong>تنبيه قبل التنفيذ</strong> نفّذ الأمثلة على جهازك الافتراضي أو جهاز لديك تصريح بإدارته. بعض الأوامر تحتاج sudo، ومسارات السجلات تختلف بين Debian/Ubuntu وRocky.</div>
+        <div class="recipegrid" id="recipeGrid"></div>
+      </section>
+    </main>
+  </div>
+  <div class="footer">LINUX COMMAND ATLAS · دليل تعليمي شخصي · لا تستبدل صفحات man أو التوثيق الرسمي عند استخدام خيارات متقدمة.</div>
+</div>
+<script>
+const essentials = [
+{cmd:"pwd",name:"معرفة المسار الحالي",cat:"الملفات والتنقل",desc:"يعرض المجلد الذي تعمل بداخله حاليًا.",ex:"pwd",why:"تحتاجه قبل تنفيذ أوامر على ملفات أو مجلدات حتى تتأكد من مكانك."},
+{cmd:"ls -lah",name:"عرض الملفات بالتفصيل",cat:"الملفات والتنقل",desc:"يعرض الملفات العادية والمخفية مع الصلاحيات والأحجام.",ex:"ls -lah /var/log",why:"مهم لفحص الملفات المخفية وأذونات ملفات النظام."},
+{cmd:"cd /var/log",name:"التنقل بين المجلدات",cat:"الملفات والتنقل",desc:"ينقلك إلى مسار آخر؛ استخدم cd .. للرجوع مستوى للخلف.",ex:"cd ..\ncd ~/Documents",why:"ستتنقل كثيرًا بين مجلدات النظام والسجلات."},
+{cmd:"mkdir logs",name:"إنشاء مجلد",cat:"الملفات والتنقل",desc:"ينشئ مجلدًا جديدًا؛ الخيار -p ينشئ المسار الأب عند الحاجة.",ex:"mkdir -p ~/lab/logs",why:"لتنظيم ملفات التدريب ونتائج التحقيق."},
+{cmd:"touch file.txt",name:"إنشاء ملف فارغ",cat:"الملفات والتنقل",desc:"ينشئ ملفًا جديدًا أو يحدّث توقيته.",ex:"touch notes.txt",why:"مفيد لإنشاء ملفات اختبار وسجلات تجريبية."},
+{cmd:"cp source.txt copy.txt",name:"نسخ الملفات",cat:"الملفات والتنقل",desc:"ينسخ ملفًا؛ استخدم -r عند نسخ مجلد.",ex:"cp -r lab/ lab-backup/",why:"لإنشاء نسخة عمل قبل تعديل ملف أو إعداد."},
+{cmd:"mv old.txt new.txt",name:"نقل أو إعادة تسمية",cat:"الملفات والتنقل",desc:"ينقل الملفات والمجلدات أو يغيّر أسماءها.",ex:"mv report.txt reports/",why:"لترتيب ملفات العمل والسجلات."},
+{cmd:"rm file.txt",name:"حذف ملف",cat:"الملفات والتنقل",desc:"يحذف الملف مباشرة؛ لا يوجد سلة محذوفات افتراضية في الطرفية.",ex:"rm unwanted.txt",why:"استخدمه بحذر وتحقق من المسار قبل التنفيذ.",caution:"لا تبدأ باستخدام rm -rf. افحص pwd والمسار أولًا، ولا تنفذه بصلاحيات مرتفعة إلا عند الضرورة وبعد فهم النتيجة."},
+{cmd:"cat file.txt",name:"عرض محتوى ملف",cat:"قراءة وبحث",desc:"يطبع محتوى ملف أو يدمج عدة ملفات؛ للملفات الطويلة استخدم less.",ex:"cat /etc/os-release",why:"أمر أساسي لعرض إعدادات وملفات نصية صغيرة بسرعة."},
+{cmd:"less /var/log/syslog",name:"قراءة ملف طويل",cat:"قراءة وبحث",desc:"يفتح الملف للتصفح والبحث دون طباعة محتواه كله في الطرفية.",ex:"less /var/log/auth.log",why:"مناسب لملفات السجلات الكبيرة؛ اضغط q للخروج."},
+{cmd:"head -n 20 file.log",name:"عرض بداية الملف",cat:"قراءة وبحث",desc:"يعرض أول عدد محدد من الأسطر.",ex:"head -n 20 /etc/passwd",why:"لمعاينة تنسيق الملف بسرعة."},
+{cmd:"tail -n 20 file.log",name:"عرض نهاية الملف",cat:"قراءة وبحث",desc:"يعرض آخر الأسطر؛ -f يتابع الملف أثناء إضافة سجلات جديدة.",ex:"tail -f /var/log/auth.log",why:"مفيد لمراقبة السجلات لحظيًا أثناء تجربة معملية."},
+{cmd:"grep -i \"failed\" file.log",name:"البحث داخل النصوص",cat:"قراءة وبحث",desc:"يبحث عن نص أو نمط؛ -i يتجاهل اختلاف الحروف الكبيرة والصغيرة.",ex:"grep -n \"Failed password\" /var/log/auth.log",why:"من أكثر الأوامر استخدامًا في البحث الأولي داخل Logs."},
+{cmd:"find /var/log -type f",name:"البحث عن الملفات",cat:"قراءة وبحث",desc:"يبحث حسب المسار والاسم والنوع والوقت والصلاحيات.",ex:"find /var/log -type f -name '*.log'",why:"للعثور على ملفات السجلات والملفات ذات خصائص محددة."},
+{cmd:"wc -l file.log",name:"عدّ الأسطر",cat:"قراءة وبحث",desc:"يحسب الأسطر أو الكلمات أو البايتات؛ -l للأسطر.",ex:"grep 'Failed' auth.log | wc -l",why:"لعدّ الأحداث المطابقة لشرط معين."},
+{cmd:"sort file.txt",name:"ترتيب النتائج",cat:"قراءة وبحث",desc:"يرتب الأسطر، ويُستخدم كثيرًا قبل uniq.",ex:"sort ips.txt",why:"ضروري لتجميع نتائج متشابهة بشكل صحيح."},
+{cmd:"uniq -c",name:"عدّ التكرارات المتجاورة",cat:"قراءة وبحث",desc:"يعرض القيم المتكررة المتجاورة؛ غالبًا يسبقُه sort.",ex:"sort ips.txt | uniq -c",why:"يساعد على حساب تكرار عناوين IP أو أسماء المستخدمين."},
+{cmd:"cut -d: -f1 file",name:"استخراج حقل محدد",cat:"قراءة وبحث",desc:"يستخرج أعمدة أو حقولًا حسب الفاصل.",ex:"cut -d: -f1 /etc/passwd",why:"لاستخراج أسماء المستخدمين أو حقول من سجلات منظمة."},
+{cmd:"command1 | command2",name:"ربط الأوامر بـ Pipe",cat:"قراءة وبحث",desc:"يمرر مخرجات أمر إلى مدخلات الأمر التالي.",ex:"grep 'Failed' auth.log | wc -l",why:"مهارة أساسية لتحويل أوامر صغيرة إلى تحليل عملي."},
+{cmd:"command > out.txt",name:"إعادة توجيه المخرجات",cat:"قراءة وبحث",desc:"> يستبدل محتوى الملف، و>> يضيف إليه، و2> يوجّه رسائل الخطأ.",ex:"command >> results.txt 2> errors.txt",why:"لحفظ نتائج الفحص وفصل الأخطاء عن المخرجات."},
+{cmd:"whoami",name:"معرفة المستخدم الحالي",cat:"المستخدمون والصلاحيات",desc:"يعرض اسم الحساب الحالي.",ex:"whoami",why:"تأكد من هوية الحساب قبل تنفيذ أمر إداري."},
+{cmd:"id",name:"معرفة UID وGID والمجموعات",cat:"المستخدمون والصلاحيات",desc:"يعرض معرف المستخدم والمجموعة والمجموعات الإضافية.",ex:"id username",why:"مهم عند فحص الحسابات والصلاحيات."},
+{cmd:"groups",name:"عرض مجموعات المستخدم",cat:"المستخدمون والصلاحيات",desc:"يعرض المجموعات التي ينتمي إليها المستخدم.",ex:"groups username",why:"يساعد في مراجعة العضوية والصلاحيات."},
+{cmd:"sudo command",name:"تنفيذ أمر بصلاحيات مرتفعة",cat:"المستخدمون والصلاحيات",desc:"يشغّل أمرًا بصلاحيات إدارية وفق سياسة sudo.",ex:"sudo systemctl status ssh",why:"تحتاجه لإدارة الخدمات وقراءة بعض السجلات المحمية.",caution:"لا تستخدم sudo تلقائيًا مع كل أمر؛ أقل صلاحية هي الخيار الأفضل."},
+{cmd:"chmod 640 file",name:"تغيير صلاحيات الملف",cat:"المستخدمون والصلاحيات",desc:"يغيّر صلاحيات القراءة والكتابة والتنفيذ للمالك والمجموعة والآخرين.",ex:"chmod 750 script.sh",why:"أساسي لفهم وحماية الملفات والسكربتات."},
+{cmd:"chown user:group file",name:"تغيير مالك الملف",cat:"المستخدمون والصلاحيات",desc:"يغيّر مالك الملف أو المجموعة المالكة.",ex:"sudo chown analyst:analysts report.txt",why:"مهم في تصحيح صلاحيات الملفات والخدمات."},
+{cmd:"ps aux",name:"عرض العمليات الجارية",cat:"العمليات والخدمات",desc:"يعرض العمليات ومستخدميها واستهلاك الموارد.",ex:"ps aux | grep nginx",why:"أول خطوة لفهم ما يعمل على الجهاز."},
+{cmd:"pgrep -a process",name:"البحث عن عملية",cat:"العمليات والخدمات",desc:"يبحث عن العمليات حسب الاسم ويعرض PID؛ -a يعرض سطر الأمر.",ex:"pgrep -a sshd",why:"للعثور السريع على عملية محددة."},
+{cmd:"top",name:"مراقبة العمليات لحظيًا",cat:"العمليات والخدمات",desc:"يعرض العمليات واستخدام CPU والذاكرة بشكل مباشر.",ex:"top",why:"يساعد على ملاحظة عمليات تستهلك موارد بصورة غير معتادة."},
+{cmd:"systemctl status ssh",name:"فحص حالة الخدمة",cat:"العمليات والخدمات",desc:"يعرض حالة خدمة systemd؛ قد يكون اسمها sshd في بعض التوزيعات.",ex:"systemctl status sshd",why:"مهم لفحص خدمات Linux وإدارتها."},
+{cmd:"journalctl -u ssh",name:"قراءة سجلات خدمة",cat:"السجلات والتحليل",desc:"يعرض سجلات خدمة محددة من systemd journal.",ex:"journalctl -u ssh --since today",why:"مفيد لتحليل أحداث خدمة SSH والخدمات الأخرى."},
+{cmd:"ip addr",name:"عرض عناوين وواجهات الشبكة",cat:"الشبكات والاتصال",desc:"يعرض عناوين IP وحالة واجهات الشبكة.",ex:"ip addr show",why:"تحتاجه لفهم عنوان الجهاز وواجهاته قبل التحقيق الشبكي."},
+{cmd:"ip route",name:"عرض جدول التوجيه",cat:"الشبكات والاتصال",desc:"يعرض المسارات والبوابة الافتراضية.",ex:"ip route",why:"يساعد على تشخيص الاتصال وفهم طريق خروج الجهاز."},
+{cmd:"ss -tulpn",name:"عرض المنافذ والخدمات المستمعة",cat:"الشبكات والاتصال",desc:"يعرض TCP/UDP والمنافذ المستمعة وأرقام العمليات عند توفر الصلاحية.",ex:"sudo ss -tulpn",why:"مهم لمعرفة الخدمات التي تعرض منافذ على الجهاز."},
+{cmd:"ping -c 4 host",name:"اختبار الاتصال",cat:"الشبكات والاتصال",desc:"يرسل عددًا محددًا من ICMP Echo Requests.",ex:"ping -c 4 1.1.1.1",why:"للفصل بين مشكلة الاتصال ومشكلة DNS أو التطبيق."},
+{cmd:"ssh user@host",name:"الاتصال الآمن عن بُعد",cat:"الشبكات والاتصال",desc:"يفتح جلسة Secure Shell إلى جهاز آخر.",ex:"ssh analyst@192.0.2.10",why:"مهم لإدارة Linux والتعامل مع خوادم المعمل."},
+{cmd:"df -h",name:"فحص مساحة أنظمة الملفات",cat:"التخزين والحزم",desc:"يعرض المساحة الكلية والمستخدمة والمتاحة بصيغة مقروءة.",ex:"df -h",why:"مفيد عند امتلاء مساحة السجلات أو تعطل خدمة بسبب التخزين."},
+{cmd:"du -sh path",name:"قياس حجم مجلد أو ملف",cat:"التخزين والحزم",desc:"يعرض الحجم الإجمالي للمسار.",ex:"sudo du -sh /var/log",why:"لتحديد المجلدات التي تستهلك مساحة كبيرة."},
+{cmd:"man command",name:"فتح دليل الأمر",cat:"المساعدة والتوثيق",desc:"يفتح صفحة الدليل الرسمية المثبتة محليًا للأمر.",ex:"man grep",why:"ليس مطلوبًا حفظ كل الخيارات؛ تعلم الرجوع إلى man عند الحاجة."},
+{cmd:"apt install package / dnf install package",name:"تثبيت الحزم",cat:"التخزين والحزم",desc:"APT في Debian/Ubuntu وDNF في Rocky/Fedora.",ex:"sudo apt install tree\nsudo dnf install tree",why:"احفظ الفكرة والفرق بين عائلتي التوزيعات، ثم راجع الخيارات."},
+{cmd:"bash script.sh",name:"تشغيل Bash Script",cat:"Shell & Scripts",desc:"يشغّل سكربت Bash مباشرة بالمفسّر؛ ويمكن تشغيله كـ ./script.sh بعد إضافة صلاحية التنفيذ.",ex:"bash health-check.sh\nchmod +x health-check.sh && ./health-check.sh",why:"ضروري لتشغيل سكربتات الأتمتة التي ستكتبها أثناء Linux وSOC."},
+{cmd:"tar -czf archive.tar.gz folder/",name:"أرشفة وضغط الملفات",cat:"التخزين والحزم",desc:"يجمع الملفات ويضغطها؛ خيارات الاستخراج تختلف عن الإنشاء.",ex:"tar -xzf archive.tar.gz",why:"يستخدم في النسخ الاحتياطي وتجهيز ملفات الأدلة."}
+];
+const refs = [
+["echo","طباعة نص أو قيمة متغير","يعرض نصًا أو نتيجة متغير داخل الطرفية والسكربتات.","Shell"],
+["history","سجل الأوامر السابقة","يعرض الأوامر التي نفذتها الجلسة أو المستخدم.","Shell"],
+["clear","تنظيف شاشة الطرفية","يمسح محتوى الشاشة المرئي دون حذف سجل الأوامر.","Shell"],
+["uname -a","معلومات النواة والنظام","يعرض إصدار Kernel والمعمارية ومعلومات النظام.","معلومات النظام"],
+["hostnamectl","هوية الجهاز والنظام","يعرض اسم المضيف ومعلومات نظام التشغيل عند دعم systemd.","معلومات النظام"],
+["hostname","اسم الجهاز","يعرض أو يضبط اسم المضيف.","معلومات النظام"],
+["uptime","مدة تشغيل النظام","يعرض مدة التشغيل ومتوسط الحمل.","معلومات النظام"],
+["date","التاريخ والوقت","يعرض التاريخ والوقت الحاليين.","معلومات النظام"],
+["timedatectl","إعدادات الوقت والمنطقة الزمنية","يفحص الوقت والمنطقة الزمنية وNTP.","معلومات النظام"],
+["lscpu","تفاصيل المعالج","يعرض معلومات CPU والمعمارية.","معلومات النظام"],
+["free -h","الذاكرة","يعرض استخدام RAM وSwap.","معلومات النظام"],
+["vmstat","إحصاءات الذاكرة والعمليات","يعرض مؤشرات النظام والذاكرة والعمليات.","مراقبة الأداء"],
+["iostat","إحصاءات التخزين وI/O","يتطلب غالبًا حزمة sysstat.","مراقبة الأداء"],
+["pstree -p","شجرة العمليات","يعرض علاقة Parent/Child بين العمليات.","مراقبة الأداء"],
+["lsof","الملفات المفتوحة","يعرض الملفات والمقابس المفتوحة بواسطة العمليات.","مراقبة الأداء"],
+["fuser","العملية التي تستخدم ملفًا أو منفذًا","يحدد PID التي تستخدم موردًا معينًا.","مراقبة الأداء"],
+["nice / renice","تعديل أولوية العملية","تحديد أو تعديل أولوية جدولة العملية.","مراقبة الأداء"],
+["kill / killall","إرسال إشارة إلى عملية","أوقف العمليات فقط بعد التحقق من PID وتأثيرها.","مراقبة الأداء","warn"],
+["ip link","حالة واجهات الشبكة","يعرض واجهات الشبكة وخصائصها.","الشبكات"],
+["ip neigh","جدول الجيران","يعرض Neighbor/ARP cache.","الشبكات"],
+["nmcli","إدارة NetworkManager","عرض وإدارة اتصالات الشبكة من CLI.","الشبكات"],
+["nmtui","واجهة نصية لـ NetworkManager","أداة تفاعلية لإعداد الشبكة.","الشبكات"],
+["dig","استعلامات DNS","يعرض سجلات واستجابات DNS.","الشبكات"],
+["nslookup","استعلام DNS بسيط","بديل تفاعلي/مباشر للاستعلام عن DNS.","الشبكات"],
+["resolvectl","فحص DNS عبر systemd-resolved","يعرض إعدادات وحالة محلل DNS إذا كانت الخدمة موجودة.","الشبكات"],
+["traceroute / tracepath","تتبع مسار الشبكة","يوضح القفزات إلى الوجهة؛ قد يحتاج تثبيتًا أو صلاحيات.","الشبكات"],
+["curl","طلبات HTTP وواجهات API","يجلب موارد أو يرسل طلبات HTTP؛ راجع الوجهة قبل تمرير بيانات حساسة.","الشبكات"],
+["wget","تنزيل ملفات","ينزّل ملفات من عناوين URL.","الشبكات"],
+["tcpdump","التقاط حزم الشبكة","أداة Packet Capture؛ تحتاج معرفة بالواجهة والفلترة.","الشبكات"],
+["ethtool","تفاصيل بطاقة الشبكة","يعرض إعدادات وخصائص Ethernet.","الشبكات"],
+["useradd / adduser","إنشاء حساب مستخدم","قد يختلف السلوك والواجهة بين توزيعات Linux.","الحسابات"],
+["usermod","تعديل حساب مستخدم","تعديل المجموعات أو shell أو خصائص الحساب.","الحسابات"],
+["userdel","حذف مستخدم","راجع ملكية ملفات المستخدم قبل الحذف.","الحسابات","warn"],
+["groupadd / groupdel","إنشاء أو حذف مجموعة","إدارة مجموعات النظام.","الحسابات"],
+["gpasswd","إدارة أعضاء المجموعة","إضافة أو إزالة عضو من مجموعة.","الحسابات"],
+["passwd","إدارة كلمة المرور","تغيير أو قفل كلمة مرور بحسب الخيارات.","الحسابات"],
+["chage","سياسة انتهاء كلمة المرور","فحص وتعديل أعمار كلمات المرور.","الحسابات"],
+["getent","الاستعلام عن قواعد الحسابات","يفحص قواعد NSS مثل passwd وgroup.","الحسابات"],
+["last / lastb / lastlog","سجلات الدخول","تختلف إتاحة lastb وlastlog حسب التوزيعة وتكوين التسجيل.","السجلات"],
+["logger","إرسال رسالة إلى سجل النظام","مفيد لاختبار مسار التسجيل في معملك.","السجلات"],
+["dmesg","رسائل Kernel","يعرض رسائل النواة، وقد تقيد بعض الأنظمة الوصول.","السجلات"],
+["zgrep","البحث داخل ملفات gzip","للبحث في ملفات Logs المضغوطة.","السجلات"],
+["auditctl","إدارة قواعد Linux Audit","لتفعيل أو إدارة قواعد auditd؛ يحتاج خبرة وتخطيطًا.","التدقيق الأمني"],
+["ausearch","البحث في سجلات Audit","يبحث في أحداث auditd حسب معايير.","التدقيق الأمني"],
+["aureport","تقارير Audit","ينشئ ملخصات من سجلات auditd.","التدقيق الأمني"],
+["sestatus / getenforce","حالة SELinux","فحص وضع SELinux على الأنظمة التي تستخدمه.","التدقيق الأمني"],
+["setenforce","تغيير وضع SELinux مؤقتًا","أمر إداري قد يقلل الحماية؛ لا تغيّره دون فهم السبب والسياسة.","التدقيق الأمني","danger"],
+["ufw","إدارة جدار الحماية على Ubuntu","واجهة مبسطة لـ firewall rules.","التدقيق الأمني"],
+["firewall-cmd","إدارة firewalld","شائع على Rocky/RHEL؛ افهم zones وruntime/permanent.","التدقيق الأمني"],
+["nft","قواعد Netfilter الحديثة","واجهة إدارة قواعد تصفية الحزم.","التدقيق الأمني"],
+["iptables","قواعد جدار حماية قديمة/متوافقة","قد يكون backend متوافقًا مع nftables؛ تعرف عليه ولا تبدأ به كنظام جديد.","التدقيق الأمني"],
+["getfacl / setfacl","ACL للملفات","عرض أو تعديل قوائم التحكم الإضافية.","الصلاحيات"],
+["umask","القناع الافتراضي للصلاحيات","يفحص أو يضبط صلاحيات الإنشاء الافتراضية.","الصلاحيات"],
+["visudo","تحرير إعدادات sudo بأمان","يفحص صحة ملف sudoers عند التعديل.","الصلاحيات","warn"],
+["awk","استخراج وتحليل الحقول","مفيد لتلخيص سجلات نصية منظمة.","معالجة النصوص"],
+["sed","تعديل أو ترشيح النصوص","معالجة الأسطر واستبدال النصوص.","معالجة النصوص"],
+["tr","تحويل أو حذف الأحرف","يستخدم مع الأنابيب لمعالجة النصوص.","معالجة النصوص"],
+["xargs","تمرير المدخلات كوسائط","يربط نتائج أمر بأمر آخر؛ انتبه للمسافات وأسماء الملفات.","معالجة النصوص"],
+["tee","عرض المخرجات وحفظها معًا","يكتب إلى ملف ويُبقي المخرجات ظاهرة.","معالجة النصوص"],
+["paste / join","دمج أعمدة أو ملفات","أدوات مساعدة لتحليل بيانات نصية.","معالجة النصوص"],
+["diff / cmp","مقارنة ملفات","يكشف الاختلافات بين ملفين.","تحليل الملفات"],
+["stat / file","خصائص الملف ونوعه","يعرض Metadata ونوع الملف المكتشف.","تحليل الملفات"],
+["sha256sum","حساب بصمة SHA-256","مفيد لمقارنة سلامة الملفات وتوثيق الأدلة.","تحليل الملفات"],
+["strings / hexdump","فحص محتوى ثنائي","استخراج النصوص أو عرض المحتوى بصيغة Hex.","تحليل الملفات"],
+["dpkg / apt-cache","إدارة واستعلام حزم Debian","تفاصيل الحزم المثبتة والمتاحة.","الحزم"],
+["rpm / dnf","إدارة واستعلام حزم Rocky/RHEL","فحص الحزم وتثبيتها وإزالتها.","الحزم"],
+["snap / flatpak","أنظمة توزيع حزم إضافية","قد لا تكون مثبتة أو مستخدمة في كل بيئة.","الحزم"],
+["lsblk / blkid / findmnt","عرض الأقراص وأنظمة الملفات","استكشاف الأقراص ونقاط التركيب ومعرفات الملفات.","التخزين"],
+["fdisk / gdisk / parted","تقسيم الأقراص","أدوات تعديل Partition Table؛ راجع القرص المستهدف بعناية.","التخزين","warn"],
+["mkfs","إنشاء نظام ملفات","تهيئة قسم وقد تمحو بياناته بالكامل.","التخزين","danger"],
+["fsck","فحص وإصلاح نظام الملفات","لا تشغله على filesystem مركّب إلا وفق الإجراء المناسب.","التخزين","danger"],
+["mount / umount","تركيب وفصل أنظمة الملفات","فهم خيارات التركيب وملف fstab.","التخزين"],
+["pvcreate / vgcreate / lvcreate","إدارة LVM","إنشاء Physical Volumes وVolume Groups وLogical Volumes.","التخزين","warn"],
+["pvs / vgs / lvs","عرض مكونات LVM","استعراض وحدات التخزين المنطقية.","التخزين"],
+["lvextend","توسيع Logical Volume","يحتاج التحقق من مساحة VG ونظام الملفات وخطوات التوسعة.","التخزين","warn"],
+["mdadm","إدارة Software RAID","إنشاء ومراقبة مصفوفات RAID البرمجية.","التخزين","warn"],
+["swapon / swapoff","إدارة مساحة Swap","تفعيل أو تعطيل Swap.","التخزين"],
+["tar / gzip / gunzip","الأرشفة والضغط","إنشاء وفك أرشيفات وضغطها.","الأرشفة"],
+["zip / unzip","ضغط وفك ZIP","التعامل مع ملفات ZIP.","الأرشفة"],
+["rsync","مزامنة الملفات","نسخ ومزامنة بكفاءة؛ افحص خيارات الحذف قبل استخدامها.","النقل والنسخ","warn"],
+["scp / sftp","نقل ملفات عبر SSH","نسخ أو نقل ملفات عن بعد.","النقل والنسخ"],
+["crontab","إدارة مهام cron","عرض أو تعديل المهام الدورية للمستخدم.","الجدولة"],
+["at / atq / atrm","مهام لمرة واحدة","جدولة مهمة مستقبلية لمرة واحدة وإدارة قائمة الانتظار.","الجدولة"],
+["service","واجهة إدارة خدمات تقليدية","قد توجد للتوافق؛ systemctl هو الأساس في الأنظمة الحديثة ذات systemd.","الخدمات"],
+["apachectl / nginx -t","فحص إعداد خادم الويب","اختبار إعدادات Apache أو Nginx قبل إعادة تحميل الخدمة.","خدمات الويب"],
+["semanage / restorecon","إدارة سياق SELinux","إدارة واستعادة سياقات الملفات على أنظمة SELinux.","التدقيق الأمني","warn"]
+].map(x=>({cmd:x[0],name:x[1],desc:x[2],cat:x[3],risk:x[4]||"",example:"راجع man أو --help قبل استخدام الخيارات المتقدمة."}));
+const recipes=[
+{title:"1. البحث عن محاولات SSH فاشلة",desc:"استخدم المسار المناسب لتوزيعتك. لا تفترض أن الملف نفسه موجود في كل الأنظمة.",code:"# Debian / Ubuntu\ngrep 'Failed password' /var/log/auth.log\n\n# Rocky / RHEL\ngrep 'Failed password' /var/log/secure"},
+{title:"2. حساب أكثر عناوين IP تكرارًا",desc:"مثال شائع لصيغة OpenSSH؛ قد تحتاج تعديل موضع الحقل إذا اختلف تنسيق السجل.",code:"grep 'Failed password' /var/log/auth.log | \\\nawk '{print $(NF-3)}' | sort | uniq -c | sort -nr"},
+{title:"3. فحص الخدمات والمنافذ المستمعة",desc:"يساعدك في معرفة الخدمات التي تستمع لاتصالات TCP وUDP.",code:"systemctl --type=service --state=running\nsudo ss -tulpn"},
+{title:"4. فحص عملية مشبوهة",desc:"اعرض العملية وسطر تشغيلها وشجرة العمليات قبل اتخاذ أي إجراء.",code:"ps aux | grep -i 'process-name'\npgrep -a process-name\npstree -p"},
+{title:"5. مراجعة سجلات خدمة SSH",desc:"استخدم اسم الخدمة الصحيح على توزيعتك (ssh أو sshd).",code:"sudo journalctl -u ssh --since today\n# أو\nsudo journalctl -u sshd --since today"},
+{title:"6. معرفة أين تستهلك السجلات المساحة",desc:"اعرض المساحة الكلية ثم أحجام مجلدات السجلات.",code:"df -h\nsudo du -sh /var/log/* 2>/dev/null | sort -h"}
+];
+const stateKey="linuxCommandAtlas.v1";let state={mastered:[]};try{state={...state,...JSON.parse(localStorage.getItem(stateKey)||"{}")}}catch(e){}
+let activeEssentialCat="الكل",activeReferenceCat="الكل",activePanel="essential";
+const $=id=>document.getElementById(id);const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function save(){localStorage.setItem(stateKey,JSON.stringify(state));renderStats()}
+function renderStats(){const done=state.mastered.length,pct=Math.round(done/essentials.length*100);$('masteredCount').textContent=done;$('masteredPct').textContent=pct+'%';$('progressText').textContent=done+' من '+essentials.length;$('progressBar').style.width=pct+'%';$('essentialCount').textContent=essentials.length;$('essentialNavCount').textContent=essentials.length;$('referenceCount').textContent=refs.length;$('referenceNavCount').textContent=refs.length}
+function categories(items){return ['الكل',...new Set(items.map(x=>x.cat))]}
+function drawFilters(target,items,active,fn){$(target).innerHTML=categories(items).map(c=>`<button class="chip ${active===c?'active':''}" data-cat="${esc(c)}">${esc(c)} <span class="pill-count">${c==='الكل'?items.length:items.filter(x=>x.cat===c).length}</span></button>`).join('');$(target).querySelectorAll('button').forEach(b=>b.onclick=()=>fn(b.dataset.cat))}
+function drawEssential(){drawFilters('essentialFilters',essentials,activeEssentialCat,c=>{activeEssentialCat=c;drawEssential()});const q=$('essentialSearch').value.trim().toLowerCase();const arr=essentials.filter(x=>(activeEssentialCat==='الكل'||x.cat===activeEssentialCat)&&(!q||[x.cmd,x.name,x.desc,x.why,x.cat].join(' ').toLowerCase().includes(q)));$('essentialGrid').innerHTML=arr.length?arr.map((x)=>{const idx=essentials.indexOf(x),done=state.mastered.includes(idx);return `<article class="cmdcard"><div class="cardtop"><div class="cardtitle"><div class="num">${String(idx+1).padStart(2,'0')}</div><div><h3>${esc(x.name)}</h3><p class="desc">${esc(x.desc)}</p></div></div><span class="tag must">${done?'متقن':'أساسي'}</span></div><div class="codebox"><code>${esc(x.cmd)}</code><button class="copy" data-copy="${esc(x.cmd)}">نسخ</button></div><p class="why"><b>لماذا تحتاجه؟</b> ${esc(x.why)}</p>${x.caution?`<div class="notice"><strong>تنبيه</strong>${esc(x.caution)}</div>`:''}<div class="extra" id="ex-${idx}"><b>مثال استخدام:</b><code>${esc(x.ex)}</code><span>جرّبه في جهاز افتراضي، وافهم النتيجة قبل الانتقال.</span></div><div class="cardfoot"><label class="learncheck"><input type="checkbox" data-master="${idx}" ${done?'checked':''}> أتقنت استخدامه</label><button class="more" data-more="${idx}">مثال وتفاصيل ⌄</button></div></article>`}).join(''):'<div class="empty">لا توجد نتائج مطابقة. جرّب كلمة بحث أخرى.</div>';
+$('essentialGrid').querySelectorAll('[data-master]').forEach(el=>el.onchange=()=>{const i=+el.dataset.master;state.mastered=el.checked?[...new Set([...state.mastered,i])]:state.mastered.filter(x=>x!==i);save();drawEssential()});$('essentialGrid').querySelectorAll('[data-more]').forEach(el=>el.onclick=()=>{$('ex-'+el.dataset.more).classList.toggle('show')});bindCopy($('essentialGrid'));renderStats()}
+function drawReference(){drawFilters('referenceFilters',refs,activeReferenceCat,c=>{activeReferenceCat=c;drawReference()});const q=$('referenceSearch').value.trim().toLowerCase();const arr=refs.filter(x=>(activeReferenceCat==='الكل'||x.cat===activeReferenceCat)&&(!q||[x.cmd,x.name,x.desc,x.cat].join(' ').toLowerCase().includes(q)));$('referenceList').innerHTML=arr.length?arr.map(x=>`<article class="refitem ${x.risk==='danger'?'danger':x.risk==='warn'?'warn':''}"><div class="refcmd">${esc(x.cmd)}</div><div><strong>${esc(x.name)} ${x.risk==='danger'?'⚠️':''}</strong><p>${esc(x.desc)} · ${esc(x.cat)}</p></div><button class="copy" data-copy="${esc(x.cmd)}">نسخ الصيغة</button></article>`).join(''):'<div class="empty">لم أجد أمرًا مطابقًا للبحث.</div>';bindCopy($('referenceList'))}
+function bindCopy(root){root.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{const txt=b.dataset.copy;try{await navigator.clipboard.writeText(txt)}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const old=b.textContent;b.textContent='تم النسخ ✓';setTimeout(()=>b.textContent=old,1200)})}
+function drawRecipes(){$('recipeGrid').innerHTML=recipes.map((r,i)=>`<article class="recipe"><h3>${esc(r.title)}</h3><p>${esc(r.desc)}</p><pre>${esc(r.code)}</pre><button class="copy" data-copy="${esc(r.code)}">نسخ الأوامر</button></article>`).join('');bindCopy($('recipeGrid'))}
+document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>{activePanel=b.dataset.panel;document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id==='panel-'+activePanel))});$('essentialSearch').oninput=drawEssential;$('referenceSearch').oninput=drawReference;
+$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),mastered:state.mastered,essentialCount:essentials.length},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='linux-command-atlas-progress.json';a.click();URL.revokeObjectURL(a.href)};
+$('resetBtn').onclick=()=>{if(confirm('هل تريد مسح علامات الإتقان المحفوظة لهذا الدليل؟')){state.mastered=[];save();drawEssential()}};
+drawEssential();drawReference();drawRecipes();renderStats();
+</script>
+</body></html>
