@@ -1,0 +1,3622 @@
+{
+  "core": [
+    {
+      "id": "pwd",
+      "cmd": "pwd",
+      "title": "اعرف مكانك الحالي",
+      "cat": "التنقل",
+      "desc": "يطبع المسار الكامل للمجلد الحالي.",
+      "use": "قبل تنفيذ أوامر تعتمد على المسار، تأكد أين تعمل.",
+      "syntax": "pwd",
+      "example": "pwd",
+      "distro": "مشترك بين Debian وRocky.",
+      "tip": "اجعله عادة قبل أوامر الحذف أو النقل."
+    },
+    {
+      "id": "ls",
+      "cmd": "ls",
+      "title": "اعرض محتويات المجلد",
+      "cat": "التنقل",
+      "desc": "يعرض الملفات والمجلدات.",
+      "use": "استعراض المحتوى ومعرفة الملفات المخفية والتفاصيل.",
+      "syntax": "ls [OPTIONS] [PATH]",
+      "example": "ls -lah /var/log",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-l",
+          "عرض التفاصيل والصلاحيات والمالك والحجم."
+        ],
+        [
+          "-a",
+          "إظهار العناصر المخفية التي تبدأ بنقطة."
+        ],
+        [
+          "-h",
+          "عرض أحجام مقروءة مع -l."
+        ],
+        [
+          "-t",
+          "ترتيب حسب وقت التعديل."
+        ]
+      ],
+      "tip": "استخدم ls -lah عند فحص مجلد لا تعرف محتواه."
+    },
+    {
+      "id": "cd",
+      "cmd": "cd",
+      "title": "انتقل بين المجلدات",
+      "cat": "التنقل",
+      "desc": "يغير مجلد العمل الحالي في الـShell.",
+      "use": "التنقل إلى ملفات النظام أو مجلد المستخدم.",
+      "syntax": "cd PATH",
+      "example": "cd /var/log\ncd ..\ncd ~",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "..",
+          "المجلد الأب."
+        ],
+        [
+          "~",
+          "المجلد الرئيسي للمستخدم."
+        ],
+        [
+          "-",
+          "العودة إلى المجلد السابق."
+        ]
+      ],
+      "tip": "المسار النسبي يعتمد على نتيجة pwd."
+    },
+    {
+      "id": "mkdir",
+      "cmd": "mkdir",
+      "title": "أنشئ مجلدًا",
+      "cat": "الملفات",
+      "desc": "ينشئ مجلدًا جديدًا.",
+      "use": "تنظيم ملفات العمل والنسخ الاحتياطية.",
+      "syntax": "mkdir [OPTIONS] DIRECTORY",
+      "example": "mkdir -p ~/lab/logs/week1",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-p",
+          "إنشاء المسارات الأب إن لم تكن موجودة."
+        ],
+        [
+          "-m MODE",
+          "تحديد الصلاحيات أثناء الإنشاء."
+        ]
+      ]
+    },
+    {
+      "id": "touch",
+      "cmd": "touch",
+      "title": "أنشئ ملفًا أو حدّث توقيته",
+      "cat": "الملفات",
+      "desc": "ينشئ ملفًا فارغًا إن لم يكن موجودًا، أو يحدث وقت الوصول/التعديل.",
+      "use": "إنشاء ملفات اختبار أو تغيير timestamp.",
+      "syntax": "touch FILE",
+      "example": "touch notes.txt",
+      "distro": "مشترك.",
+      "tip": "touch لا يمسح محتوى ملف موجود؛ بل يحدّث توقيته افتراضيًا."
+    },
+    {
+      "id": "cp",
+      "cmd": "cp",
+      "title": "انسخ الملفات والمجلدات",
+      "cat": "الملفات",
+      "desc": "ينسخ الملفات أو المجلدات إلى وجهة أخرى.",
+      "use": "نسخ ملف إعداد قبل تعديله أو نسخ مجلد مع محتوياته.",
+      "syntax": "cp [OPTIONS] SOURCE DEST",
+      "example": "cp -a /etc/ssh ~/lab/ssh-backup",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-r",
+          "نسخ المجلدات بشكل تكراري."
+        ],
+        [
+          "-a",
+          "وضع الأرشفة؛ يحافظ قدر الإمكان على السمات والروابط."
+        ],
+        [
+          "-i",
+          "طلب تأكيد قبل الاستبدال."
+        ],
+        [
+          "-v",
+          "إظهار ما يتم نسخه."
+        ]
+      ],
+      "tip": "لنسخ ملفات إعدادات، احتفظ بنسخة أصلية قبل التعديل."
+    },
+    {
+      "id": "mv",
+      "cmd": "mv",
+      "title": "انقل أو أعد تسمية",
+      "cat": "الملفات",
+      "desc": "ينقل ملفًا أو مجلدًا أو يغير اسمه.",
+      "use": "تنظيم الملفات ونقل نتائج المختبر.",
+      "syntax": "mv SOURCE DEST",
+      "example": "mv report.tmp report.txt",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-i",
+          "طلب تأكيد قبل الاستبدال."
+        ],
+        [
+          "-n",
+          "عدم الاستبدال إن كانت الوجهة موجودة."
+        ],
+        [
+          "-v",
+          "إظهار العملية."
+        ]
+      ]
+    },
+    {
+      "id": "rm",
+      "cmd": "rm",
+      "title": "احذف الملفات بحذر",
+      "cat": "الملفات",
+      "desc": "يحذف أسماء الملفات؛ الحذف لا يمر عادة بسلة المحذوفات.",
+      "use": "حذف ملفات مؤقتة بعد التأكد من المسار.",
+      "syntax": "rm [OPTIONS] FILE",
+      "example": "rm -i old-test.txt",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-i",
+          "تأكيد لكل ملف."
+        ],
+        [
+          "-r",
+          "حذف مجلد ومحتوياته بشكل تكراري."
+        ],
+        [
+          "-f",
+          "عدم طلب التأكيد وتجاهل الملفات غير الموجودة."
+        ]
+      ],
+      "warning": "تجنب rm -rf مع مسارات واسعة أو متغيرات غير متحقق منها. افحص pwd وls أولًا."
+    },
+    {
+      "id": "cat",
+      "cmd": "cat",
+      "title": "اعرض محتوى ملف صغير",
+      "cat": "القراءة",
+      "desc": "يطبع محتوى الملفات إلى الطرفية ويمكن دمج عدة ملفات.",
+      "use": "قراءة ملفات إعداد صغيرة أو تمرير المحتوى إلى أداة أخرى.",
+      "syntax": "cat FILE",
+      "example": "cat /etc/os-release",
+      "distro": "مشترك.",
+      "tip": "للملفات الكبيرة استخدم less حتى لا تغمر الطرفية بالمخرجات."
+    },
+    {
+      "id": "less",
+      "cmd": "less",
+      "title": "تصفح ملف طويل",
+      "cat": "القراءة",
+      "desc": "عارض تفاعلي يسمح بالتقدم والرجوع والبحث داخل الملف.",
+      "use": "قراءة سجلات طويلة دون طباعتها كلها مرة واحدة.",
+      "syntax": "less FILE",
+      "example": "less /var/log/messages",
+      "distro": "مشترك غالبًا؛ قد تحتاج تثبيت less في Minimal images.",
+      "flags": [
+        [
+          "/text",
+          "بحث إلى الأمام."
+        ],
+        [
+          "?text",
+          "بحث إلى الخلف."
+        ],
+        [
+          "n / N",
+          "النتيجة التالية / السابقة."
+        ],
+        [
+          "q",
+          "خروج."
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "cmd": "head",
+      "title": "اعرض بداية الملف",
+      "cat": "القراءة",
+      "desc": "يعرض أول 10 أسطر افتراضيًا.",
+      "use": "فحص شكل ملف أو رأس CSV/Log.",
+      "syntax": "head -n NUMBER FILE",
+      "example": "head -n 20 /var/log/syslog",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-n N",
+          "عدد الأسطر المطلوب."
+        ],
+        [
+          "-c N",
+          "عدد البايتات."
+        ]
+      ]
+    },
+    {
+      "id": "tail",
+      "cmd": "tail",
+      "title": "اعرض نهاية الملف وتابعه",
+      "cat": "القراءة",
+      "desc": "يعرض آخر الأسطر، ويمكنه متابعة السجل لحظة بلحظة.",
+      "use": "مراقبة ملف سجل أثناء تنفيذ تجربة.",
+      "syntax": "tail -n N FILE\ntail -f FILE",
+      "example": "tail -n 30 /var/log/auth.log\ntail -f /var/log/auth.log",
+      "distro": "مسار auth.log شائع في Debian/Ubuntu؛ Rocky غالبًا /var/log/secure.",
+      "flags": [
+        [
+          "-n N",
+          "آخر N أسطر."
+        ],
+        [
+          "-f",
+          "متابعة الإضافات الجديدة."
+        ],
+        [
+          "-F",
+          "متابعة الملف حتى عند تدويره/إعادة إنشائه في بيئات مناسبة."
+        ]
+      ]
+    },
+    {
+      "id": "grep",
+      "cmd": "grep",
+      "title": "ابحث عن نص أو نمط",
+      "cat": "البحث والنصوص",
+      "desc": "يفلتر الأسطر التي تطابق نصًا أو Regular Expression.",
+      "use": "البحث في ملفات الإعداد والسجلات.",
+      "syntax": "grep [OPTIONS] PATTERN FILE",
+      "example": "grep -in \"Failed password\" /var/log/auth.log",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-i",
+          "تجاهل حالة الأحرف."
+        ],
+        [
+          "-n",
+          "إظهار رقم السطر."
+        ],
+        [
+          "-r",
+          "بحث تكراري داخل المجلدات."
+        ],
+        [
+          "-v",
+          "عكس المطابقة."
+        ],
+        [
+          "-E",
+          "Extended Regular Expressions."
+        ],
+        [
+          "-c",
+          "عد الأسطر المطابقة."
+        ]
+      ],
+      "tip": "افهم الفرق بين البحث الحرفي والتعبير النمطي."
+    },
+    {
+      "id": "find",
+      "cmd": "find",
+      "title": "ابحث عن الملفات بخصائصها",
+      "cat": "البحث والنصوص",
+      "desc": "يبحث في شجرة المجلدات حسب الاسم والنوع والحجم والتوقيت والصلاحيات.",
+      "use": "العثور على ملف إعداد أو ملف ذي صلاحية معينة.",
+      "syntax": "find PATH TESTS ACTIONS",
+      "example": "find /var/log -type f -name \"*.log\"",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-type f",
+          "ملفات عادية."
+        ],
+        [
+          "-type d",
+          "مجلدات."
+        ],
+        [
+          "-name",
+          "مطابقة الاسم."
+        ],
+        [
+          "-mtime",
+          "حسب عمر التعديل بالأيام."
+        ],
+        [
+          "-perm",
+          "حسب الصلاحيات."
+        ],
+        [
+          "-exec",
+          "تنفيذ أمر على النتائج؛ افهمه جيدًا قبل الاستخدام."
+        ]
+      ],
+      "warning": "عند استخدام -exec أو -delete اختبر البحث أولًا دون تنفيذ إجراء تغييري."
+    },
+    {
+      "id": "wc",
+      "cmd": "wc",
+      "title": "احسب الأسطر والكلمات والبايتات",
+      "cat": "البحث والنصوص",
+      "desc": "يعرض عدد الأسطر والكلمات والبايتات.",
+      "use": "قياس حجم ملف سجل أو عدد النتائج.",
+      "syntax": "wc [OPTIONS] FILE",
+      "example": "wc -l /var/log/auth.log",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-l",
+          "عدد الأسطر."
+        ],
+        [
+          "-w",
+          "عدد الكلمات."
+        ],
+        [
+          "-c",
+          "عدد البايتات."
+        ]
+      ]
+    },
+    {
+      "id": "sort",
+      "cmd": "sort",
+      "title": "رتّب الأسطر",
+      "cat": "البحث والنصوص",
+      "desc": "يرتب أسطر النص أبجديًا أو رقميًا.",
+      "use": "ترتيب قائمة عناوين أو أسماء قبل عدّ تكرارها.",
+      "syntax": "sort [OPTIONS] FILE",
+      "example": "sort -n ports.txt",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-n",
+          "ترتيب رقمي."
+        ],
+        [
+          "-r",
+          "ترتيب عكسي."
+        ],
+        [
+          "-u",
+          "إظهار القيم الفريدة."
+        ],
+        [
+          "-k",
+          "الترتيب حسب حقل."
+        ]
+      ]
+    },
+    {
+      "id": "uniq",
+      "cmd": "uniq",
+      "title": "تعامل مع الأسطر المتكررة",
+      "cat": "البحث والنصوص",
+      "desc": "يكشف الأسطر المتجاورة المتكررة، لذلك غالبًا نستخدم sort قبله.",
+      "use": "عدّ تكرار IPs أو أسماء المستخدمين.",
+      "syntax": "sort FILE | uniq -c",
+      "example": "sort ips.txt | uniq -c | sort -nr",
+      "distro": "مشترك.",
+      "tip": "uniq وحده لا يجمع التكرارات المتباعدة؛ رتّب البيانات أولًا."
+    },
+    {
+      "id": "cut",
+      "cmd": "cut",
+      "title": "استخرج حقولًا من كل سطر",
+      "cat": "البحث والنصوص",
+      "desc": "يستخرج حقولًا أو نطاقات حروف/بايتات.",
+      "use": "استخراج اسم المستخدم من /etc/passwd.",
+      "syntax": "cut -d DELIMITER -f FIELDS FILE",
+      "example": "cut -d: -f1 /etc/passwd",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-d",
+          "الفاصل بين الحقول."
+        ],
+        [
+          "-f",
+          "أرقام الحقول."
+        ],
+        [
+          "-c",
+          "مواضع الأحرف."
+        ]
+      ]
+    },
+    {
+      "id": "whoami",
+      "cmd": "whoami",
+      "title": "اعرف اسم المستخدم الحالي",
+      "cat": "الهوية والصلاحيات",
+      "desc": "يطبع اسم المستخدم الفعلي الذي تعمل به.",
+      "use": "التأكد من الحساب قبل أوامر الإدارة.",
+      "syntax": "whoami",
+      "example": "whoami",
+      "distro": "مشترك."
+    },
+    {
+      "id": "id",
+      "cmd": "id",
+      "title": "اعرض UID وGID والمجموعات",
+      "cat": "الهوية والصلاحيات",
+      "desc": "يعرض هوية المستخدم الرقمية ومجموعاته.",
+      "use": "التحقق من عضوية sudo/wheel ومجموعات المستخدم.",
+      "syntax": "id [USER]",
+      "example": "id\nid analyst",
+      "distro": "مشترك.",
+      "tip": "الأرقام UID/GID مهمة عند تحليل ملكية الملفات."
+    },
+    {
+      "id": "sudo",
+      "cmd": "sudo",
+      "title": "نفّذ أمرًا بصلاحية إدارية",
+      "cat": "الهوية والصلاحيات",
+      "desc": "يشغّل أمرًا بصلاحيات مستخدم آخر، وغالبًا root، وفق سياسة sudoers.",
+      "use": "تنفيذ مهمة إدارية مع تسجيل هوية المنفذ.",
+      "syntax": "sudo COMMAND",
+      "example": "sudo systemctl status ssh",
+      "distro": "مشترك؛ المجموعة الإدارية الشائعة sudo في Debian وwheel في Rocky بعد إعداد sudoers.",
+      "warning": "لا تضع sudo أمام كل أمر تلقائيًا؛ استخدم أقل صلاحية لازمة."
+    },
+    {
+      "id": "su",
+      "cmd": "su",
+      "title": "انتقل إلى حساب آخر",
+      "cat": "الهوية والصلاحيات",
+      "desc": "يبدأ جلسة shell بهوية مستخدم آخر.",
+      "use": "اختبار بيئة مستخدم أو التحول إلى root عند الحاجة.",
+      "syntax": "su - USER",
+      "example": "su -\nsu - analyst",
+      "distro": "مشترك.",
+      "tip": "استخدام الشرطة في su - يحمّل بيئة تسجيل الدخول للمستخدم المستهدف."
+    },
+    {
+      "id": "passwd",
+      "cmd": "passwd",
+      "title": "غيّر كلمة المرور",
+      "cat": "الهوية والصلاحيات",
+      "desc": "يغير كلمة مرور المستخدم أو يدير حالة كلمة المرور وفق الصلاحيات.",
+      "use": "تغيير كلمة مرور حسابك أو حساب آخر بإذن إداري.",
+      "syntax": "passwd [USER]",
+      "example": "passwd",
+      "distro": "مشترك.",
+      "warning": "لا تظهر كلمة المرور أثناء الكتابة؛ هذا طبيعي."
+    },
+    {
+      "id": "chmod",
+      "cmd": "chmod",
+      "title": "غيّر صلاحيات الوصول",
+      "cat": "الهوية والصلاحيات",
+      "desc": "يعدل Read/Write/Execute للمالك والمجموعة والآخرين.",
+      "use": "ضبط صلاحيات سكربت أو ملف خاص.",
+      "syntax": "chmod MODE FILE",
+      "example": "chmod 750 deploy.sh\nchmod u+x deploy.sh",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "755",
+          "المالك rwx، المجموعة والآخرون r-x."
+        ],
+        [
+          "644",
+          "المالك rw، المجموعة والآخرون r."
+        ],
+        [
+          "600",
+          "المالك rw فقط."
+        ],
+        [
+          "u+x",
+          "إضافة تنفيذ للمالك."
+        ]
+      ],
+      "warning": "لا تستخدم 777 كحل سريع؛ قد تفتح الملف للجميع."
+    },
+    {
+      "id": "chown",
+      "cmd": "chown",
+      "title": "غيّر مالك الملف أو مجموعته",
+      "cat": "الهوية والصلاحيات",
+      "desc": "يعدل مالك الملف والمجموعة المالكة.",
+      "use": "تصحيح ملكية ملف أو مجلد خدمة.",
+      "syntax": "chown USER:GROUP PATH",
+      "example": "sudo chown analyst:analyst report.txt",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-R",
+          "تطبيق تكراري على المحتويات؛ استخدمه بحذر."
+        ]
+      ]
+    },
+    {
+      "id": "ps",
+      "cmd": "ps",
+      "title": "اعرض العمليات الجارية",
+      "cat": "العمليات والخدمات",
+      "desc": "يعرض لقطة عن العمليات الحالية.",
+      "use": "فحص البرامج والعمليات النشطة ومستخدمها.",
+      "syntax": "ps [OPTIONS]",
+      "example": "ps aux\nps -ef",
+      "distro": "مشترك؛ أشكال الخيارات تختلف بين BSD style وUNIX style.",
+      "tip": "استخدم ps aux أو ps -ef كصيغة يومية، وافهم أعمدة PID وUSER وSTAT وCOMMAND."
+    },
+    {
+      "id": "top",
+      "cmd": "top",
+      "title": "راقب العمليات والموارد لحظيًا",
+      "cat": "العمليات والخدمات",
+      "desc": "يعرض العمليات واستهلاك CPU وMemory بشكل متجدد.",
+      "use": "اكتشاف عملية تستهلك الموارد.",
+      "syntax": "top",
+      "example": "top",
+      "distro": "مشترك؛ htop واجهة إضافية تحتاج تثبيتًا.",
+      "flags": [
+        [
+          "P",
+          "ترتيب حسب CPU داخل الجلسة."
+        ],
+        [
+          "M",
+          "ترتيب حسب الذاكرة."
+        ],
+        [
+          "q",
+          "خروج."
+        ]
+      ]
+    },
+    {
+      "id": "kill",
+      "cmd": "kill",
+      "title": "أرسل إشارة إلى عملية",
+      "cat": "العمليات والخدمات",
+      "desc": "يرسل Signal إلى PID؛ لا يعني دائمًا القتل الفوري.",
+      "use": "إيقاف عملية لا تستجيب بعد محاولة إنهاء لطيف.",
+      "syntax": "kill [-SIGNAL] PID",
+      "example": "kill -TERM 2450",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-TERM",
+          "طلب إنهاء منظم؛ الافتراضي غالبًا."
+        ],
+        [
+          "-KILL",
+          "إنهاء قسري لا تستطيع العملية التقاطه."
+        ],
+        [
+          "-HUP",
+          "إشارة تستخدمها بعض الخدمات لإعادة تحميل الإعداد."
+        ]
+      ],
+      "warning": "تحقق من PID قبل الإرسال، وابدأ بـ TERM بدل KILL متى أمكن."
+    },
+    {
+      "id": "systemctl",
+      "cmd": "systemctl",
+      "title": "أدر خدمات systemd",
+      "cat": "العمليات والخدمات",
+      "desc": "يتحكم في خدمات ووحدات systemd.",
+      "use": "فحص خدمة أو تشغيلها وإيقافها وتمكينها عند الإقلاع.",
+      "syntax": "systemctl ACTION UNIT",
+      "example": "systemctl status ssh\nsudo systemctl enable --now ssh",
+      "distro": "اسم خدمة SSH يشيع أن يكون ssh في Debian وsshd في Rocky.",
+      "flags": [
+        [
+          "status",
+          "الحالة والتفاصيل."
+        ],
+        [
+          "start/stop/restart",
+          "تشغيل/إيقاف/إعادة تشغيل."
+        ],
+        [
+          "enable --now",
+          "تمكينها عند الإقلاع وتشغيلها الآن."
+        ],
+        [
+          "is-enabled",
+          "هل تبدأ تلقائيًا؟"
+        ]
+      ]
+    },
+    {
+      "id": "journalctl",
+      "cmd": "journalctl",
+      "title": "اقرأ سجل systemd journal",
+      "cat": "السجلات",
+      "desc": "يعرض السجلات التي يجمعها systemd-journald.",
+      "use": "فحص أحداث النظام أو خدمة محددة أو الإقلاع السابق.",
+      "syntax": "journalctl [FILTERS]",
+      "example": "journalctl -b\njournalctl -u ssh --since today",
+      "distro": "مشترك في التوزيعتين الحديثتين؛ ملفات السجل التقليدية قد تختلف.",
+      "flags": [
+        [
+          "-b",
+          "الإقلاع الحالي."
+        ],
+        [
+          "-u UNIT",
+          "سجل خدمة محددة."
+        ],
+        [
+          "-p warning",
+          "أولوية warning وما هو أشد."
+        ],
+        [
+          "-f",
+          "متابعة مباشرة."
+        ],
+        [
+          "--since",
+          "تحديد وقت البداية."
+        ]
+      ]
+    },
+    {
+      "id": "ip",
+      "cmd": "ip",
+      "title": "افحص واجهات الشبكة والتوجيه",
+      "cat": "الشبكات",
+      "desc": "أداة iproute2 لإدارة وعرض العناوين والواجهات والمسارات والجيران.",
+      "use": "معرفة IP والبوابة وواجهات الشبكة.",
+      "syntax": "ip addr\nip route",
+      "example": "ip addr show\nip route show",
+      "distro": "مشترك؛ يفضل على ifconfig القديم.",
+      "flags": [
+        [
+          "addr",
+          "عناوين الواجهات."
+        ],
+        [
+          "link",
+          "حالة الواجهات."
+        ],
+        [
+          "route",
+          "جدول التوجيه."
+        ],
+        [
+          "neigh",
+          "جدول الجيران/ARP."
+        ]
+      ]
+    },
+    {
+      "id": "ping",
+      "cmd": "ping",
+      "title": "اختبر الوصول الشبكي",
+      "cat": "الشبكات",
+      "desc": "يرسل ICMP Echo Requests لقياس الوصول والزمن، إذا سمحت الشبكة.",
+      "use": "اختبار الاتصال بعنوان IP أو اسم نطاق.",
+      "syntax": "ping [OPTIONS] HOST",
+      "example": "ping -c 4 1.1.1.1",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-c N",
+          "عدد محدد من الحزم."
+        ],
+        [
+          "-4 / -6",
+          "استخدام IPv4 أو IPv6."
+        ]
+      ],
+      "tip": "فشل ping لا يثبت أن الجهاز متوقف؛ قد تكون ICMP محجوبة."
+    },
+    {
+      "id": "ss",
+      "cmd": "ss",
+      "title": "اعرض الاتصالات والمنافذ",
+      "cat": "الشبكات",
+      "desc": "يعرض sockets واتصالات الشبكة، وهو البديل الحديث لـ netstat في معظم الاستخدامات.",
+      "use": "معرفة المنافذ المستمعة والاتصالات النشطة.",
+      "syntax": "ss [OPTIONS]",
+      "example": "ss -tulpn\nss -ant",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-t",
+          "TCP."
+        ],
+        [
+          "-u",
+          "UDP."
+        ],
+        [
+          "-l",
+          "Listening."
+        ],
+        [
+          "-p",
+          "العملية المالكة عند توفر الصلاحية."
+        ],
+        [
+          "-n",
+          "أرقام بدل أسماء."
+        ],
+        [
+          "-a",
+          "كل الحالات."
+        ]
+      ]
+    },
+    {
+      "id": "ssh",
+      "cmd": "ssh",
+      "title": "اتصل بخادم عن بعد بأمان",
+      "cat": "الشبكات",
+      "desc": "ينشئ جلسة بعيدة مشفرة باستخدام SSH.",
+      "use": "الإدارة عن بعد أو الاتصال بجهاز مختبر.",
+      "syntax": "ssh USER@HOST",
+      "example": "ssh analyst@192.0.2.20",
+      "distro": "اسم خادم SSH وخدمة تشغيله يختلفان: ssh على Debian غالبًا، وsshd على Rocky.",
+      "tip": "تحقق من بصمة Host Key ولا تتجاهل تحذيرات تغيرها."
+    },
+    {
+      "id": "scp",
+      "cmd": "scp",
+      "title": "انسخ ملفات عبر SSH",
+      "cat": "الشبكات",
+      "desc": "ينقل الملفات بين المضيفين باستخدام SSH.",
+      "use": "نسخ تقرير أو ملف مختبر بين الأجهزة.",
+      "syntax": "scp SOURCE USER@HOST:DEST",
+      "example": "scp report.txt analyst@192.0.2.20:~/",
+      "distro": "مشترك عند تثبيت OpenSSH client.",
+      "tip": "للنقل المتكرر والمتقدم قد يكون rsync أو sftp أنسب."
+    },
+    {
+      "id": "df",
+      "cmd": "df",
+      "title": "اعرف مساحة أنظمة الملفات",
+      "cat": "التخزين",
+      "desc": "يعرض المساحة المستخدمة والمتاحة لكل filesystem مركب.",
+      "use": "التأكد من عدم امتلاء القسم الذي يحتوي السجلات.",
+      "syntax": "df -h [PATH]",
+      "example": "df -h /var/log",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-h",
+          "وحدات مقروءة."
+        ],
+        [
+          "-T",
+          "نوع نظام الملفات."
+        ],
+        [
+          "-i",
+          "استخدام inodes."
+        ]
+      ]
+    },
+    {
+      "id": "du",
+      "cmd": "du",
+      "title": "اعرف حجم ملف أو مجلد",
+      "cat": "التخزين",
+      "desc": "يحسب المساحة التي تستهلكها الملفات والمجلدات.",
+      "use": "تحديد المجلد الذي يستهلك مساحة كبيرة.",
+      "syntax": "du -sh PATH",
+      "example": "du -sh /var/log/*",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-s",
+          "ملخص لكل مسار."
+        ],
+        [
+          "-h",
+          "أحجام مقروءة."
+        ],
+        [
+          "-x",
+          "عدم عبور إلى أنظمة ملفات أخرى."
+        ]
+      ]
+    },
+    {
+      "id": "lsblk",
+      "cmd": "lsblk",
+      "title": "اعرض الأقراص والتقسيمات",
+      "cat": "التخزين",
+      "desc": "يعرض أجهزة الكتل والعلاقات بين الأقراص والتقسيمات.",
+      "use": "معرفة القرص قبل تنفيذ أي عملية تقسيم أو تركيب.",
+      "syntax": "lsblk [OPTIONS]",
+      "example": "lsblk -f",
+      "distro": "مشترك؛ يأتي من util-linux عادة.",
+      "flags": [
+        [
+          "-f",
+          "يعرض filesystem وUUID ونقطة التركيب."
+        ],
+        [
+          "-o",
+          "اختيار أعمدة المخرجات."
+        ]
+      ],
+      "warning": "لا تنفذ mkfs أو fdisk قبل التأكد من اسم القرص وسعته."
+    },
+    {
+      "id": "tar",
+      "cmd": "tar",
+      "title": "أنشئ أو استخرج أرشيفًا",
+      "cat": "الملفات والنسخ",
+      "desc": "يجمع ملفات ومجلدات في archive ويمكن ضغطه عبر gzip/xz.",
+      "use": "أرشفة ملفات إعداد أو نتائج المختبر.",
+      "syntax": "tar -czf ARCHIVE.tar.gz PATH\ntar -xzf ARCHIVE.tar.gz",
+      "example": "tar -czf config-backup.tar.gz /etc/ssh",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-c",
+          "إنشاء أرشيف."
+        ],
+        [
+          "-x",
+          "استخراج."
+        ],
+        [
+          "-t",
+          "عرض المحتوى."
+        ],
+        [
+          "-z",
+          "gzip."
+        ],
+        [
+          "-J",
+          "xz."
+        ],
+        [
+          "-f",
+          "اسم ملف الأرشيف."
+        ]
+      ]
+    },
+    {
+      "id": "sha256sum",
+      "cmd": "sha256sum",
+      "title": "احسب بصمة SHA-256",
+      "cat": "سلامة الملفات",
+      "desc": "يحسب hash للملف للتحقق من سلامته أو مقارنته بقيمة موثوقة.",
+      "use": "مقارنة بصمة ملف قبل وبعد النقل أو مع قيمة منشورة.",
+      "syntax": "sha256sum FILE",
+      "example": "sha256sum downloaded.iso",
+      "distro": "مشترك؛ الحزمة coreutils.",
+      "tip": "تطابق hash يؤكد تطابق المحتوى، لكنه لا يثبت أن المصدر موثوق ما لم تقارن ببصمة من مصدر موثوق."
+    },
+    {
+      "id": "man",
+      "cmd": "man",
+      "title": "افتح دليل الأمر",
+      "cat": "المساعدة",
+      "desc": "يعرض صفحة الدليل الرسمية للأمر المثبت.",
+      "use": "معرفة التفاصيل والخيارات والسلوك قبل تنفيذ أمر متقدم.",
+      "syntax": "man COMMAND",
+      "example": "man find\nman 5 passwd",
+      "distro": "قد تحتاج حزمة man-db/manpages حسب التثبيت.",
+      "tip": "أرقام الأقسام مهمة: 1 أوامر، 5 ملفات إعداد، 8 إدارة النظام."
+    },
+    {
+      "id": "apt",
+      "cmd": "apt",
+      "title": "أدر الحزم في Debian",
+      "cat": "الحزم",
+      "desc": "واجهة إدارة الحزم في Debian وUbuntu.",
+      "use": "تحديث فهارس الحزم وتثبيت البرامج وتحديثها وإزالتها.",
+      "syntax": "sudo apt update\nsudo apt install PACKAGE",
+      "example": "sudo apt update\nsudo apt install tree",
+      "distro": "Debian/Ubuntu فقط؛ Rocky يستخدم DNF.",
+      "flags": [
+        [
+          "update",
+          "تحديث فهارس المستودعات."
+        ],
+        [
+          "upgrade",
+          "ترقية الحزم."
+        ],
+        [
+          "install",
+          "تثبيت."
+        ],
+        [
+          "remove",
+          "إزالة البرنامج مع إبقاء بعض ملفات الإعداد."
+        ],
+        [
+          "purge",
+          "إزالة البرنامج وملفات إعداد الحزمة."
+        ]
+      ]
+    },
+    {
+      "id": "dnf",
+      "cmd": "dnf",
+      "title": "أدر الحزم في Rocky",
+      "cat": "الحزم",
+      "desc": "مدير الحزم في عائلة RHEL الحديثة بما فيها Rocky Linux.",
+      "use": "البحث عن حزم وتثبيتها وتحديثها وإزالتها.",
+      "syntax": "sudo dnf install PACKAGE",
+      "example": "sudo dnf search nmap\nsudo dnf install nmap",
+      "distro": "Rocky Linux؛ Debian يستخدم APT. في Rocky 10 انتبه لتغييرات DNF الحديثة.",
+      "flags": [
+        [
+          "search",
+          "البحث."
+        ],
+        [
+          "install",
+          "التثبيت."
+        ],
+        [
+          "upgrade",
+          "التحديث."
+        ],
+        [
+          "remove",
+          "الإزالة."
+        ],
+        [
+          "info",
+          "تفاصيل الحزمة."
+        ],
+        [
+          "repolist",
+          "المستودعات."
+        ]
+      ]
+    },
+    {
+      "id": "echo",
+      "cmd": "echo",
+      "title": "اطبع نصًا أو قيمة متغير",
+      "cat": "Shell & Bash",
+      "desc": "يطبع النصوص وقيم المتغيرات إلى stdout.",
+      "use": "عرض رسائل من سكربت أو فحص متغير.",
+      "syntax": "echo [OPTIONS] TEXT",
+      "example": "echo \"$HOME\"",
+      "distro": "Shell builtin في Bash غالبًا.",
+      "tip": "للمخرجات الأكثر قابلية للتوقع في السكربتات استخدم printf."
+    },
+    {
+      "id": "printf",
+      "cmd": "printf",
+      "title": "اطبع مخرجات منسقة",
+      "cat": "Shell & Bash",
+      "desc": "يطبع نصوصًا مع تنسيق محدد للقيم.",
+      "use": "إنشاء تقارير Shell ذات أعمدة واضحة.",
+      "syntax": "printf FORMAT ARGUMENTS",
+      "example": "printf \"%-12s %s\\n\" \"USER\" \"STATUS\"",
+      "distro": "Bash builtin، ويوجد أيضًا أمر printf خارجي.",
+      "tip": "أكثر ثباتًا من echo عند التعامل مع escape sequences والتنسيقات."
+    },
+    {
+      "id": "read",
+      "cmd": "read",
+      "title": "استقبل إدخال المستخدم",
+      "cat": "Shell & Bash",
+      "desc": "يقرأ سطرًا من stdin ويخزنه في متغير داخل Bash.",
+      "use": "طلب اسم مستخدم أو مسار من مشغل السكربت.",
+      "syntax": "read -r VARIABLE",
+      "example": "read -r -p \"Username: \" user",
+      "distro": "Bash builtin.",
+      "tip": "استخدم -r لتجنب تفسير backslashes كـ escapes."
+    },
+    {
+      "id": "history",
+      "cmd": "history",
+      "title": "راجع أوامر الطرفية السابقة",
+      "cat": "Shell & Bash",
+      "desc": "يعرض سجل أوامر جلسة Bash.",
+      "use": "العثور على أمر نفذته سابقًا ومراجعته.",
+      "syntax": "history",
+      "example": "history | tail -n 20",
+      "distro": "Bash builtin؛ يعتمد التخزين على إعدادات shell.",
+      "warning": "لا تضع كلمات مرور أو أسرارًا مباشرة في أوامر قد تُحفظ في history."
+    },
+    {
+      "id": "uname",
+      "cmd": "uname",
+      "title": "اعرف معلومات النواة والنظام",
+      "cat": "معلومات النظام",
+      "desc": "يعرض اسم النواة ومعلوماتها.",
+      "use": "معرفة نوع kernel والمعمارية.",
+      "syntax": "uname -a",
+      "example": "uname -r\nuname -m",
+      "distro": "مشترك.",
+      "flags": [
+        [
+          "-a",
+          "كل المعلومات المتاحة."
+        ],
+        [
+          "-r",
+          "إصدار النواة."
+        ],
+        [
+          "-m",
+          "المعمارية."
+        ]
+      ]
+    }
+  ],
+  "advancedGroups": [
+    {
+      "id": "system",
+      "name": "01 / هوية النظام والتشخيص",
+      "desc": "اجمع صورة عن إصدار النظام والعتاد والوقت والذاكرة قبل تعديل الإعدادات.",
+      "commands": [
+        {
+          "id": "hostnamectl",
+          "cmd": "hostnamectl",
+          "title": "هوية الجهاز والنظام",
+          "desc": "يعرض أو يعدّل اسم المضيف ومعلومات نظام التشغيل والافتراضية.",
+          "example": "hostnamectl status",
+          "distro": "مشترك مع systemd."
+        },
+        {
+          "id": "uptime",
+          "cmd": "uptime",
+          "title": "مدة التشغيل والحمل",
+          "desc": "يعرض زمن التشغيل ومتوسط الحمل (load averages).",
+          "example": "uptime"
+        },
+        {
+          "id": "date",
+          "cmd": "date",
+          "title": "الوقت والتاريخ",
+          "desc": "يعرض أو ينسق التاريخ والوقت؛ ضبط الوقت يحتاج صلاحية.",
+          "example": "date -Is"
+        },
+        {
+          "id": "timedatectl",
+          "cmd": "timedatectl",
+          "title": "إعداد الوقت والمنطقة الزمنية",
+          "desc": "يعرض حالة الساعة والمنطقة الزمنية وNTP.",
+          "example": "timedatectl status\ntimedatectl list-timezones",
+          "distro": "مشترك مع systemd."
+        },
+        {
+          "id": "lscpu",
+          "cmd": "lscpu",
+          "title": "تفاصيل المعالج",
+          "desc": "يعرض المعمارية والأنوية والـCPU flags.",
+          "example": "lscpu"
+        },
+        {
+          "id": "free",
+          "cmd": "free",
+          "title": "حالة الذاكرة",
+          "desc": "يعرض RAM وSwap؛ يفضل -h.",
+          "example": "free -h"
+        },
+        {
+          "id": "vmstat",
+          "cmd": "vmstat",
+          "title": "إحصاءات الذاكرة والعمليات",
+          "desc": "يعرض الذاكرة والـpaging والعمليات والـCPU.",
+          "example": "vmstat 1 5"
+        },
+        {
+          "id": "iostat",
+          "cmd": "iostat",
+          "title": "أداء أجهزة التخزين",
+          "desc": "يعرض CPU وI/O للأقراص؛ يأتي غالبًا ضمن sysstat.",
+          "example": "iostat -xz 1 3",
+          "note": "قد تحتاج تثبيت sysstat."
+        },
+        {
+          "id": "sar",
+          "cmd": "sar",
+          "title": "تاريخ أداء النظام",
+          "desc": "يعرض تقارير أداء تاريخية إذا كان جمع sysstat مفعّلًا.",
+          "example": "sar -u 1 5",
+          "note": "ليس مضمونًا أن يكون جمع البيانات مفعّلًا افتراضيًا."
+        },
+        {
+          "id": "dmesg",
+          "cmd": "dmesg",
+          "title": "رسائل النواة",
+          "desc": "يعرض رسائل kernel ring buffer، مثل اكتشاف أجهزة أو أخطاء تعريفات.",
+          "example": "sudo dmesg -T | tail -n 40"
+        },
+        {
+          "id": "dmidecode",
+          "cmd": "dmidecode",
+          "title": "معلومات BIOS والعتاد",
+          "desc": "يقرأ DMI/SMBIOS لتفاصيل المنصة والذاكرة واللوحة.",
+          "example": "sudo dmidecode -t system",
+          "note": "يتطلب root وغالبًا تثبيت dmidecode."
+        },
+        {
+          "id": "lsmem",
+          "cmd": "lsmem",
+          "title": "خريطة الذاكرة",
+          "desc": "يعرض نطاقات الذاكرة المتاحة للنظام.",
+          "example": "lsmem"
+        }
+      ]
+    },
+    {
+      "id": "text",
+      "name": "02 / معالجة النصوص والبحث المتقدم",
+      "desc": "أدوات تحويل واستخراج ومقارنة النصوص. هذه المجموعة توسع grep وcut وsort التي تتقنها في المسار الأساسي.",
+      "commands": [
+        {
+          "id": "stat",
+          "cmd": "stat",
+          "title": "بيانات الملف الوصفية",
+          "desc": "يعرض الحجم والمالك والصلاحيات وأوقات الوصول والتعديل والتغيير.",
+          "example": "stat /etc/passwd"
+        },
+        {
+          "id": "readlink",
+          "cmd": "readlink",
+          "title": "حل أو عرض الرابط الرمزي",
+          "desc": "يعرض الهدف المرتبط برابط رمزي.",
+          "example": "readlink -f /etc/os-release"
+        },
+        {
+          "id": "realpath",
+          "cmd": "realpath",
+          "title": "المسار المطلق الحقيقي",
+          "desc": "يحل المسارات إلى صيغة مطلقة.",
+          "example": "realpath ../logs"
+        },
+        {
+          "id": "basename",
+          "cmd": "basename",
+          "title": "اسم الملف من المسار",
+          "desc": "يستخرج الجزء الأخير من المسار.",
+          "example": "basename /var/log/auth.log"
+        },
+        {
+          "id": "dirname",
+          "cmd": "dirname",
+          "title": "المجلد الأب للمسار",
+          "desc": "يستخرج المجلد الذي يحتوي المسار.",
+          "example": "dirname /var/log/auth.log"
+        },
+        {
+          "id": "locate",
+          "cmd": "locate",
+          "title": "بحث سريع بقاعدة بيانات",
+          "desc": "يبحث في قاعدة بيانات مسبقة بدل فحص نظام الملفات كله.",
+          "example": "locate sshd_config",
+          "note": "قد يحتاج mlocate/plocate وتحديث قاعدة البيانات."
+        },
+        {
+          "id": "updatedb",
+          "cmd": "updatedb",
+          "title": "تحديث قاعدة locate",
+          "desc": "يبني أو يحدث قاعدة بيانات locate.",
+          "example": "sudo updatedb",
+          "note": "اسم الحزمة/الأداة قد يكون plocate أو mlocate."
+        },
+        {
+          "id": "xargs",
+          "cmd": "xargs",
+          "title": "حوّل الإدخال إلى معاملات",
+          "desc": "يبني أوامر من stdin؛ مفيد لربط find مع أدوات أخرى.",
+          "example": "find . -name \"*.log\" -print0 | xargs -0 ls -l",
+          "warning": "استخدم -print0 مع xargs -0 للمسارات التي تحتوي مسافات أو محارف خاصة."
+        },
+        {
+          "id": "awk",
+          "cmd": "awk",
+          "title": "تحليل الحقول والنصوص",
+          "desc": "لغة لمعالجة السطور والحقول وإجراء الحسابات والتقارير.",
+          "example": "awk -F: '{print $1, $3}' /etc/passwd"
+        },
+        {
+          "id": "sed",
+          "cmd": "sed",
+          "title": "تحويل النصوص سطرًا بسطر",
+          "desc": "محرر stream؛ يمكنه البحث والاستبدال واستخراج أسطر.",
+          "example": "sed -n '1,10p' file.txt"
+        },
+        {
+          "id": "tr",
+          "cmd": "tr",
+          "title": "تحويل أو حذف المحارف",
+          "desc": "يحوّل المحارف أو يضغط التكرار أو يحذف محارف.",
+          "example": "tr '[:lower:]' '[:upper:]' < names.txt"
+        },
+        {
+          "id": "tee",
+          "cmd": "tee",
+          "title": "اعرض واحفظ المخرجات معًا",
+          "desc": "يرسل stdin إلى الشاشة وإلى ملف.",
+          "example": "command 2>&1 | tee run.log"
+        },
+        {
+          "id": "column",
+          "cmd": "column",
+          "title": "نسّق النص في أعمدة",
+          "desc": "يرتب مخرجات مفصولة في شكل أعمدة مقروء.",
+          "example": "column -t -s: /etc/passwd | head"
+        },
+        {
+          "id": "jq",
+          "cmd": "jq",
+          "title": "تحليل JSON من الطرفية",
+          "desc": "يقرأ ويصفّي ويحوّل بيانات JSON.",
+          "example": "jq ' .items[] | .name ' data.json",
+          "note": "أداة إضافية قد تحتاج تثبيت jq."
+        },
+        {
+          "id": "diff",
+          "cmd": "diff",
+          "title": "قارن ملفين نصيين",
+          "desc": "يعرض الاختلافات بين نسختين من ملف.",
+          "example": "diff -u config.old config.new"
+        },
+        {
+          "id": "cmp",
+          "cmd": "cmp",
+          "title": "قارن الملفات بايتًا ببايت",
+          "desc": "يكشف أول اختلاف بين ملفين.",
+          "example": "cmp file-a.bin file-b.bin"
+        },
+        {
+          "id": "comm",
+          "cmd": "comm",
+          "title": "قارن قائمتين مرتبتين",
+          "desc": "يعرض العناصر المشتركة والمنفردة بين ملفين مرتبين.",
+          "example": "comm -3 sorted-a.txt sorted-b.txt"
+        },
+        {
+          "id": "join",
+          "cmd": "join",
+          "title": "ادمج ملفين حسب حقل مشترك",
+          "desc": "ينفذ ربطًا نصيًا لملفين مرتبين وفق مفتاح مشترك.",
+          "example": "join -t, users.csv logins.csv"
+        },
+        {
+          "id": "od",
+          "cmd": "od",
+          "title": "عرض البيانات بصيغة رقمية",
+          "desc": "يعرض محتوى الملف بتمثيل octal/hex وغيرها.",
+          "example": "od -An -tx1 file.bin"
+        },
+        {
+          "id": "hexdump",
+          "cmd": "hexdump",
+          "title": "عرض المحتوى بالهيكس",
+          "desc": "مفيد لفحص بنية الملفات والـbytes.",
+          "example": "hexdump -C file.bin | head"
+        },
+        {
+          "id": "strings",
+          "cmd": "strings",
+          "title": "استخراج النصوص المقروءة من ملف ثنائي",
+          "desc": "يعرض سلاسل نصية قابلة للطباعة داخل binary.",
+          "example": "strings suspicious.bin | head"
+        }
+      ]
+    },
+    {
+      "id": "identity",
+      "name": "03 / الحسابات والتحكم في الوصول",
+      "desc": "أوامر إدارة الحسابات والصلاحيات المتقدمة. نفذها في VM فقط وتأكد من عدم قطع صلاحيات الإدارة عن نفسك.",
+      "commands": [
+        {
+          "id": "useradd",
+          "cmd": "useradd",
+          "title": "إنشاء حساب مستخدم",
+          "desc": "ينشئ حسابًا؛ خيارات مثل -m و-s تحدد home وshell.",
+          "example": "sudo useradd -m -s /bin/bash analyst"
+        },
+        {
+          "id": "usermod",
+          "cmd": "usermod",
+          "title": "تعديل حساب مستخدم",
+          "desc": "يعدل المجموعات أو shell أو حالة الحساب.",
+          "example": "sudo usermod -aG wheel analyst",
+          "distro": "مجموعة الإدارة المعتادة: sudo في Debian، وwheel في Rocky إذا سمحت sudoers.",
+          "warning": "-aG للإضافة؛ -G وحدها قد تستبدل المجموعات الإضافية."
+        },
+        {
+          "id": "userdel",
+          "cmd": "userdel",
+          "title": "حذف حساب",
+          "desc": "يحذف حسابًا؛ -r يحذف home وmail spool أيضًا.",
+          "example": "sudo userdel analyst",
+          "warning": "تحقق من الملفات والعمليات والملكية قبل حذف الحساب."
+        },
+        {
+          "id": "groupadd",
+          "cmd": "groupadd",
+          "title": "إنشاء مجموعة",
+          "desc": "ينشئ مجموعة محلية.",
+          "example": "sudo groupadd auditors"
+        },
+        {
+          "id": "groupmod",
+          "cmd": "groupmod",
+          "title": "تعديل مجموعة",
+          "desc": "يغير اسم المجموعة أو GID.",
+          "example": "sudo groupmod -n security-auditors auditors"
+        },
+        {
+          "id": "gpasswd",
+          "cmd": "gpasswd",
+          "title": "إدارة أعضاء المجموعة",
+          "desc": "يدير أعضاء المجموعة وبعض إعداداتها.",
+          "example": "sudo gpasswd -a analyst auditors"
+        },
+        {
+          "id": "getent",
+          "cmd": "getent",
+          "title": "استعلام عن قواعد الحسابات",
+          "desc": "يستعلم من NSS عن المستخدمين والمجموعات والخدمات وغيرها.",
+          "example": "getent passwd analyst\ngetent group wheel"
+        },
+        {
+          "id": "last",
+          "cmd": "last",
+          "title": "سجل جلسات الدخول",
+          "desc": "يعرض تسجيلات الدخول والخروج من wtmp.",
+          "example": "last -a | head"
+        },
+        {
+          "id": "lastb",
+          "cmd": "lastb",
+          "title": "محاولات الدخول الفاشلة",
+          "desc": "يعرض سجل btmp إذا كان موجودًا ومتاحًا.",
+          "example": "sudo lastb | head",
+          "note": "قد لا يُفعّل تسجيل btmp أو قد لا توجد بيانات."
+        },
+        {
+          "id": "chage",
+          "cmd": "chage",
+          "title": "سياسة عمر كلمة المرور",
+          "desc": "يعرض أو يعدل تواريخ انتهاء كلمة مرور الحساب.",
+          "example": "sudo chage -l analyst"
+        },
+        {
+          "id": "chpasswd",
+          "cmd": "chpasswd",
+          "title": "تحديث كلمات مرور دفعة واحدة",
+          "desc": "يقرأ أزواج user:password من stdin؛ حساس جدًا.",
+          "example": "sudo chpasswd < prepared-users.txt",
+          "warning": "لا تحفظ كلمات مرور صريحة في ملفات عادية أو history. استخدمه فقط وفق سياسة آمنة."
+        },
+        {
+          "id": "visudo",
+          "cmd": "visudo",
+          "title": "تحرير sudoers بأمان",
+          "desc": "يفحص الصياغة قبل اعتماد ملف sudoers.",
+          "example": "sudo visudo -f /etc/sudoers.d/analyst",
+          "warning": "لا تعدل /etc/sudoers بمحرر عادي؛ خطأ الصياغة قد يمنع الإدارة."
+        },
+        {
+          "id": "getfacl",
+          "cmd": "getfacl",
+          "title": "قراءة ACL",
+          "desc": "يعرض Access Control Lists للملف أو المجلد.",
+          "example": "getfacl /srv/share"
+        },
+        {
+          "id": "setfacl",
+          "cmd": "setfacl",
+          "title": "تعديل ACL",
+          "desc": "يضيف أو يغير صلاحيات ACL لمستخدم/مجموعة.",
+          "example": "sudo setfacl -m u:analyst:rwx /srv/share"
+        },
+        {
+          "id": "getcap",
+          "cmd": "getcap",
+          "title": "عرض Linux Capabilities",
+          "desc": "يعرض capabilities المعينة للملفات التنفيذية.",
+          "example": "sudo getcap -r /usr/bin 2>/dev/null"
+        },
+        {
+          "id": "setcap",
+          "cmd": "setcap",
+          "title": "تعيين Linux Capabilities",
+          "desc": "يعيّن capability لملف تنفيذي بدل منحه صلاحيات root كاملة.",
+          "example": "sudo setcap cap_net_raw+ep ./tool",
+          "warning": "امنح أقل capability لازمة فقط؛ راجع صفحة man قبل التعديل."
+        },
+        {
+          "id": "faillock",
+          "cmd": "faillock",
+          "title": "فحص سجل قفل الحسابات",
+          "desc": "يعرض أو يدير سجلات فشل المصادقة عند استخدام pam_faillock.",
+          "example": "sudo faillock --user analyst",
+          "distro": "قد يختلف تفعيل PAM وإعداداته حسب التوزيعة والسياسة."
+        },
+        {
+          "id": "pwck",
+          "cmd": "pwck",
+          "title": "فحص سلامة ملفات الحسابات",
+          "desc": "يتحقق من اتساق بيانات passwd/shadow.",
+          "example": "sudo pwck -r"
+        },
+        {
+          "id": "grpck",
+          "cmd": "grpck",
+          "title": "فحص سلامة ملفات المجموعات",
+          "desc": "يتحقق من اتساق group/gshadow.",
+          "example": "sudo grpck -r"
+        }
+      ]
+    },
+    {
+      "id": "process",
+      "name": "04 / إدارة العمليات وsystemd المتقدم",
+      "desc": "أدوات تتبع العمليات، الإشارات، الاعتماديات، والـunits. لا توقف خدمة إنتاجية قبل فهم أثرها.",
+      "commands": [
+        {
+          "id": "pgrep",
+          "cmd": "pgrep",
+          "title": "ابحث عن PID بالاسم",
+          "desc": "يعثر على عمليات مطابقة لنمط اسمها.",
+          "example": "pgrep -a sshd"
+        },
+        {
+          "id": "pkill",
+          "cmd": "pkill",
+          "title": "أرسل إشارة حسب اسم العملية",
+          "desc": "مثل kill لكن يختار العمليات بالنمط.",
+          "example": "pkill -TERM -x demo-process",
+          "warning": "قد يطابق أكثر من عملية؛ افحص pgrep أولًا."
+        },
+        {
+          "id": "pstree",
+          "cmd": "pstree",
+          "title": "اعرض شجرة العمليات",
+          "desc": "يعرض علاقة parent/child بين العمليات.",
+          "example": "pstree -p"
+        },
+        {
+          "id": "nice",
+          "cmd": "nice",
+          "title": "ابدأ عملية بأولوية مختلفة",
+          "desc": "يبدأ أمرًا بقيمة nice محددة.",
+          "example": "nice -n 10 long-task"
+        },
+        {
+          "id": "renice",
+          "cmd": "renice",
+          "title": "غيّر أولوية عملية قائمة",
+          "desc": "يعدل nice value لعملية أو مجموعة.",
+          "example": "sudo renice 10 -p 2450"
+        },
+        {
+          "id": "nohup",
+          "cmd": "nohup",
+          "title": "استمر بعد إغلاق الطرفية",
+          "desc": "يشغّل أمرًا متجاهلًا إشارة hangup غالبًا.",
+          "example": "nohup ./job.sh >job.log 2>&1 &"
+        },
+        {
+          "id": "jobs",
+          "cmd": "jobs",
+          "title": "اعرض وظائف Shell الحالية",
+          "desc": "يعرض الوظائف التي بدأت من shell الحالية.",
+          "example": "jobs -l",
+          "note": "لا يعرض كل عمليات النظام؛ يقتصر على shell الحالية."
+        },
+        {
+          "id": "fg",
+          "cmd": "fg",
+          "title": "أعد وظيفة إلى الواجهة",
+          "desc": "ينقل وظيفة خلفية إلى foreground.",
+          "example": "fg %1"
+        },
+        {
+          "id": "bg",
+          "cmd": "bg",
+          "title": "استكمل وظيفة في الخلفية",
+          "desc": "يستكمل وظيفة موقوفة في الخلفية.",
+          "example": "bg %1"
+        },
+        {
+          "id": "systemd-analyze",
+          "cmd": "systemd-analyze",
+          "title": "حلل زمن الإقلاع",
+          "desc": "يعرض زمن الإقلاع وأطول الوحدات في مراحل البدء.",
+          "example": "systemd-analyze blame | head"
+        },
+        {
+          "id": "loginctl",
+          "cmd": "loginctl",
+          "title": "إدارة جلسات المستخدمين",
+          "desc": "يعرض الجلسات والمستخدمين ومعلومات logind.",
+          "example": "loginctl list-sessions"
+        },
+        {
+          "id": "systemd-cgls",
+          "cmd": "systemd-cgls",
+          "title": "عرض شجرة cgroups",
+          "desc": "يعرض شجرة مجموعات التحكم والعمليات التابعة لها.",
+          "example": "systemd-cgls"
+        },
+        {
+          "id": "systemd-run",
+          "cmd": "systemd-run",
+          "title": "تشغيل مهمة كـtransient unit",
+          "desc": "يشغّل أمرًا مؤقتًا تحت إدارة systemd.",
+          "example": "systemd-run --unit=demo-task /usr/bin/sleep 30"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "name": "05 / الشبكات والاتصال المتقدم",
+      "desc": "تشخيص الواجهات وDNS والمسارات والاتصالات والتقاط الحزم. استخدم أدوات الفحص على شبكات تملك تصريحًا لاختبارها.",
+      "commands": [
+        {
+          "id": "nmcli",
+          "cmd": "nmcli",
+          "title": "إدارة NetworkManager من الطرفية",
+          "desc": "يعرض ويتحكم باتصالات الشبكة وواجهاتها.",
+          "example": "nmcli device status\nnmcli connection show",
+          "distro": "أساسي في Rocky 10؛ موجود أيضًا في Debian عند استخدام NetworkManager."
+        },
+        {
+          "id": "nmtui",
+          "cmd": "nmtui",
+          "title": "واجهة نصية لـNetworkManager",
+          "desc": "واجهة تفاعلية لإعداد الاتصالات.",
+          "example": "sudo nmtui",
+          "note": "يعتمد توفره على تثبيت NetworkManager-tui."
+        },
+        {
+          "id": "ethtool",
+          "cmd": "ethtool",
+          "title": "تفاصيل بطاقة الشبكة",
+          "desc": "يعرض أو يغير خصائص Ethernet مثل السرعة وduplex.",
+          "example": "sudo ethtool enp0s3"
+        },
+        {
+          "id": "resolvectl",
+          "cmd": "resolvectl",
+          "title": "تشخيص DNS عبر systemd-resolved",
+          "desc": "يعرض حالة محلل DNS ويختبر الاستعلامات.",
+          "example": "resolvectl status",
+          "note": "قد لا يكون systemd-resolved هو resolver المستخدم في كل تثبيت."
+        },
+        {
+          "id": "dig",
+          "cmd": "dig",
+          "title": "استعلام DNS متقدم",
+          "desc": "يعرض سجلات DNS وتفاصيل الاستجابة.",
+          "example": "dig example.com A\ndig @1.1.1.1 example.com MX"
+        },
+        {
+          "id": "nslookup",
+          "cmd": "nslookup",
+          "title": "استعلام DNS بسيط",
+          "desc": "أداة تفاعلية وبسيطة للاستعلام عن DNS.",
+          "example": "nslookup example.com"
+        },
+        {
+          "id": "host",
+          "cmd": "host",
+          "title": "استعلام DNS سريع",
+          "desc": "يستعلم عن عناوين وسجلات نطاق.",
+          "example": "host -t MX example.com"
+        },
+        {
+          "id": "tracepath",
+          "cmd": "tracepath",
+          "title": "تتبع المسار دون إعدادات كثيرة",
+          "desc": "يتتبع مسار الحزم ويكشف MTU في بعض المسارات.",
+          "example": "tracepath example.com"
+        },
+        {
+          "id": "traceroute",
+          "cmd": "traceroute",
+          "title": "تتبع قفزات الشبكة",
+          "desc": "يعرض المسار الذي تسلكه الحزم؛ يعتمد على نوع probes.",
+          "example": "traceroute -n example.com"
+        },
+        {
+          "id": "mtr",
+          "cmd": "mtr",
+          "title": "دمج ping وtraceroute",
+          "desc": "يعرض فقد الحزم والكمون عبر القفزات بصورة مستمرة.",
+          "example": "mtr -rw example.com",
+          "note": "قد يحتاج تثبيت mtr؛ بعض خياراته تتطلب صلاحيات."
+        },
+        {
+          "id": "nc",
+          "cmd": "nc",
+          "title": "اختبار TCP/UDP وقراءة/إرسال البيانات",
+          "desc": "Netcat أداة عامة لاختبار الاتصالات ومنافذ الشبكة.",
+          "example": "nc -vz 192.0.2.10 22",
+          "warning": "لا تستخدم وضع الاستماع أو إرسال البيانات إلا داخل مختبر مصرح به."
+        },
+        {
+          "id": "ncat",
+          "cmd": "ncat",
+          "title": "نسخة Nmap من Netcat",
+          "desc": "بديل متعدد الاستخدامات يدعم خيارات TLS وغيرها بحسب البناء.",
+          "example": "ncat -vz 192.0.2.10 443",
+          "note": "قد يتوفر ضمن حزمة nmap-ncat في Rocky أو ncat في توزيعات أخرى."
+        },
+        {
+          "id": "tcpdump",
+          "cmd": "tcpdump",
+          "title": "التقاط الحزم من الواجهة",
+          "desc": "يلتقط ويفلتر الحزم باستخدام BPF syntax.",
+          "example": "sudo tcpdump -i any -nn -c 50 port 53"
+        },
+        {
+          "id": "tshark",
+          "cmd": "tshark",
+          "title": "تحليل PCAP من الطرفية",
+          "desc": "نسخة Wireshark الطرفية لقراءة وتحليل packet captures.",
+          "example": "tshark -r capture.pcap -Y \"dns\"",
+          "note": "يتطلب تثبيت Wireshark CLI."
+        },
+        {
+          "id": "wget",
+          "cmd": "wget",
+          "title": "تنزيل ملفات من الشبكة",
+          "desc": "ينزل الملفات عبر HTTP/HTTPS/FTP وغيرها.",
+          "example": "wget -O sample.txt https://example.com/sample.txt"
+        },
+        {
+          "id": "iperf3",
+          "cmd": "iperf3",
+          "title": "قياس أداء الشبكة",
+          "desc": "يقيس throughput بين طرفين يعمل عليهما iperf3.",
+          "example": "iperf3 -c 192.0.2.20",
+          "note": "يتطلب تشغيل خادم iperf3 بموافقة الطرف الآخر."
+        },
+        {
+          "id": "lsof",
+          "cmd": "lsof",
+          "title": "اعرض الملفات والمقابض المفتوحة",
+          "desc": "يسرد الملفات والمقابس المفتوحة بواسطة العمليات.",
+          "example": "sudo lsof -i -P -n"
+        },
+        {
+          "id": "nft",
+          "cmd": "nft",
+          "title": "إدارة قواعد nftables",
+          "desc": "أداة إدارة إطار packet filtering الحديث في Linux.",
+          "example": "sudo nft list ruleset",
+          "warning": "تعديل ruleset قد يقطع الاتصال؛ احفظ القواعد الحالية وخطة rollback."
+        },
+        {
+          "id": "firewall-cmd",
+          "cmd": "firewall-cmd",
+          "title": "إدارة firewalld",
+          "desc": "واجهة firewalld لإدارة zones/services/ports.",
+          "example": "sudo firewall-cmd --get-active-zones\nsudo firewall-cmd --list-all",
+          "distro": "شائع في Rocky؛ قد يثبت في Debian لكنه ليس الافتراضي بالضرورة."
+        },
+        {
+          "id": "ufw",
+          "cmd": "ufw",
+          "title": "واجهة مبسطة لجدار netfilter",
+          "desc": "يدير قواعد جدار الحماية بطريقة مبسطة.",
+          "example": "sudo ufw status verbose",
+          "distro": "شائع في Ubuntu؛ ليس الافتراضي في Rocky."
+        },
+        {
+          "id": "iptables",
+          "cmd": "iptables",
+          "title": "واجهة قواعد netfilter التقليدية",
+          "desc": "إدارة قواعد firewall legacy؛ قد تكون backend توافقية فوق nftables.",
+          "example": "sudo iptables -S",
+          "note": "تعلمها لقراءة الأنظمة القديمة؛ لا تفترض أنها backend الافتراضي الحديث."
+        },
+        {
+          "id": "ssh-keygen",
+          "cmd": "ssh-keygen",
+          "title": "إنشاء مفاتيح SSH",
+          "desc": "ينشئ ويُدير مفاتيح المصادقة.",
+          "example": "ssh-keygen -t ed25519 -C \"lab-key\""
+        },
+        {
+          "id": "ssh-copy-id",
+          "cmd": "ssh-copy-id",
+          "title": "نشر المفتاح العام على خادم",
+          "desc": "يضيف المفتاح العام إلى authorized_keys على الطرف البعيد.",
+          "example": "ssh-copy-id analyst@192.0.2.20"
+        },
+        {
+          "id": "sftp",
+          "cmd": "sftp",
+          "title": "نقل ملفات تفاعلي عبر SSH",
+          "desc": "جلسة نقل ملفات آمنة.",
+          "example": "sftp analyst@192.0.2.20"
+        },
+        {
+          "id": "rsync",
+          "cmd": "rsync",
+          "title": "مزامنة ونسخ تفاضلي",
+          "desc": "ينقل الملفات بكفاءة ويمكنه المحافظة على خصائص الملفات.",
+          "example": "rsync -avh --dry-run ./data/ user@host:/backup/data/",
+          "warning": "ابدأ بـ --dry-run عند تعلم الخيارات، وانتبه للشرطة المائلة في مسارات المصدر والوجهة."
+        },
+        {
+          "id": "openssl",
+          "cmd": "openssl",
+          "title": "أدوات تشفير وشهادات وTLS",
+          "desc": "يفحص الشهادات والاتصالات ويجري عمليات تشفير وتجزئة.",
+          "example": "openssl s_client -connect example.com:443 -servername example.com"
+        },
+        {
+          "id": "whois",
+          "cmd": "whois",
+          "title": "استعلام عن بيانات تسجيل نطاق/IP",
+          "desc": "يستعلم عن بيانات التسجيل المتاحة علنًا.",
+          "example": "whois example.com",
+          "note": "قد تكون البيانات محجوبة أو غير محدثة حسب السجل وسياسة الخصوصية."
+        }
+      ]
+    },
+    {
+      "id": "packages",
+      "name": "06 / استعلامات وإدارة الحزم المتقدمة",
+      "desc": "تُستخدم لمعرفة مصدر الملفات والحزم، والتحقق من سلامة حزم النظام، وتشخيص المستودعات.",
+      "commands": [
+        {
+          "id": "apt-cache",
+          "cmd": "apt-cache",
+          "title": "استعلام عن قاعدة بيانات APT",
+          "desc": "يعرض معلومات الحزم والاعتماديات والإصدارات المتاحة.",
+          "example": "apt-cache policy openssh-server",
+          "distro": "Debian/Ubuntu."
+        },
+        {
+          "id": "apt-file",
+          "cmd": "apt-file",
+          "title": "اعرف الحزمة التي توفر ملفًا",
+          "desc": "يبحث عن الملفات داخل قوائم محتويات الحزم.",
+          "example": "apt-file search bin/sshd",
+          "note": "قد يتطلب تثبيت apt-file وتشغيل apt-file update."
+        },
+        {
+          "id": "dpkg",
+          "cmd": "dpkg",
+          "title": "إدارة الحزم منخفضة المستوى",
+          "desc": "يثبت أو يزيل أو يستعلم عن ملفات DEB دون إدارة المستودعات بنفسه.",
+          "example": "dpkg -l | head",
+          "distro": "Debian/Ubuntu."
+        },
+        {
+          "id": "dpkg-query",
+          "cmd": "dpkg-query",
+          "title": "استعلام عن الحزم المثبتة",
+          "desc": "يعرض تفاصيل الحزم المثبتة.",
+          "example": "dpkg-query -W -f=${Package}\\t${Version}\\n"
+        },
+        {
+          "id": "dpkg -S",
+          "cmd": "dpkg -S",
+          "title": "اعرف الحزمة المالكة لملف",
+          "desc": "يحدد الحزمة التي ثبتت ملفًا معينًا.",
+          "example": "dpkg -S /usr/bin/ssh"
+        },
+        {
+          "id": "apt policy",
+          "cmd": "apt policy",
+          "title": "اعرف أولوية وإصدار الحزمة",
+          "desc": "يعرض الإصدارات ومصدرها وأولوية المرشحين.",
+          "example": "apt policy curl",
+          "distro": "Debian/Ubuntu."
+        },
+        {
+          "id": "apt purge",
+          "cmd": "apt purge",
+          "title": "إزالة الحزمة وإعداداتها",
+          "desc": "يزيل الحزمة مع ملفات إعدادها التي تديرها الحزمة.",
+          "example": "sudo apt purge package-name",
+          "warning": "تحقق من قائمة الحزم التي ستزال قبل الموافقة."
+        },
+        {
+          "id": "apt autoremove",
+          "cmd": "apt autoremove",
+          "title": "إزالة الاعتماديات غير اللازمة",
+          "desc": "يزيل الحزم المثبتة تلقائيًا والتي لم تعد مطلوبة.",
+          "example": "sudo apt autoremove --dry-run",
+          "warning": "راجع قائمة الإزالة قبل التنفيذ."
+        },
+        {
+          "id": "dnf repoquery",
+          "cmd": "dnf repoquery",
+          "title": "استعلام متقدم عن المستودعات",
+          "desc": "يعرض إصدارات الحزم ومعلومات المصدر والحزم المثبتة.",
+          "example": "dnf repoquery --installed"
+        },
+        {
+          "id": "dnf provides",
+          "cmd": "dnf provides",
+          "title": "اعرف الحزمة التي توفر ملفًا أو capability",
+          "desc": "يبحث عن الحزمة التي تحتوي ملفًا مطلوبًا.",
+          "example": "dnf provides */semanage",
+          "distro": "Rocky/RHEL family."
+        },
+        {
+          "id": "rpm",
+          "cmd": "rpm",
+          "title": "فحص قواعد بيانات RPM",
+          "desc": "يعرض أو يتحقق من الحزم والملفات المثبتة.",
+          "example": "rpm -qi openssh-server\nrpm -qf /usr/bin/ssh",
+          "distro": "Rocky/RHEL family.",
+          "tip": "للتثبيت المعتاد استخدم dnf؛ استعمل rpm غالبًا للاستعلام أو التحقق."
+        },
+        {
+          "id": "dnf history",
+          "cmd": "dnf history",
+          "title": "تاريخ معاملات DNF",
+          "desc": "يعرض تاريخ تثبيت وتحديث وإزالة الحزم.",
+          "example": "sudo dnf history list",
+          "distro": "Rocky/RHEL family."
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "name": "07 / التخزين والأقراص المتقدم",
+      "desc": "مجموعة حساسة. نفذ كل تدريبات الأقراص على قرص افتراضي فارغ وليس على قرص النظام.",
+      "commands": [
+        {
+          "id": "fdisk",
+          "cmd": "fdisk",
+          "title": "إدارة جداول تقسيم الأقراص",
+          "desc": "أداة تفاعلية لإنشاء أو تعديل partitions.",
+          "example": "sudo fdisk -l",
+          "warning": "أمر تغييري وخطير؛ تحقق من اسم القرص وخذ snapshot."
+        },
+        {
+          "id": "gdisk",
+          "cmd": "gdisk",
+          "title": "إدارة GPT partitions",
+          "desc": "أداة شبيهة بـfdisk مخصصة لـGPT.",
+          "example": "sudo gdisk -l /dev/sdb"
+        },
+        {
+          "id": "parted",
+          "cmd": "parted",
+          "title": "إدارة جداول التقسيم",
+          "desc": "ينشئ ويعدل GPT/MBR partitions من واجهة تفاعلية أو أوامر.",
+          "example": "sudo parted -l",
+          "warning": "لا تنفذ mkpart أو rm على قرص حقيقي قبل فهم تأثيرها."
+        },
+        {
+          "id": "mkfs.ext4",
+          "cmd": "mkfs.ext4",
+          "title": "إنشاء filesystem من نوع ext4",
+          "desc": "ينشئ نظام ملفات ext4 على partition أو device.",
+          "example": "sudo mkfs.ext4 /dev/sdb1",
+          "warning": "يمسح بنية الملفات السابقة على الهدف؛ تحقق مرتين من الجهاز."
+        },
+        {
+          "id": "mkfs.xfs",
+          "cmd": "mkfs.xfs",
+          "title": "إنشاء filesystem من نوع XFS",
+          "desc": "ينشئ XFS، الشائع في عائلة RHEL.",
+          "example": "sudo mkfs.xfs /dev/sdb1",
+          "distro": "Rocky يستخدم XFS كثيرًا افتراضيًا؛ متاح على Debian بعد الحزمة المناسبة.",
+          "warning": "إنشاء filesystem عملية مدمرة للمحتوى السابق على الهدف."
+        },
+        {
+          "id": "mount",
+          "cmd": "mount",
+          "title": "اربط filesystem بمجلد",
+          "desc": "يجعل filesystem متاحًا في mount point.",
+          "example": "sudo mount /dev/sdb1 /mnt/data"
+        },
+        {
+          "id": "umount",
+          "cmd": "umount",
+          "title": "افصل filesystem",
+          "desc": "يفصل mount point؛ يجب ألا يكون مشغولًا.",
+          "example": "sudo umount /mnt/data"
+        },
+        {
+          "id": "findmnt",
+          "cmd": "findmnt",
+          "title": "اعرض mount tree",
+          "desc": "يعرض أنظمة الملفات المركبة ومصادرها وخياراتها.",
+          "example": "findmnt -T /var/log"
+        },
+        {
+          "id": "blkid",
+          "cmd": "blkid",
+          "title": "اعرف UUID ونوع filesystem",
+          "desc": "يعرض خصائص block devices.",
+          "example": "sudo blkid"
+        },
+        {
+          "id": "swapon",
+          "cmd": "swapon",
+          "title": "فعّل swap",
+          "desc": "يفعل swap device أو file.",
+          "example": "sudo swapon --show"
+        },
+        {
+          "id": "swapoff",
+          "cmd": "swapoff",
+          "title": "أوقف swap",
+          "desc": "يلغي تفعيل swap؛ تأكد من توفر الذاكرة.",
+          "example": "sudo swapoff /dev/sdb2",
+          "warning": "قد يضغط على RAM إذا كانت الذاكرة غير كافية."
+        },
+        {
+          "id": "mkswap",
+          "cmd": "mkswap",
+          "title": "تهيئة مساحة لتكون swap",
+          "desc": "يجهز partition أو file لاستخدام swap.",
+          "example": "sudo mkswap /dev/sdb2",
+          "warning": "يتلف أي بيانات موجودة في الهدف."
+        },
+        {
+          "id": "pvcreate",
+          "cmd": "pvcreate",
+          "title": "إنشاء LVM Physical Volume",
+          "desc": "يهيئ block device لاستخدامه في LVM.",
+          "example": "sudo pvcreate /dev/sdb1",
+          "warning": "تأكد أن الجهاز مخصص لـLVM ولا يحتوي بيانات مطلوبة."
+        },
+        {
+          "id": "pvs",
+          "cmd": "pvs",
+          "title": "عرض LVM Physical Volumes",
+          "desc": "يعرض ملخص الـPVs.",
+          "example": "sudo pvs"
+        },
+        {
+          "id": "vgcreate",
+          "cmd": "vgcreate",
+          "title": "إنشاء Volume Group",
+          "desc": "يجمع PVs في مجموعة تخزين.",
+          "example": "sudo vgcreate vg_lab /dev/sdb1"
+        },
+        {
+          "id": "vgs",
+          "cmd": "vgs",
+          "title": "عرض Volume Groups",
+          "desc": "يعرض السعة والحالة لمجموعات LVM.",
+          "example": "sudo vgs"
+        },
+        {
+          "id": "lvcreate",
+          "cmd": "lvcreate",
+          "title": "إنشاء Logical Volume",
+          "desc": "ينشئ حجمًا منطقيًا داخل VG.",
+          "example": "sudo lvcreate -L 5G -n lv_data vg_lab"
+        },
+        {
+          "id": "lvs",
+          "cmd": "lvs",
+          "title": "عرض Logical Volumes",
+          "desc": "يعرض الأحجام المنطقية وخصائصها.",
+          "example": "sudo lvs -a -o +devices"
+        },
+        {
+          "id": "lvextend",
+          "cmd": "lvextend",
+          "title": "زيادة حجم Logical Volume",
+          "desc": "يوسع LV؛ توسيع filesystem خطوة منفصلة ما لم تستخدم خيارات مناسبة.",
+          "example": "sudo lvextend -L +2G /dev/vg_lab/lv_data",
+          "warning": "افحص المساحة الحرة ونوع filesystem وخطة توسيعها."
+        },
+        {
+          "id": "xfs_growfs",
+          "cmd": "xfs_growfs",
+          "title": "توسيع XFS مركب",
+          "desc": "يوسع filesystem XFS غالبًا بعد توسعة LV/partition.",
+          "example": "sudo xfs_growfs /data",
+          "distro": "Rocky شائع مع XFS."
+        },
+        {
+          "id": "resize2fs",
+          "cmd": "resize2fs",
+          "title": "توسيع/تغيير ext filesystem",
+          "desc": "يغير حجم ext2/ext3/ext4 وفق شروط الأداة.",
+          "example": "sudo resize2fs /dev/vg_lab/lv_data",
+          "distro": "شائع على Debian عند استخدام ext4."
+        },
+        {
+          "id": "mdadm",
+          "cmd": "mdadm",
+          "title": "إدارة Linux Software RAID",
+          "desc": "ينشئ ويدير مصفوفات RAID البرمجية.",
+          "example": "sudo mdadm --detail /dev/md0",
+          "warning": "لا تنشئ أو تعدل RAID إلا على أقراص اختبارية منفصلة."
+        },
+        {
+          "id": "smartctl",
+          "cmd": "smartctl",
+          "title": "فحص صحة SMART للأقراص",
+          "desc": "يقرأ بيانات صحة القرص الذكي ونتائج الاختبارات.",
+          "example": "sudo smartctl -a /dev/sda",
+          "note": "يتطلب smartmontools وقد لا تمر جميع بيانات SMART عبر VM."
+        },
+        {
+          "id": "fsck",
+          "cmd": "fsck",
+          "title": "فحص وصيانة filesystem",
+          "desc": "واجهة لفحص أنظمة الملفات؛ استخدم الأداة المناسبة لنوع filesystem.",
+          "example": "sudo fsck -N /dev/sdb1",
+          "warning": "لا تشغل إصلاحًا على filesystem مركب للقراءة والكتابة؛ راجع تعليمات النوع."
+        },
+        {
+          "id": "tune2fs",
+          "cmd": "tune2fs",
+          "title": "ضبط خصائص ext filesystem",
+          "desc": "يعرض أو يعدل معلمات ext2/3/4.",
+          "example": "sudo tune2fs -l /dev/sdb1",
+          "distro": "لـext filesystems فقط، وليس XFS."
+        }
+      ]
+    },
+    {
+      "id": "logs",
+      "name": "08 / السجلات والتدقيق",
+      "desc": "أدوات التسجيل والتحقيق في أحداث النظام. اعرف مسار السجل الفعلي وإعدادات الجمع قبل البحث.",
+      "commands": [
+        {
+          "id": "logger",
+          "cmd": "logger",
+          "title": "أرسل رسالة إلى system log",
+          "desc": "يكتب رسالة إلى system logger لاختبار مسار التسجيل.",
+          "example": "logger -t linux-lab \"training event\""
+        },
+        {
+          "id": "logrotate",
+          "cmd": "logrotate",
+          "title": "تدوير السجلات",
+          "desc": "يدير تدوير وضغط وحذف السجلات القديمة وفق الإعدادات.",
+          "example": "sudo logrotate -d /etc/logrotate.conf",
+          "warning": "-d وضع debug؛ افهم الإعدادات قبل فرض التدوير."
+        },
+        {
+          "id": "auditctl",
+          "cmd": "auditctl",
+          "title": "إدارة قواعد Linux Audit",
+          "desc": "يعرض أو يضيف قواعد kernel audit مؤقتًا.",
+          "example": "sudo auditctl -l",
+          "note": "يتطلب auditd/audit package وإعدادًا مناسبًا؛ القواعد الدائمة توضع في ملفات الإعداد."
+        },
+        {
+          "id": "ausearch",
+          "cmd": "ausearch",
+          "title": "البحث داخل سجل audit",
+          "desc": "يستعلم عن أحداث audit حسب key أو user أو syscall أو وقت.",
+          "example": "sudo ausearch -m USER_LOGIN -ts today"
+        },
+        {
+          "id": "aureport",
+          "cmd": "aureport",
+          "title": "تقارير ملخصة من audit",
+          "desc": "ينشئ تقارير عن login وusers وexecutables وغيرها.",
+          "example": "sudo aureport --summary"
+        },
+        {
+          "id": "auditd",
+          "cmd": "auditd",
+          "title": "خدمة Linux Audit",
+          "desc": "خدمة تجمع أحداث kernel audit وفق القواعد.",
+          "example": "systemctl status auditd",
+          "distro": "حزمة وخدمة قد تحتاج تثبيتًا وتفعيلًا."
+        },
+        {
+          "id": "rsyslogd",
+          "cmd": "rsyslogd",
+          "title": "خدمة syslog التقليدية",
+          "desc": "يجمع ويوجه الرسائل إلى ملفات أو خوادم syslog.",
+          "example": "rsyslogd -N1",
+          "note": "ليس مضمونًا أن يكون مثبتًا أو المصدر الوحيد للسجلات؛ journald موجود في النظامين الحديثين."
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "09 / ضوابط أمان النظام",
+      "desc": "أدوات Mandatory Access Control والتوقيعات والمراجعة. لا تعطل SELinux/AppArmor لتجاوز مشكلة؛ شخّص السياسة أولًا.",
+      "commands": [
+        {
+          "id": "getenforce",
+          "cmd": "getenforce",
+          "title": "اعرف وضع SELinux",
+          "desc": "يعرض Enforcing أو Permissive أو Disabled.",
+          "example": "getenforce",
+          "distro": "Rocky: SELinux أساسي وشائع في وضع Enforcing؛ Debian غالبًا AppArmor."
+        },
+        {
+          "id": "sestatus",
+          "cmd": "sestatus",
+          "title": "تفاصيل حالة SELinux",
+          "desc": "يعرض policy وmode وإعدادات SELinux.",
+          "example": "sestatus",
+          "distro": "Rocky؛ قد تتوفر حزم SELinux على Debian لكن ليست المسار الافتراضي."
+        },
+        {
+          "id": "setenforce",
+          "cmd": "setenforce",
+          "title": "تغيير وضع SELinux مؤقتًا",
+          "desc": "ينقل Enforcing/Permissive مؤقتًا حتى إعادة التشغيل أو تغيير آخر.",
+          "example": "sudo setenforce 0",
+          "warning": "لا تستخدمه كحل دائم؛ تغيير الوضع يضعف الحماية. استخدمه فقط لتشخيص مخبري محدود وأعد Enforcing."
+        },
+        {
+          "id": "semanage",
+          "cmd": "semanage",
+          "title": "إدارة سياسة SELinux",
+          "desc": "يدير port/context/boolean وغيرها؛ قد يتطلب حزمة أدوات إضافية.",
+          "example": "sudo semanage port -l",
+          "distro": "Rocky/RHEL family؛ استخدم dnf provides */semanage لمعرفة الحزمة عند غيابها."
+        },
+        {
+          "id": "restorecon",
+          "cmd": "restorecon",
+          "title": "استعادة سياقات SELinux الافتراضية",
+          "desc": "يعيد labels وفق سياسة الملفات.",
+          "example": "sudo restorecon -Rv /var/www/html",
+          "distro": "Rocky؛ لا يعادل chmod/chown."
+        },
+        {
+          "id": "audit2why",
+          "cmd": "audit2why",
+          "title": "فسّر سبب منع SELinux",
+          "desc": "يساعد في تفسير رسائل AVC من audit log.",
+          "example": "sudo ausearch -m AVC -ts recent | audit2why",
+          "note": "قد يأتي ضمن setools-console."
+        },
+        {
+          "id": "aa-status",
+          "cmd": "aa-status",
+          "title": "اعرض حالة AppArmor",
+          "desc": "يعرض ملفات AppArmor المحملة وأوضاعها.",
+          "example": "sudo aa-status",
+          "distro": "Debian/Ubuntu family عند استخدام AppArmor."
+        },
+        {
+          "id": "aa-enforce",
+          "cmd": "aa-enforce",
+          "title": "ضع ملف AppArmor في enforce",
+          "desc": "يفرض سياسة AppArmor على profile.",
+          "example": "sudo aa-enforce /etc/apparmor.d/usr.sbin.example",
+          "distro": "Debian/Ubuntu؛ قد يتطلب apparmor-utils."
+        },
+        {
+          "id": "fail2ban-client",
+          "cmd": "fail2ban-client",
+          "title": "فحص خدمة Fail2ban",
+          "desc": "يتواصل مع fail2ban server لعرض الحالة وإدارة jails.",
+          "example": "sudo fail2ban-client status",
+          "note": "أداة إضافية؛ ليست جزءًا مضمونًا من تثبيت Linux الأساسي."
+        },
+        {
+          "id": "gpg",
+          "cmd": "gpg",
+          "title": "التحقق والتشفير والتوقيع",
+          "desc": "يدير مفاتيح OpenPGP ويستخدم للتحقق من التوقيعات وتشفير الملفات.",
+          "example": "gpg --verify package.sig package.tar.gz"
+        },
+        {
+          "id": "sha256sum -c",
+          "cmd": "sha256sum -c",
+          "title": "تحقق من بصمة متوقعة",
+          "desc": "يقارن hash ملف بالقيمة الموجودة في ملف checksum.",
+          "example": "sha256sum -c SHA256SUMS"
+        }
+      ]
+    },
+    {
+      "id": "schedule",
+      "name": "10 / الجدولة وخدمات السيرفر",
+      "desc": "أدوات مهام دورية وخدمات ملفات وويب. أسماء الحزم والخدمات قد تختلف بين التوزيعات.",
+      "commands": [
+        {
+          "id": "crontab",
+          "cmd": "crontab",
+          "title": "إدارة المهام المجدولة",
+          "desc": "يحرر أو يعرض جدول cron لمستخدم.",
+          "example": "crontab -e\ncrontab -l"
+        },
+        {
+          "id": "at",
+          "cmd": "at",
+          "title": "جدولة مهمة لمرة واحدة",
+          "desc": "يشغل أمرًا في وقت مستقبلي محدد.",
+          "example": "echo \"logger scheduled-test\" | at now + 2 minutes",
+          "note": "خدمة atd يجب أن تكون متاحة ومفعلة."
+        },
+        {
+          "id": "apachectl",
+          "cmd": "apachectl",
+          "title": "التحقق والتحكم في Apache HTTP Server",
+          "desc": "واجهة تحكم مفيدة؛ يختلف توفرها ومسارها حسب التوزيعة والحزمة.",
+          "example": "sudo apachectl configtest"
+        },
+        {
+          "id": "nginx",
+          "cmd": "nginx",
+          "title": "فحص إعدادات Nginx وإعادة التحميل",
+          "desc": "الخيار -t يتحقق من الصياغة قبل reload.",
+          "example": "sudo nginx -t\nsudo systemctl reload nginx"
+        },
+        {
+          "id": "smbstatus",
+          "cmd": "smbstatus",
+          "title": "عرض حالة Samba",
+          "desc": "يعرض اتصالات SMB الحالية والمشاركات.",
+          "example": "sudo smbstatus",
+          "note": "يتطلب Samba."
+        },
+        {
+          "id": "testparm",
+          "cmd": "testparm",
+          "title": "التحقق من إعداد Samba",
+          "desc": "يفحص ملف smb.conf ويعرض الإعداد الفعلي.",
+          "example": "testparm -s",
+          "note": "يتطلب Samba."
+        },
+        {
+          "id": "exportfs",
+          "cmd": "exportfs",
+          "title": "إدارة NFS exports",
+          "desc": "يعرض أو يحدث المجلدات المصدّرة عبر NFS.",
+          "example": "sudo exportfs -v",
+          "note": "يتطلب NFS server utilities."
+        },
+        {
+          "id": "showmount",
+          "cmd": "showmount",
+          "title": "استعلام عن NFS exports",
+          "desc": "يعرض exports لخادم NFS في بيئات NFSv3 غالبًا.",
+          "example": "showmount -e 192.0.2.10",
+          "note": "قد لا يعكس كل إعدادات NFSv4-only."
+        },
+        {
+          "id": "rpcinfo",
+          "cmd": "rpcinfo",
+          "title": "استعلام عن RPC services",
+          "desc": "يعرض خدمات RPC المسجلة على مضيف.",
+          "example": "rpcinfo -p 192.0.2.10",
+          "note": "لا تستخدم الفحص إلا على مضيف مصرح لك به."
+        },
+        {
+          "id": "nfsstat",
+          "cmd": "nfsstat",
+          "title": "إحصاءات NFS",
+          "desc": "يعرض إحصاءات NFS client/server.",
+          "example": "nfsstat -m"
+        }
+      ]
+    },
+    {
+      "id": "bash",
+      "name": "11 / Bash المتقدم وأدوات فحص السكربت",
+      "desc": "أدوات وتراكيب لكتابة سكربتات يمكن صيانتها. تذكر أن بعض العناصر builtins أو keywords وليست ملفات تنفيذية مستقلة.",
+      "commands": [
+        {
+          "id": "bash -n",
+          "cmd": "bash -n",
+          "title": "افحص Syntax دون تشغيل",
+          "desc": "يحلل السكربت بحثًا عن أخطاء صياغة فقط.",
+          "example": "bash -n script.sh"
+        },
+        {
+          "id": "bash -x",
+          "cmd": "bash -x",
+          "title": "تتبّع تنفيذ السكربت",
+          "desc": "يطبع الأوامر بعد توسيعها أثناء التنفيذ.",
+          "example": "bash -x script.sh",
+          "warning": "قد يكشف أسرارًا إذا طُبعت متغيرات حساسة؛ لا تستخدمه مع بيانات حقيقية دون تنقيح."
+        },
+        {
+          "id": "shellcheck",
+          "cmd": "shellcheck",
+          "title": "تحليل ساكن لسكربت Shell",
+          "desc": "يكشف أخطاء شائعة ومشاكل portability واقتراحات تحسين.",
+          "example": "shellcheck script.sh",
+          "note": "أداة خارجية تثبت عبر مدير الحزم أو مصدرها الرسمي."
+        },
+        {
+          "id": "set",
+          "cmd": "set",
+          "title": "ضبط خيارات Shell",
+          "desc": "منه خيارات مثل -e و-u و-o pipefail للتحكم بسلوك السكربت.",
+          "example": "set -Eeuo pipefail",
+          "tip": "لا تستخدم set -e دون فهم استثناءاته؛ اختبر السكربتات."
+        },
+        {
+          "id": "trap",
+          "cmd": "trap",
+          "title": "التعامل مع الإشارات والتنظيف",
+          "desc": "ينفذ أمرًا عند وصول signal أو خروج shell.",
+          "example": "trap 'rm -f \"$tmpfile\"' EXIT"
+        },
+        {
+          "id": "getopts",
+          "cmd": "getopts",
+          "title": "قراءة خيارات السكربت",
+          "desc": "يبني واجهة خيارات قياسية لسكربت Bash.",
+          "example": "while getopts \":f:v\" opt; do case \"$opt\" in f) file=$OPTARG;; v) verbose=1;; esac; done"
+        },
+        {
+          "id": "declare",
+          "cmd": "declare",
+          "title": "تعريف خصائص المتغيرات",
+          "desc": "يعرف متغيرات أو arrays ويعرضها؛ يتضمن خيارات مثل -a و-A و-r.",
+          "example": "declare -A counts"
+        },
+        {
+          "id": "mapfile",
+          "cmd": "mapfile",
+          "title": "قراءة أسطر إلى Array",
+          "desc": "يقرأ stdin أو ملفًا إلى مصفوفة Bash.",
+          "example": "mapfile -t users < users.txt"
+        },
+        {
+          "id": "readarray",
+          "cmd": "readarray",
+          "title": "اسم بديل لـmapfile",
+          "desc": "يقرأ الأسطر في مصفوفة؛ alias builtin لـmapfile في Bash.",
+          "example": "readarray -t lines < file.txt"
+        },
+        {
+          "id": "source",
+          "cmd": "source",
+          "title": "حمّل ملفًا في shell الحالية",
+          "desc": "ينفذ ملفًا داخل بيئة shell الحالية، فيستطيع تغيير متغيراتها.",
+          "example": ". ./environment.sh"
+        },
+        {
+          "id": "exec",
+          "cmd": "exec",
+          "title": "استبدل shell بعملية أو أعد توجيهها",
+          "desc": "يشغّل برنامجًا بدل shell الحالية أو يغير file descriptors.",
+          "example": "exec 3>audit-output.txt"
+        },
+        {
+          "id": "printenv",
+          "cmd": "printenv",
+          "title": "اعرض متغيرات البيئة",
+          "desc": "يطبع environment variables.",
+          "example": "printenv PATH"
+        },
+        {
+          "id": "type",
+          "cmd": "type",
+          "title": "اعرف كيف يحل Shell اسم الأمر",
+          "desc": "يحدد هل الاسم alias أو function أو builtin أو executable.",
+          "example": "type -a ls"
+        },
+        {
+          "id": "command",
+          "cmd": "command",
+          "title": "تجاوز function/alias في بعض الحالات",
+          "desc": "ينفذ أمرًا وفق قواعد command builtin ويستعلم عن الأوامر.",
+          "example": "command -v python3"
+        },
+        {
+          "id": "whereis",
+          "cmd": "whereis",
+          "title": "اعثر على binary/man/source paths",
+          "desc": "يبحث في مواقع معروفة عن ملفات البرنامج وصفحاته.",
+          "example": "whereis ssh"
+        },
+        {
+          "id": "alias",
+          "cmd": "alias",
+          "title": "تعريف اختصار Shell",
+          "desc": "يعرف اسمًا بديلًا لأمر أو مجموعة خيارات.",
+          "example": "alias ll='ls -lah'"
+        },
+        {
+          "id": "unalias",
+          "cmd": "unalias",
+          "title": "حذف alias",
+          "desc": "يزيل الاختصار من shell الحالية.",
+          "example": "unalias ll"
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "Linux Architecture & Distribution",
+      "level": "foundation",
+      "subtitle": "ما الذي يشغّل Linux فعلًا؟",
+      "desc": "ابدأ بفهم صورة النظام: Kernel، User Space، GNU tools، Shell، وتوزيعات Linux. الهدف أن تفهم العلاقة بين الأجزاء قبل استخدام الأوامر.",
+      "topics": [
+        "Linux vs UNIX",
+        "Kernel وUser Space",
+        "GNU/Linux",
+        "Shell وTerminal",
+        "System Calls – فكرة عامة",
+        "Debian وUbuntu وRocky وRHEL",
+        "طرق إصدار الإصدارات والدعم"
+      ],
+      "goal": "أن ترسم مكونات Linux وتشرح الفرق بين Kernel وDistribution وShell.",
+      "lab": "افحص النظامين ثم قارن المعلومات الأساسية.",
+      "commands": "cat /etc/os-release\nuname -a\nhostnamectl\necho $SHELL",
+      "sources": "مصطفى عبدالسلام #02–#03؛ ثم مقدمة الطناني.",
+      "soc": "هذه الوحدة تؤسس فهم مصدر بيانات الـEndpoint، والنواة، والعمليات، وطبقة المستخدم التي سيظهر نشاطها لاحقًا في أدوات المراقبة."
+    },
+    {
+      "id": "m02",
+      "title": "Build the Linux Lab",
+      "level": "foundation",
+      "subtitle": "Debian + Rocky على VMware",
+      "desc": "جهز بيئتين افتراضيتين منفصلتين، خذ snapshots، واضبط الشبكة ومشاركة الملفات. لا تستخدم قرص النظام الحقيقي في تجارب التخزين.",
+      "topics": [
+        "VM settings وCPU/RAM/Disk",
+        "Install Debian",
+        "Install Rocky Linux 10",
+        "Snapshots وRollback",
+        "NAT وHost-only",
+        "Shared Folders / SSH transfer",
+        "تحديث أولي آمن"
+      ],
+      "goal": "امتلاك جهاز Debian وآخر Rocky قابلين للعودة إلى snapshot قبل كل تجربة تغييرية.",
+      "lab": "أنشئ snapshot باسم clean-install ثم نفذ تحديثًا وسجل حالة النظام.",
+      "commands": "cat /etc/os-release\nip addr\nsudo apt update   # Debian\nsudo dnf check-update   # Rocky",
+      "sources": "الطناني #03–#04؛ Rocky Linux Installation Guide.",
+      "soc": "الـSOC Lab لاحقًا يحتاج أجهزة مصادر سجلات منفصلة؛ هذه البيئة ستوفر Linux endpoint يمكن جمع سجلاته."
+    },
+    {
+      "id": "m03",
+      "title": "Terminal, Shell & Command Anatomy",
+      "level": "foundation",
+      "subtitle": "كيف تقرأ الأمر وتفهمه؟",
+      "desc": "افهم prompt، current working directory، command/argument/option، quotes، wildcards، variables، history، man pages، streams وexit status.",
+      "topics": [
+        "Terminal vs Shell",
+        "Bash basics",
+        "Command anatomy",
+        "Options وarguments",
+        "Absolute/relative paths",
+        "Quoting وescaping",
+        "Wildcards",
+        "PATH وenvironment",
+        "stdin/stdout/stderr",
+        "man و--help",
+        "Exit status"
+      ],
+      "goal": "قراءة صيغة أمر جديد وتحديد البرنامج والخيارات والوسائط والمخرجات.",
+      "lab": "استخدم help وman لاكتشاف أمر ثم نفذه بخيارين مختلفين.",
+      "commands": "type -a ls\ncommand -v bash\necho \"$PATH\"\nman grep\nprintf \"hello\\n\"",
+      "sources": "الطناني #05–#11؛ أحمد عيد عند الحاجة لمفهوم CLI.",
+      "soc": "في التحقيق لاحقًا، قراءة command line بدقة تساعد على فهم أوامر العمليات المشبوهة وسياقها."
+    },
+    {
+      "id": "m04",
+      "title": "Linux Filesystem Hierarchy",
+      "level": "foundation",
+      "subtitle": "افهم الشجرة من / إلى كل مجلد",
+      "desc": "تعرف على FHS، الجذر /، ملفات الإعداد، ملفات المستخدمين، السجلات، الأجهزة الافتراضية، وواجهات Kernel. تعلم أي شيء تتوقع أن تجده في كل مسار.",
+      "topics": [
+        "/ و/bin و/sbin",
+        "/etc",
+        "/home و/root",
+        "/var و/var/log",
+        "/usr و/opt",
+        "/tmp و/run",
+        "/dev و/proc و/sys",
+        "Mount points",
+        "File types",
+        "Inodes",
+        "Hard links vs symbolic links"
+      ],
+      "goal": "تحديد مكان إعداد خدمة، وسجل، وملفات مستخدم، ومعلومات أجهزة.",
+      "lab": "ابحث عن sshd_config وملف auth log وملف إصدار النظام ثم اشرح مكان كل واحد.",
+      "commands": "find /etc -maxdepth 3 -name \"*ssh*\"\nls -ld /var/log /home /proc /sys /dev",
+      "sources": "الطناني؛ مصطفى عبدالسلام #06–#07؛ عبدالله النعيمي #07.",
+      "soc": "مسارات /var/log و/etc و/proc و/sys ستصبح مهمة عند جمع الأدلة ومراجعة التغييرات."
+    },
+    {
+      "id": "m05",
+      "title": "Files & Directory Operations",
+      "level": "foundation",
+      "subtitle": "إنشاء الملفات وإدارتها بأمان",
+      "desc": "تعلم التنقل والإنشاء والنسخ والنقل والحذف والقراءة والسمات. تدرب على فهم المسارات والملفات المخفية والروابط.",
+      "topics": [
+        "pwd / ls / cd",
+        "mkdir / touch",
+        "cp / mv / rm",
+        "cat / less / head / tail",
+        "file وstat",
+        "Hidden files",
+        "Globbing",
+        "find basics",
+        "Links وInodes",
+        "Archive basics"
+      ],
+      "goal": "إدارة بنية مجلدات اختبار دون فقد بيانات، وقراءة ملفات إعداد صغيرة وكبيرة.",
+      "lab": "أنشئ بنية مجلدات lab، وانسخ ملفات، ثم أنشئ archive وتحقق من محتواه.",
+      "commands": "mkdir -p ~/linux-lab/{input,output,backup}\ntouch ~/linux-lab/input/demo.txt\ncp -a ~/linux-lab/input ~/linux-lab/backup\ntar -czf ~/linux-lab/backup.tar.gz -C ~/linux-lab input",
+      "sources": "الطناني #08–#11 و#25؛ عبدالله #08–#09؛ مصطفى #06–#07.",
+      "soc": "التحقيق الأمني يحتاج حفظ مسارات الأدلة، timestamps، ونسخ الملف قبل تحليله. لا تعدّل الدليل الأصلي."
+    },
+    {
+      "id": "m06",
+      "title": "Search & Text Processing",
+      "level": "foundation",
+      "subtitle": "من سطر واحد إلى بيانات قابلة للتحليل",
+      "desc": "تدرج من grep وfind إلى pipelines وawk وsed وcut وsort وuniq وxargs. افهم الحقول والفواصل والـregular expressions.",
+      "topics": [
+        "grep patterns وoptions",
+        "find predicates",
+        "wc وsort وuniq",
+        "cut وtr",
+        "awk fields وconditions",
+        "sed print/substitute",
+        "Pipes وredirection",
+        "tee وxargs",
+        "Regex basics",
+        "Quoted filenames"
+      ],
+      "goal": "بناء pipeline يقرأ ملفًا ويستخرج حقولًا ويحسب التكرار بطريقة قابلة لإعادة الاستخدام.",
+      "lab": "حلل ملف auth تجريبيًا واستخرج أكثر usernames أو IPs تكرارًا.",
+      "commands": "grep -i \"failed\" sample.log | wc -l\ncut -d: -f1 /etc/passwd\nsort ips.txt | uniq -c | sort -nr\nawk -F: '{print $1,$3}' /etc/passwd",
+      "sources": "الطناني #26–#31؛ Security Jordan Part 2: AWK/SED/CUT/TR.",
+      "soc": "هذا من أهم الجسور المستقبلية إلى Log Analysis؛ ستستخدم نفس الأسلوب لاستخراج مؤشرات من ملفات الأحداث."
+    },
+    {
+      "id": "m07",
+      "title": "Users, Groups & Authentication",
+      "level": "admin",
+      "subtitle": "من هو المستخدم وكيف يثبت هويته؟",
+      "desc": "تعلم الحسابات المحلية، UID/GID، ملفات passwd/shadow/group، إنشاء المستخدمين، كلمات المرور، sudo، su، PAM ومفاهيم المصادقة.",
+      "topics": [
+        "Root vs regular/system user",
+        "UID/GID",
+        "/etc/passwd",
+        "/etc/shadow",
+        "/etc/group وgshadow",
+        "useradd/usermod/userdel",
+        "groupadd/gpasswd",
+        "passwd وchage",
+        "sudo وsudoers",
+        "PAM overview",
+        "NSS وgetent"
+      ],
+      "goal": "إنشاء مستخدم ومجموعة ومنح أقل صلاحية لازمة والتحقق من نتيجة التغيير.",
+      "lab": "أنشئ مستخدم labuser ومجموعة labops وأضفه للمجموعة دون استبدال مجموعاته الأخرى.",
+      "commands": "sudo useradd -m labuser\nsudo groupadd labops\nsudo usermod -aG labops labuser\nid labuser\ngetent passwd labuser",
+      "sources": "الطناني #12–#18؛ عبدالله #10 و#12؛ Security Jordan Part 2: Authentication.",
+      "soc": "لاحقًا ستربط أحداث إنشاء المستخدمين وتغيير المجموعات ومحاولات الدخول بسجلات المصادقة."
+    },
+    {
+      "id": "m08",
+      "title": "Permissions & Access Control",
+      "level": "security",
+      "subtitle": "الملكية وrwx والصلاحيات الخاصة",
+      "desc": "افهم من يستطيع قراءة أو كتابة أو تنفيذ الملف، ثم SUID/SGID/Sticky Bit وumask وACL وLinux capabilities. فرق DAC عن MAC.",
+      "topics": [
+        "Owner / Group / Other",
+        "rwx numeric & symbolic",
+        "chmod وchown وchgrp",
+        "umask",
+        "SUID وSGID",
+        "Sticky bit",
+        "ACL: getfacl/setfacl",
+        "Linux capabilities",
+        "Least privilege",
+        "SELinux/AppArmor overview"
+      ],
+      "goal": "تصميم صلاحيات مشاركة صحيحة واكتشاف صلاحيات واسعة أو غير متوقعة.",
+      "lab": "أنشئ مجلد مشاركة بين مستخدمين، وامنح المجموعة صلاحية محددة ثم اختبر الوصول.",
+      "commands": "chmod 750 shared\nsudo chown root:labops shared\ngetfacl shared\nfind /usr -type f -perm -4000 2>/dev/null | head",
+      "sources": "الطناني #19–#24؛ عبدالله #11–#12؛ Security Jordan Part 1 للمراجعة المقارنة.",
+      "soc": "لاحقًا ستساعدك معرفة SUID وACL والملكية في تقييم تغييرات الصلاحيات المشبوهة."
+    },
+    {
+      "id": "m09",
+      "title": "Process Management",
+      "level": "admin",
+      "subtitle": "البرامج عندما تصبح عمليات",
+      "desc": "افهم PID/PPID، lifecycle، foreground/background، signals، process tree، jobs، priority، /proc وfile descriptors.",
+      "topics": [
+        "Program vs process",
+        "PID وPPID",
+        "ps formats",
+        "top/htop",
+        "pgrep/pkill",
+        "kill signals",
+        "pstree",
+        "jobs/fg/bg",
+        "nice/renice",
+        "/proc",
+        "lsof"
+      ],
+      "goal": "معرفة من شغّل عملية، علاقتها بالأب، وكيفية إيقافها بطريقة سليمة.",
+      "lab": "شغل عملية sleep في الخلفية، استخرج PID وشجرة العمليات، ثم أنهها بـTERM.",
+      "commands": "sleep 300 &\necho $!\nps -o pid,ppid,user,stat,cmd -p $!\npstree -p | head\nkill -TERM $!",
+      "sources": "الطناني #32؛ عبدالله #20؛ Security Jordan Part 1 process management.",
+      "soc": "Process tree وcommand line من أهم عناصر التحقيق في نشاط Endpoint."
+    },
+    {
+      "id": "m10",
+      "title": "Boot Process & systemd",
+      "level": "admin",
+      "subtitle": "من تشغيل الجهاز إلى خدمة تعمل",
+      "desc": "تابع مراحل UEFI/bootloader/kernel/initramfs/systemd، وافهم targets وunits وservice files والتمكين والتبعيات.",
+      "topics": [
+        "UEFI/BIOS",
+        "GRUB/bootloader",
+        "Kernel loading",
+        "initramfs",
+        "systemd PID 1",
+        "Targets وrunlevels",
+        "Service units",
+        "systemctl lifecycle",
+        "enable vs start",
+        "unit dependencies",
+        "systemd-analyze"
+      ],
+      "goal": "تشخيص لماذا خدمة لم تبدأ، والتمييز بين active وenabled وfailed.",
+      "lab": "افحص خدمة SSH في كلا النظامين وقارن اسم الوحدة وحالتها وسجلها.",
+      "commands": "systemctl status ssh    # Debian غالبًا\nsystemctl status sshd   # Rocky غالبًا\nsystemctl list-units --type=service\nsystemd-analyze time",
+      "sources": "الطناني #33–#34؛ عبدالله #22.",
+      "soc": "لاحقًا ستفحص خدمات غير متوقعة أو persistence عبر systemd units وtimers."
+    },
+    {
+      "id": "m11",
+      "title": "System Monitoring & Troubleshooting",
+      "level": "admin",
+      "subtitle": "اقرأ مؤشرات النظام قبل تغيير الإعدادات",
+      "desc": "راقب CPU/RAM/disk/I/O/load، راجع kernel messages وfailed units، وتعلم منهج troubleshooting: عرض المشكلة، جمع معلومات، فرضية، اختبار، تحقق.",
+      "topics": [
+        "uptime/load average",
+        "free/vmstat",
+        "df/du/inodes",
+        "iostat/sar",
+        "dmesg",
+        "journalctl filters",
+        "systemctl --failed",
+        "resource bottlenecks",
+        "service diagnostics",
+        "safe troubleshooting"
+      ],
+      "goal": "تشخيص مشكلة مساحة أو ذاكرة أو خدمة من الأدلة، دون تغييرات عشوائية.",
+      "lab": "أنشئ ملفًا كبيرًا داخل VM ثم حدد أثره على du وdf، واحذف الملف بعد التمرين.",
+      "commands": "uptime\nfree -h\ndf -h\ndu -sh ~/linux-lab\nsystemctl --failed\njournalctl -p warning -b",
+      "sources": "الطناني #35؛ عبدالله #21 و#24.",
+      "soc": "القدرة على تحديد baseline وغير الطبيعي تمهد للتحقيق في سلوك نظام غير معتاد."
+    },
+    {
+      "id": "m12",
+      "title": "Linux Networking",
+      "level": "admin",
+      "subtitle": "افهم واجهة الشبكة والمسار والاتصال",
+      "desc": "تعلم إدارة الواجهات والعناوين والمسارات والجيران وDNS والـsockets، ثم تشخيص الاتصال وقراءة المنافذ.",
+      "topics": [
+        "Network interfaces",
+        "IPv4/IPv6 on Linux",
+        "ip addr/link/route/neigh",
+        "NetworkManager وnmcli",
+        "DNS resolver",
+        "dig/nslookup/host",
+        "ping وtracepath",
+        "ss sockets",
+        "tcpdump basics",
+        "Wireshark handoff"
+      ],
+      "goal": "تشخيص لماذا جهاز Linux لا يصل إلى هدف، ومعرفة المنافذ والاتصالات الموجودة.",
+      "lab": "حدد IP والبوابة وDNS، ثم تحقق من منفذ محلي واتصال خارجي.",
+      "commands": "ip -br addr\nip route\nip neigh\nss -tulpn\ndig example.com\nping -c 4 1.1.1.1",
+      "sources": "الطناني #35؛ عبدالله #15–#17؛ مقاطع Wireshark الموصى بها عند الحاجة.",
+      "soc": "لاحقًا ستربط DNS وTCP sessions وlistening ports بمؤشرات الشبكة."
+    },
+    {
+      "id": "m13",
+      "title": "SSH & Remote Administration",
+      "level": "security",
+      "subtitle": "إدارة آمنة عن بعد",
+      "desc": "تعلم SSH client/server، keys، authorized_keys، host keys، scp/sftp، إعدادات sshd، والمخاطر الشائعة.",
+      "topics": [
+        "SSH architecture",
+        "Client vs sshd",
+        "Password vs key authentication",
+        "ssh-keygen",
+        "ssh-copy-id",
+        "authorized_keys permissions",
+        "sshd_config",
+        "scp/sftp",
+        "host key verification",
+        "SSH troubleshooting"
+      ],
+      "goal": "إعداد دخول بمفتاح عام إلى VM أخرى، ثم اختبار الاتصال والتحقق من السجلات.",
+      "lab": "أنشئ مفتاح ed25519 للمعمل، انسخه للحساب التجريبي، ثم اختبر الاتصال.",
+      "commands": "ssh-keygen -t ed25519\nssh-copy-id labuser@192.0.2.20\nssh labuser@192.0.2.20\nsudo sshd -t",
+      "sources": "الطناني #36؛ عبدالله #15–#17 ذات الصلة.",
+      "soc": "لاحقًا ستستخدم سجلات SSH للتحقيق في محاولات الدخول الناجحة والفاشلة."
+    },
+    {
+      "id": "m14",
+      "title": "Firewall & Host Network Security",
+      "level": "security",
+      "subtitle": "تحكم في الاتصالات الواردة والصادرة",
+      "desc": "مفاهيم packet filtering وstateful firewall، ثم nftables وfirewalld في Rocky وUFW في بعض Debian/Ubuntu. افهم zones وrich rules.",
+      "topics": [
+        "Host firewall concept",
+        "Netfilter وnftables",
+        "firewalld zones/services",
+        "firewall-cmd",
+        "UFW overview",
+        "Default deny/allow",
+        "Persistent rules",
+        "Connection lockout prevention",
+        "Rules inspection"
+      ],
+      "goal": "إضافة قاعدة اختبار محددة والتحقق منها ثم إزالتها دون فقد الاتصال.",
+      "lab": "افتح منفذ خدمة تجريبية على شبكة Host-only فقط، تحقق من القاعدة، ثم احذفها.",
+      "commands": "sudo firewall-cmd --get-active-zones\nsudo firewall-cmd --list-all\nsudo nft list ruleset\nsudo ufw status verbose",
+      "sources": "امتداد مناسب من تعلم الشبكات وإدارة Rocky؛ وثائق Rocky firewalld.",
+      "soc": "لاحقًا ستفحص Firewall logs/rules لفهم سبب السماح أو رفض اتصال."
+    },
+    {
+      "id": "m15",
+      "title": "Package Management & Repositories",
+      "level": "admin",
+      "subtitle": "التثبيت والتحديث والتحقق من مصدر البرنامج",
+      "desc": "افهم package database وdependencies وrepositories وsignatures. طبق الفرق بين APT/DPKG وDNF/RPM، وتعلم التحقق من الحزمة المالكة لملف.",
+      "topics": [
+        "Package vs repository",
+        "APT update/upgrade/install/remove",
+        "dpkg query/verify",
+        "DEB dependencies",
+        "DNF search/install/update/remove",
+        "RPM query/verify",
+        "Repository trust/GPG signing",
+        "Package ownership",
+        "History and rollback awareness"
+      ],
+      "goal": "تثبيت حزمة في كل توزيعة ومعرفة مصدرها وإصدارها والملفات التي ثبتتها.",
+      "lab": "ثبت tree أو nmap في النظامين، اعرض تفاصيل الحزمة والملفات التي توفرها، ثم أزلها.",
+      "commands": "apt policy tree\ndpkg -S /usr/bin/ssh\ndnf info tree\nrpm -qf /usr/bin/ssh",
+      "sources": "الطناني #39–#42؛ عبدالله #13–#14؛ وثائق Debian وRocky DNF.",
+      "soc": "لاحقًا تساعدك سجلات الحزم والتحقق منها في تقييم برامج غير معروفة أو تغييرات على النظام."
+    },
+    {
+      "id": "m16",
+      "title": "Storage, Filesystems & LVM",
+      "level": "admin",
+      "subtitle": "من القرص الفعلي إلى نقطة التركيب",
+      "desc": "افهم block devices وpartition tables وfilesystem types وmount/fstab/swap، ثم LVM وRAID ومراقبة صحة الأقراص.",
+      "topics": [
+        "Block device model",
+        "MBR vs GPT",
+        "fdisk/gdisk/parted",
+        "ext4 vs XFS",
+        "mkfs and mount",
+        "UUID/fstab/findmnt",
+        "Swap",
+        "LVM PV/VG/LV",
+        "RAID levels and mdadm",
+        "Filesystem resize",
+        "SMART and fsck"
+      ],
+      "goal": "إنشاء partition وfilesystem على قرص افتراضي فارغ، وتركيبه باستخدام UUID، ثم إزالته بأمان.",
+      "lab": "أضف قرصًا افتراضيًا منفصلًا، أنشئ عليه ext4 أو XFS، ركبه، اختبره، ثم أعد VM snapshot إذا احتجت.",
+      "commands": "lsblk -f\nsudo blkid\nfindmnt\ndf -h\nsudo mount /dev/sdb1 /mnt/lab",
+      "sources": "الطناني #43–#53.",
+      "soc": "لاحقًا ستساعدك معرفة التخزين على فهم أماكن ملفات الأدلة والسجلات وتأثير امتلاء الأقراص."
+    },
+    {
+      "id": "m17",
+      "title": "Linux Logging & Auditing",
+      "level": "security",
+      "subtitle": "كيف يسجل Linux الأحداث؟",
+      "desc": "افهم journald وrsyslog وlogrotate وsystem logs وauthentication logs، ثم تعرف على Linux Audit وrules وausearch/aureport.",
+      "topics": [
+        "journald vs rsyslog",
+        "journalctl filters",
+        "/var/log layout",
+        "auth.log vs secure",
+        "logrotate",
+        "logger",
+        "auditd/auditctl",
+        "ausearch/aureport",
+        "timestamps and timezone",
+        "log retention"
+      ],
+      "goal": "العثور على حدث محدد في system journal أو سجل مصادقة، وفهم مصدره وتوقيته.",
+      "lab": "أنشئ رسالة logger، ثم اعثر عليها في journal؛ افحص سجلات المصادقة دون تعديلها.",
+      "commands": "journalctl -b\njournalctl -u ssh --since today\nsudo ausearch -m USER_LOGIN -ts today\nlogger -t linux-lab \"hello\"",
+      "sources": "الطناني #37–#38؛ عبدالله #23 مدمج جزئيًا فقط إذا كان يضيف طريقة مختلفة؛ Security Jordan Part 2.",
+      "soc": "هذه الوحدة هي نقطة الربط الأهم مستقبلًا مع Linux Log Analysis وSIEM."
+    },
+    {
+      "id": "m18",
+      "title": "Bash Scripting & Automation",
+      "level": "admin",
+      "subtitle": "حوّل المهام المتكررة إلى أدوات صغيرة",
+      "desc": "تعلم بناء سكربت صحيح، إدخال المعاملات، المتغيرات، الشروط، التكرار، arrays، functions، exit status، traps وdebugging.",
+      "topics": [
+        "Shebang وexecution permission",
+        "Variables وquoting",
+        "read وarguments",
+        "Operators وtests",
+        "if/case",
+        "for/while",
+        "Arrays",
+        "Functions",
+        "Exit codes و$?",
+        "set/trap/getopts",
+        "bash -n وbash -x",
+        "ShellCheck",
+        "System information project",
+        "Ping checker project",
+        "Log summary project"
+      ],
+      "goal": "كتابة سكربت آمن يعرض معلومات النظام، يتحقق من خدمة، ويعالج ملف سجلات تجريبيًا.",
+      "lab": "أنشئ script يستخدم set -u، ويتحقق من وجود خدمة ويكتب تقريرًا مع exit code واضح.",
+      "commands": "bash -n script.sh\nbash -x script.sh\nshellcheck script.sh\nprintf \"%s\\n\" \"$PATH\"",
+      "sources": "الطناني #54–#63؛ Security Jordan Bash؛ AWK/SED/CUT/TR.",
+      "soc": "لاحقًا تتحول Bash إلى أداة أتمتة بسيطة للتحقق من سجلات Linux وجمع معلومات التحقيق."
+    },
+    {
+      "id": "m19",
+      "title": "Scheduling & Server Services",
+      "level": "admin",
+      "subtitle": "خدمات تعمل تلقائيًا وتقدم وظائف للشبكة",
+      "desc": "تعلم cron وat وsystemd timers، وخدمات NFS وSamba وApache وNginx، وملفات إعدادها وسجلاتها.",
+      "topics": [
+        "cron syntax",
+        "crontab -e/-l",
+        "at one-time jobs",
+        "systemd timers",
+        "NFS exports",
+        "Samba shares",
+        "Apache basics",
+        "Nginx basics",
+        "service validation",
+        "web access logs"
+      ],
+      "goal": "جدولة مهمة تجريبية وتشغيل خدمة ويب محلية والتحقق من الحالة والسجل.",
+      "lab": "شغل nginx أو apache داخل VM محلية، تحقق من الإعداد والمنفذ وسجل الوصول، ثم أوقف الخدمة.",
+      "commands": "crontab -l\nsystemctl status nginx\nsudo nginx -t\nss -tulpn",
+      "sources": "الطناني #64–#72؛ عبدالله #19 و#22.",
+      "soc": "لاحقًا تساعدك هذه المعرفة في اكتشاف cron persistence وخدمات ويب أو مشاركة ملفات غير متوقعة."
+    },
+    {
+      "id": "m20",
+      "title": "Linux Security Controls & Hardening",
+      "level": "security",
+      "subtitle": "تأمين النظام دون تعطيل الضوابط",
+      "desc": "افهم مبدأ least privilege، تحديثات النظام، SSH hardening، SELinux في Rocky، AppArmor في Debian، firewall، audit وfile integrity.",
+      "topics": [
+        "Secure baseline",
+        "Patch management",
+        "SELinux modes and contexts",
+        "semanage/restorecon",
+        "AppArmor profiles",
+        "SSH hardening principles",
+        "Firewall baseline",
+        "Audit rules",
+        "File integrity hashes",
+        "Backup and recovery",
+        "Safe change management"
+      ],
+      "goal": "فهم كيف تُشخّص منع SELinux/AppArmor وتحدد الإعداد الصحيح بدل تعطيل الحماية.",
+      "lab": "على Rocky افحص getenforce وsestatus، وعلى Debian تحقق من aa-status إن كان AppArmor مثبتًا.",
+      "commands": "getenforce\nsestatus\nsudo restorecon -Rv /var/www/html\nsudo aa-status",
+      "sources": "امتداد إداري أمني مناسب؛ وثائق Rocky SELinux وDebian reference.",
+      "soc": "لاحقًا سترتبط هذه الضوابط بتحليل تغييرات النظام، التنبيهات، وقرارات الاحتواء."
+    }
+  ],
+  "distroRows": [
+    [
+      "تحديث فهرس الحزم",
+      "sudo apt update",
+      "sudo dnf check-update",
+      "الأول يحدث فهارس APT؛ الثاني يتحقق من تحديثات DNF وقد يرجع رمز حالة خاصًا عند وجود تحديثات."
+    ],
+    [
+      "تثبيت برنامج",
+      "sudo apt install PACKAGE",
+      "sudo dnf install PACKAGE",
+      "صيغة الحزم DEB مقابل RPM."
+    ],
+    [
+      "إزالة برنامج",
+      "sudo apt remove PACKAGE",
+      "sudo dnf remove PACKAGE",
+      "راجع قائمة الاعتماديات قبل الموافقة."
+    ],
+    [
+      "البحث عن حزمة",
+      "apt search TERM",
+      "dnf search TERM",
+      "طريقة العرض تختلف، والغرض متقارب."
+    ],
+    [
+      "تفاصيل حزمة",
+      "apt show PACKAGE",
+      "dnf info PACKAGE",
+      "تعرض معلومات وإصدار ومصدر الحزمة."
+    ],
+    [
+      "قائمة الحزم المثبتة",
+      "dpkg -l",
+      "dnf list --installed / rpm -qa",
+      "قاعدة البيانات والأداة مختلفة."
+    ],
+    [
+      "ملف إعداد SSH",
+      "/etc/ssh/sshd_config",
+      "/etc/ssh/sshd_config",
+      "المسار غالبًا مشترك؛ اسم الوحدة قد يختلف."
+    ],
+    [
+      "اسم خدمة SSH",
+      "ssh.service غالبًا",
+      "sshd.service غالبًا",
+      "تحقق بـ systemctl list-unit-files | grep ssh."
+    ],
+    [
+      "سجل المصادقة",
+      "/var/log/auth.log غالبًا",
+      "/var/log/secure غالبًا",
+      "يعتمد على rsyslog/journald والإعداد. استخدم journalctl أيضًا."
+    ],
+    [
+      "جدار ناري شائع",
+      "nftables أو UFW حسب الإعداد",
+      "firewalld شائع؛ nftables backend",
+      "لا تفترض وجود UFW في كل Debian أو firewalld في كل تثبيت Rocky."
+    ],
+    [
+      "Mandatory Access Control",
+      "AppArmor شائع",
+      "SELinux أساسي وشائع",
+      "نموذجان مختلفان للسياسات والتشخيص."
+    ],
+    [
+      "إدارة الشبكة",
+      "NetworkManager أو systemd-networkd حسب إعداد التثبيت",
+      "NetworkManager مع keyfiles في Rocky 10",
+      "Rocky 10 لا يعتمد على network-scripts القديمة."
+    ],
+    [
+      "توسيع filesystem",
+      "resize2fs لـ ext4",
+      "xfs_growfs لـ XFS",
+      "اختر الأداة بناءً على نوع filesystem، لا على اسم التوزيعة فقط."
+    ],
+    [
+      "مدير سجل النظام",
+      "systemd-journald؛ rsyslog اختياري",
+      "systemd-journald؛ rsyslog اختياري",
+      "journalctl مشترك، ومسارات الملفات التقليدية ليست مضمونة."
+    ]
+  ],
+  "labs": [
+    {
+      "id": "lab01",
+      "title": "التعرف على النظام قبل العمل",
+      "level": "مبتدئ",
+      "goal": "جمع معلومات النظام والتوزيعة والنواة والمستخدم الحالي.",
+      "commands": "cat /etc/os-release\nuname -r\nhostnamectl\nwhoami\nid",
+      "steps": [
+        "نفذ الأوامر على Debian ثم Rocky.",
+        "سجل ID وVERSION_ID وKernel release.",
+        "قارن المستخدم الحالي ومجموعاته.",
+        "اكتب 3 اختلافات لاحظتها."
+      ],
+      "safe": "أوامر قراءة فقط ولا تغير حالة النظام."
+    },
+    {
+      "id": "lab02",
+      "title": "ملفات ومجلدات بطريقة آمنة",
+      "level": "مبتدئ",
+      "goal": "إنشاء هيكل مشروع ونسخه وأرشفته ثم التأكد من محتواه.",
+      "commands": "mkdir -p ~/lab/{input,output,backup}\nprintf \"alpha\\nbeta\\n\" > ~/lab/input/list.txt\ncp -a ~/lab/input ~/lab/backup\ntar -czf ~/lab/backup.tar.gz -C ~/lab input\ntar -tzf ~/lab/backup.tar.gz",
+      "steps": [
+        "أنشئ هيكل المجلدات تحت Home فقط.",
+        "اكتب ملفًا تجريبيًا.",
+        "انسخ المجلد إلى backup.",
+        "أنشئ tar.gz وافحص محتوياته."
+      ],
+      "safe": "لا تستخدم مسارات نظام مثل /etc أو /var لهذا التمرين."
+    },
+    {
+      "id": "lab03",
+      "title": "Users وGroups وPermissions",
+      "level": "متوسط",
+      "goal": "بناء مجلد فريق بصلاحيات محددة واختبار العضوية.",
+      "commands": "sudo groupadd labops\nsudo useradd -m labuser\nsudo usermod -aG labops labuser\nsudo chown root:labops /srv/lab-share\nsudo chmod 2770 /srv/lab-share\nid labuser",
+      "steps": [
+        "استخدم حسابات معملية فقط.",
+        "أنشئ المجموعة والمستخدم.",
+        "أنشئ مجلد المشاركة.",
+        "اختبر القراءة والكتابة من الحساب المناسب.",
+        "احذف حسابات المعمل بعد انتهاء الاختبار إن لم تعد تحتاجها."
+      ],
+      "safe": "تأكد من عدم تعديل مجموعات حسابك الإداري الأساسي."
+    },
+    {
+      "id": "lab04",
+      "title": "Process Tree والتحكم في عملية",
+      "level": "متوسط",
+      "goal": "ملاحظة PID وPPID وشجرة عملية ثم إنهاؤها بلطف.",
+      "commands": "sleep 300 &\nps -o pid,ppid,user,stat,cmd -p $!\npstree -p | head\nkill -TERM $!",
+      "steps": [
+        "شغل sleep في الخلفية.",
+        "اقرأ PID باستخدام $!.",
+        "اعرض العملية ووالدها.",
+        "أنهِها بإشارة TERM.",
+        "تحقق أنها انتهت."
+      ],
+      "safe": "استخدم عملية sleep التجريبية فقط؛ لا تقتل عمليات النظام."
+    },
+    {
+      "id": "lab05",
+      "title": "تشخيص شبكة Linux",
+      "level": "متوسط",
+      "goal": "فهم IP والبوابة وDNS والمنافذ المفتوحة.",
+      "commands": "ip -br addr\nip route\nip neigh\nss -tulpn\ndig example.com\nping -c 4 1.1.1.1",
+      "steps": [
+        "حدد عنوان واجهة الشبكة.",
+        "اعرف Default Route.",
+        "افحص DNS resolution.",
+        "اعرض Listening sockets.",
+        "فسر الفرق بين منفذ listening واتصال established."
+      ],
+      "safe": "هذه أوامر استعلام؛ لا تفحص شبكات خارج نطاق تصريحك."
+    },
+    {
+      "id": "lab06",
+      "title": "تحليل سجلات مصادقة تجريبية",
+      "level": "متوسط",
+      "goal": "البحث عن محاولات الدخول الفاشلة وعدّها.",
+      "commands": "grep -i \"failed password\" /var/log/auth.log\n# Rocky: /var/log/secure\njournalctl -u ssh --since today",
+      "steps": [
+        "تحقق من مسار السجل الموجود في توزيعتك.",
+        "ابحث عن Failed password.",
+        "استخدم wc -l لعد الأسطر.",
+        "استخرج IP من تنسيق السطر الفعلي؛ لا تفترض موضع الحقل في كل صيغة.",
+        "سجل ما إذا كان السجل فارغًا أو لا توجد صلاحية."
+      ],
+      "safe": "لا تختبر محاولات دخول على أنظمة حقيقية؛ استخدم VM خاصة بك."
+    },
+    {
+      "id": "lab07",
+      "title": "Debian APT مقابل Rocky DNF",
+      "level": "متوسط",
+      "goal": "تثبيت حزمة صغيرة ومعرفة مصدرها وملفاتها.",
+      "commands": "# Debian\nsudo apt update\nsudo apt install tree\napt show tree\ndpkg -L tree\n\n# Rocky\nsudo dnf install tree\ndnf info tree\nrpm -ql tree",
+      "steps": [
+        "نفذ على النظامين.",
+        "قارن وصف الحزمة والإصدار.",
+        "اعرض الملفات المثبتة.",
+        "أزل الحزمة بعد إنهاء التجربة."
+      ],
+      "safe": "استخدم حزمة صغيرة معروفة؛ لا تضف مستودعات عشوائية."
+    },
+    {
+      "id": "lab08",
+      "title": "Bash Script يفحص خدمة",
+      "level": "متقدم",
+      "goal": "كتابة سكربت واضح مع exit code ومخرجات مفهومة.",
+      "commands": "#!/usr/bin/env bash\nset -u\nservice_name=\"${1:-ssh}\"\nif systemctl is-active --quiet \"$service_name\"; then\n  printf \"ACTIVE: %s\\n\" \"$service_name\"\n  exit 0\nelse\n  printf \"NOT ACTIVE: %s\\n\" \"$service_name\"\n  exit 1\nfi",
+      "steps": [
+        "احفظه باسم check-service.sh.",
+        "أضف صلاحية التنفيذ.",
+        "نفذه مع اسم خدمة موجودة في توزيعتك.",
+        "اختبر اسم خدمة غير موجودة.",
+        "نفذ bash -n وShellCheck إن كان مثبتًا."
+      ],
+      "safe": "السكربت يقرأ حالة الخدمة فقط ولا يغيرها."
+    }
+  ],
+  "socTracks": [
+    {
+      "title": "01 / Linux Logs → SOC Log Analysis",
+      "items": [
+        "مصادر السجلات: journald وrsyslog وauth.log/secure وauditd.",
+        "توحيد الوقت والـtimestamps وفهم timezone.",
+        "استخراج failed/success authentication events.",
+        "تحليل sudo، users/groups، services، cron، SSH.",
+        "تجهيز Linux logs للإرسال إلى Wazuh أو SIEM."
+      ]
+    },
+    {
+      "title": "02 / Linux Processes & Services → EDR Investigation",
+      "items": [
+        "Process tree والـparent/child relationship.",
+        "الخدمات وsystemd units وtimers كآليات persistence محتملة.",
+        "فحص الملفات التنفيذية والـhash والملكية والصلاحيات.",
+        "مقارنة العملية مع baseline النظام."
+      ]
+    },
+    {
+      "title": "03 / Linux Network → Network Detection",
+      "items": [
+        "Listening sockets مقابل established connections.",
+        "DNS وSSH وHTTP/HTTPS وoutbound traffic.",
+        "قراءة tcpdump/PCAP وربطها بسجلات الجهاز.",
+        "تفسير Firewall allow/deny وNAT ضمن سياق الشبكة."
+      ]
+    },
+    {
+      "title": "04 / Linux Security Controls → MITRE ATT&CK",
+      "items": [
+        "ربط سلوك مثبت بأدلة مع تقنية ATT&CK المناسبة دون تخمين.",
+        "SUID/SGID وLinux capabilities وsudo misuse.",
+        "Cron/systemd persistence وSSH authorized_keys.",
+        "SELinux/AppArmor denials كدليل سياقي وليس هجومًا تلقائيًا."
+      ]
+    },
+    {
+      "title": "05 / SOC L1 Workflow",
+      "items": [
+        "استلام Alert وفهم rule/source/severity.",
+        "Triage: true positive / false positive / benign positive.",
+        "جمع endpoint + identity + network evidence.",
+        "Timeline وscope وتوثيق النتائج.",
+        "Escalation وفق SOP وليس اتخاذ إجراء تخريبي منفرد."
+      ]
+    },
+    {
+      "title": "06 / SIEM Platform Track",
+      "items": [
+        "ابدأ بـWazuh لجمع Linux/Windows telemetry في Home Lab.",
+        "تعلم كتابة queries/filters وdashboards.",
+        "اختر منصة ثانية حسب الهدف: Microsoft Sentinel مع KQL أو Splunk مع SPL.",
+        "تجنب تعلم عدة منصات في الوقت نفسه."
+      ]
+    },
+    {
+      "title": "07 / Incident Response",
+      "items": [
+        "Preparation وDetection/Analysis.",
+        "Containment: قرار العزل بالتنسيق مع الإجراء المعتمد.",
+        "Eradication وRecovery.",
+        "Evidence preservation وcase notes.",
+        "Lessons learned."
+      ]
+    },
+    {
+      "title": "08 / Threat Hunting",
+      "items": [
+        "فرضية بحث واضحة.",
+        "استعلامات على process/auth/network telemetry.",
+        "MITRE mapping بعد ظهور الأدلة.",
+        "تمييز السلوك النادر عن الخبيث.",
+        "تسجيل hunt hypothesis والنتيجة والقيود."
+      ]
+    },
+    {
+      "title": "09 / Detection Engineering",
+      "items": [
+        "كتابة detection logic على بيانات موثوقة.",
+        "اختبار false positives وfalse negatives.",
+        "ربط قواعد الكشف بمصادر البيانات.",
+        "توثيق التغطية والقيود والـtuning."
+      ]
+    },
+    {
+      "title": "10 / SOC L2 Capstone",
+      "items": [
+        "تحقيق متعدد المصادر Windows + Linux + Network.",
+        "بناء timeline وتحديد نطاق الحادث.",
+        "تحليل TTPs وتحديد ما هو مثبت وما هو افتراض.",
+        "صياغة Incident Report وRecommendations."
+      ]
+    }
+  ],
+  "sources": [
+    [
+      "Debian Reference – system initialization",
+      "https://www.debian.org/doc/manuals/debian-reference/ch03.en.html",
+      "توثيق systemd وjournalctl وأوامر إدارة النظام في Debian."
+    ],
+    [
+      "Rocky Linux 10 Documentation",
+      "https://docs.rockylinux.org/10/",
+      "المصدر الرسمي لتوزيعة Rocky Linux 10."
+    ],
+    [
+      "Rocky Linux – Network Configuration",
+      "https://docs.rockylinux.org/guides/network/basic_network_configuration/",
+      "NetworkManager وkeyfiles وإدارة الشبكة في Rocky Linux 10."
+    ],
+    [
+      "Rocky Linux – DNF Package Manager",
+      "https://docs.rockylinux.org/guides/package_management/dnf_package_manager/",
+      "إدارة الحزم والمستودعات باستخدام DNF."
+    ],
+    [
+      "Red Hat – DNF Commands RHEL 10",
+      "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/managing_software_with_the_dnf_tool/dnf-commands-list",
+      "أوامر DNF للبحث والتثبيت والإزالة والاستعلام."
+    ],
+    [
+      "Rocky Linux – SELinux Security",
+      "https://docs.rockylinux.org/10/guides/security/learning_selinux/",
+      "وضع SELinux والأدوات والسياقات والتحذيرات."
+    ],
+    [
+      "GNU Bash Reference Manual",
+      "https://www.gnu.org/software/bash/manual/bash.html",
+      "مرجع Bash الرسمي للـsyntax والـfunctions والـarrays والـredirections."
+    ],
+    [
+      "Linux man-pages project",
+      "https://man7.org/linux/man-pages/",
+      "صفحات الدليل لأوامر وواجهات Linux."
+    ],
+    [
+      "Filesystem Hierarchy Standard",
+      "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html",
+      "مرجع تنظيم مسارات نظام الملفات."
+    ],
+    [
+      "Ubuntu Server Package Management",
+      "https://ubuntu.com/server/docs/how-to/software/package-management/",
+      "توثيق APT وDPKG في Ubuntu Server."
+    ],
+    [
+      "Alpine Linux – About",
+      "https://www.alpinelinux.org/about/",
+      "فلسفة Alpine: musl وBusyBox وapk وOpenRC."
+    ],
+    [
+      "ArchWiki – Pacman",
+      "https://wiki.archlinux.org/title/Pacman",
+      "مدير الحزم الرسمي في Arch Linux."
+    ],
+    [
+      "SUSE Administration – Zypper",
+      "https://documentation.suse.com/sles/15-SP6/single-html/SLES-administration/book-administration.html",
+      "إدارة البرامج باستخدام Zypper وRPM."
+    ],
+    [
+      "CentOS Stream",
+      "https://www.centos.org/centos-stream/",
+      "موقع CentOS الرسمي وعلاقة Stream بتطوير RHEL."
+    ],
+    [
+      "AlmaLinux FAQ",
+      "https://wiki.almalinux.org/FAQ",
+      "توافق AlmaLinux مع RHEL."
+    ],
+    [
+      "Amazon Linux 2023 – Package Management",
+      "https://docs.aws.amazon.com/linux/al2023/ug/package-management.html",
+      "إدارة الحزم باستخدام DNF في Amazon Linux 2023."
+    ],
+    [
+      "NixOS Manual",
+      "https://nixos.org/manual/nixos/stable/",
+      "إدارة النظام والحزم بطريقة declarative في NixOS."
+    ],
+    [
+      "Void Linux – XBPS",
+      "https://docs.voidlinux.org/xbps/",
+      "مدير الحزم XBPS في Void Linux."
+    ],
+    [
+      "Gentoo Handbook",
+      "https://wiki.gentoo.org/wiki/Handbook:AMD64",
+      "مرجع Gentoo الرسمي/المجتمعي لإدارة النظام وPortage."
+    ]
+  ],
+  "distroAtlas": [
+    {
+      "id": "debian-ecosystem",
+      "category": "debian",
+      "mark": "DEB",
+      "eyebrow": "DEBIAN LINEAGE",
+      "title": "منظومة Debian",
+      "subtitle": "الاستقرار، الخوادم، والتوزيعات المتخصصة",
+      "distros": "Debian · Ubuntu · Kali Linux · Parrot OS · Linux Mint",
+      "package": "APT / DPKG · حزم DEB",
+      "init": "systemd في التثبيتات الحديثة المعتادة",
+      "release": "تختلف حسب التوزيعة: Debian Stable، إصدارات Ubuntu مع LTS، Kali rolling، وإصدارات Mint الدورية.",
+      "role": "قاعدة واسعة لخوادم Linux، والحوسبة الشخصية، وبعض توزيعات الأمن واختبار الاختراق.",
+      "where": "قد تقابل Debian وUbuntu في الخوادم والسحابة، وKali أو Parrot في معامل الاختبار الأمني. وجود Kali في المعمل لا يجعلها الخيار الافتراضي لخادم إنتاج.",
+      "relationship": "Ubuntu مبني على Debian. Kali وParrot مشتقان من Debian. إصدار Linux Mint الرئيسي مبني على Ubuntu، بينما LMDE مبني مباشرة على Debian؛ لذلك ليست كل الأسماء فروعًا مباشرة من Debian بنفس الدرجة.",
+      "why": "هذه المنظومة قريبة من دراستك العملية؛ فهم APT وDPKG ومسارات السجلات والخدمات في Debian يساعدك على الانتقال إلى Ubuntu وKali دون إعادة تعلم أساسيات Linux.",
+      "command": "sudo apt update\nsudo apt install PACKAGE",
+      "commandNote": "لإدارة البرامج التفاعلية. dpkg هو أداة منخفضة المستوى للتعامل مع ملفات وقاعدة بيانات DEB، وAPT يتولى المستودعات والاعتماديات.",
+      "links": [
+        [
+          "Debian Documentation",
+          "https://www.debian.org/doc/"
+        ],
+        [
+          "Ubuntu Server",
+          "https://ubuntu.com/server/docs"
+        ],
+        [
+          "Kali Documentation",
+          "https://www.kali.org/docs/"
+        ],
+        [
+          "Parrot Documentation",
+          "https://parrotsec.org/docs/"
+        ]
+      ]
+    },
+    {
+      "id": "rhel-enterprise",
+      "category": "rhel",
+      "mark": "RPM",
+      "eyebrow": "ENTERPRISE LINUX",
+      "title": "منظومة RHEL المتوافقة",
+      "subtitle": "خوادم المؤسسات ودورات الدعم طويلة الأمد",
+      "distros": "Red Hat Enterprise Linux · Rocky Linux · AlmaLinux · Oracle Linux",
+      "package": "DNF / RPM · حزم RPM",
+      "init": "systemd في الإصدارات الحديثة",
+      "release": "إصدارات مؤسسية بدورات دعم وصيانة محددة؛ تحقق من سياسة دورة حياة كل منتج وإصدار.",
+      "role": "بيئات المؤسسات ومراكز البيانات والخدمات التي تحتاج توافقًا مع منظومة RHEL وأدواتها.",
+      "where": "قد تقابل هذه الأنظمة في خوادم الشركات، مراكز البيانات، تطبيقات المؤسسات، وبعض بيئات الاستضافة والسحابة.",
+      "relationship": "RHEL هو المنتج المؤسسي من Red Hat. Rocky Linux وAlmaLinux يهدفان إلى التوافق مع RHEL، لكنهما توزيعتان مستقلتان بسياسات دعم وإصدارات خاصة بهما. Oracle Linux أيضًا يوفّر بيئة متوافقة مع تطبيقات RHEL، مع خيارات نواة خاصة به.",
+      "why": "Rocky Linux الذي تستخدمه الآن يعطيك خبرة مباشرة في نمط إدارة RPM وDNF وSELinux وfirewalld الشائع في بيئة RHEL.",
+      "command": "sudo dnf search PACKAGE\nsudo dnf install PACKAGE\nrpm -q PACKAGE",
+      "commandNote": "DNF مدير الحزم عالي المستوى للتعامل مع المستودعات والاعتماديات. RPM يتعامل مع الحزم وقاعدة بياناتها على مستوى أدنى.",
+      "links": [
+        [
+          "Rocky Linux 10 Docs",
+          "https://docs.rockylinux.org/10/"
+        ],
+        [
+          "Red Hat Enterprise Linux",
+          "https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux"
+        ],
+        [
+          "AlmaLinux FAQ",
+          "https://wiki.almalinux.org/FAQ"
+        ],
+        [
+          "Oracle Linux",
+          "https://www.oracle.com/linux/"
+        ]
+      ]
+    },
+    {
+      "id": "fedora-centos",
+      "category": "rhel",
+      "mark": "UP",
+      "eyebrow": "UPSTREAM / MIDSTREAM",
+      "title": "Fedora وCentOS Stream",
+      "subtitle": "مسار التطوير المفتوح في منظومة Red Hat",
+      "distros": "Fedora Linux · CentOS Stream",
+      "package": "DNF family / RPM (تختلف نسخة DNF حسب الإصدار)",
+      "init": "systemd",
+      "release": "Fedora بإصدارات متتابعة سريعة نسبيًا؛ CentOS Stream تحديث مستمر يتتبع ما يسبق إصدارات RHEL.",
+      "role": "تجربة التقنيات الحديثة، المساهمة في منظومة Enterprise Linux، واختبار ما يتجه إلى RHEL.",
+      "where": "قد تراها في فرق التطوير والاختبار، بناء الحزم، اختبار التوافق قبل الإنتاج، والمختبرات التقنية.",
+      "relationship": "Fedora ليست إعادة بناء لـRHEL؛ هي مشروع مجتمعي upstream يشارك في تطوير التقنيات التي تظهر لاحقًا في منظومة Red Hat. CentOS Stream يتتبع التطوير أمام RHEL، وليس هو CentOS Linux القديم الذي انتهت إصداراته؛ انتهى دعم CentOS Linux 8 في 31 ديسمبر 2021 وCentOS Linux 7 في 30 يونيو 2024.",
+      "why": "معرفة الفرق تمنع الخلط الشائع بين Fedora وCentOS Stream وCentOS Linux القديم وRocky/Alma. جميعها ضمن منظومة قريبة، لكن أدوارها مختلفة.",
+      "command": "sudo dnf info PACKAGE\nsudo dnf repoquery PACKAGE",
+      "commandNote": "الأوامر مألوفة لمن تعلم DNF على Rocky، لكن الإصدارات والمستودعات وسياسة التحديث ليست متطابقة.",
+      "links": [
+        [
+          "Fedora Project",
+          "https://fedoraproject.org/"
+        ],
+        [
+          "Fedora Package Management",
+          "https://fedoraproject.org/wiki/Package_management_system"
+        ],
+        [
+          "CentOS Stream",
+          "https://www.centos.org/centos-stream/"
+        ]
+      ]
+    },
+    {
+      "id": "suse-ecosystem",
+      "category": "suse",
+      "mark": "SUSE",
+      "eyebrow": "SUSE ECOSYSTEM",
+      "title": "منظومة SUSE",
+      "subtitle": "Enterprise Linux وتوزيعات openSUSE",
+      "distros": "SUSE Linux Enterprise Server (SLES) · openSUSE Leap · openSUSE Tumbleweed",
+      "package": "Zypper / RPM",
+      "init": "systemd في الأنظمة الحديثة",
+      "release": "SLES بدورة مؤسسية؛ Leap أكثر ثباتًا؛ Tumbleweed إصدار rolling.",
+      "role": "خوادم المؤسسات، البيئات التي تعتمد SUSE، وبعض أحمال العمل في قطاعات الصناعة والحوسبة عالية الأداء.",
+      "where": "قد تقابل SLES في مؤسسات تستخدم حلول SUSE، وopenSUSE في بيئات التطوير أو المختبرات.",
+      "relationship": "SLES منتج مؤسسي، وopenSUSE مشروع مجتمعي يضم إصدارات مختلفة في دورة التحديث. Leap وTumbleweed ليسا نفس نموذج الإصدار.",
+      "why": "يكفيك الآن فهم Zypper وعلاقته بـRPM؛ لا تحتاج تثبيت SUSE أو دراسة إدارة النظام كاملة ضمن مسارك الحالي.",
+      "command": "sudo zypper refresh\nsudo zypper search PACKAGE\nsudo zypper install PACKAGE",
+      "commandNote": "Zypper هو مدير الحزم عالي المستوى في SLES/openSUSE، ويستخدم حزم RPM.",
+      "links": [
+        [
+          "SUSE Documentation",
+          "https://documentation.suse.com/"
+        ],
+        [
+          "SUSE Administration – Zypper",
+          "https://documentation.suse.com/sles/15-SP6/single-html/SLES-administration/book-administration.html"
+        ],
+        [
+          "openSUSE",
+          "https://www.opensuse.org/"
+        ]
+      ]
+    },
+    {
+      "id": "arch-ecosystem",
+      "category": "arch",
+      "mark": "ARCH",
+      "eyebrow": "ARCH ECOSYSTEM",
+      "title": "منظومة Arch",
+      "subtitle": "بساطة وتحكم وتحديث مستمر",
+      "distros": "Arch Linux · Manjaro · EndeavourOS",
+      "package": "Pacman · حزم Arch",
+      "init": "systemd في Arch والتوزيعات الشائعة المبنية عليه",
+      "release": "Rolling Release؛ التحديثات تصل بشكل مستمر بدل إصدارات رئيسية ثابتة.",
+      "role": "أنظمة شخصية ومختبرات للمستخدم الذي يريد تحكمًا واسعًا في مكونات التثبيت.",
+      "where": "قد تصادفها في محطات عمل المطورين أو أجهزة المستخدمين المتقدمين، أقل شيوعًا كخيار خادم مؤسسي تقليدي.",
+      "relationship": "Manjaro وEndeavourOS مبنيان على Arch مع اختيارات ومستودعات وأدوات إعداد إضافية؛ لا تفترض تطابق التفاصيل أو سياسة التحديث في كل مشروع.",
+      "why": "معرفتها توسع فهمك لنماذج الإصدار وإدارة الحزم، لكن طريقة التحديث rolling تحتاج متابعة أخبار التوزيعة وعدم إجراء تحديثات جزئية عشوائية.",
+      "command": "sudo pacman -Syu\nsudo pacman -S PACKAGE\npacman -Qi PACKAGE",
+      "commandNote": "Pacman يدير الحزم والمستودعات في Arch. اقرأ تعليمات الصيانة قبل التحديثات الكبيرة.",
+      "links": [
+        [
+          "Arch Linux",
+          "https://archlinux.org/"
+        ],
+        [
+          "ArchWiki – Pacman",
+          "https://wiki.archlinux.org/title/Pacman"
+        ]
+      ]
+    },
+    {
+      "id": "alpine",
+      "category": "independent",
+      "mark": "APK",
+      "eyebrow": "MINIMAL / CONTAINERS",
+      "title": "Alpine Linux",
+      "subtitle": "خفيف وصغير ومناسب للبيئات المصغرة",
+      "distros": "Alpine Linux",
+      "package": "apk · حزم Alpine",
+      "init": "OpenRC افتراضيًا في Alpine التقليدي",
+      "release": "فروع إصدار مستقرة، مع فرع edge متحرك؛ راجع سياسة الفرع المستخدم.",
+      "role": "صور الحاويات الصغيرة، الأنظمة المدمجة، والبيئات التي تستفيد من حجم أساسي محدود.",
+      "where": "قد تصادف Alpine داخل Docker images أو Kubernetes workloads؛ وقد تختلف الأدوات المثبتة عن خادم Debian/Rocky.",
+      "relationship": "توزيعة مستقلة وليست Debian مصغرة. تعتمد musl libc وBusyBox وأدواتها الخاصة؛ لذلك قد تختلف بعض السلوكيات والتوافقات عن توزيعات glibc التقليدية.",
+      "why": "مفيدة لفهم أن Linux داخل الحاوية قد يكون minimal جدًا، وأن غياب bash أو systemd أو أدوات معتادة لا يعني وجود خلل.",
+      "command": "apk update\napk add PACKAGE\napk info PACKAGE",
+      "commandNote": "apk مدير الحزم الخاص بـAlpine. لا تفترض توفر apt أو dnf أو bash أو systemctl في صورة Alpine صغيرة.",
+      "links": [
+        [
+          "Alpine Linux – About",
+          "https://www.alpinelinux.org/about/"
+        ],
+        [
+          "Alpine Wiki",
+          "https://wiki.alpinelinux.org/"
+        ]
+      ]
+    },
+    {
+      "id": "amazon-linux",
+      "category": "cloud",
+      "mark": "AWS",
+      "eyebrow": "CLOUD-SPECIFIC LINUX",
+      "title": "Amazon Linux",
+      "subtitle": "توزيعة مهيأة للتكامل مع خدمات AWS",
+      "distros": "Amazon Linux 2023",
+      "package": "DNF / RPM في Amazon Linux 2023؛ YUM في Amazon Linux 2",
+      "init": "systemd في Amazon Linux 2023",
+      "release": "Amazon Linux 2023 يستخدم مستودعات ذات إصدارات محددة؛ اقرأ آلية التحديث قبل تطبيقها على الأسطول.",
+      "role": "تشغيل EC2 وأحمال العمل والخدمات التي تستهدف بيئة AWS.",
+      "where": "مهم أن تتعرف على الاسم عند التعامل مع سجلات CloudTrail أو أنظمة EC2 أو أدوات إدارة الأسطول في AWS.",
+      "relationship": "توزيعة من Amazon ذات دورة وإعدادات مستودعات خاصة بها. تشابه DNF/RPM مع Rocky لا يجعلها نفس التوزيعة أو يضمن توافق كل حزمة معها.",
+      "why": "هذه من التوزيعات المفيدة للمعرفة المستقبلية في Cloud Security وSOC؛ لأنك قد تحقق في خوادم Linux مستضافة على AWS.",
+      "command": "sudo dnf info PACKAGE\nsudo dnf install PACKAGE\nrpm -q PACKAGE",
+      "commandNote": "توثيق AWS يذكر DNF كمدير الحزم الافتراضي في Amazon Linux 2023. توجد فروق في المستودعات وسياسة تثبيت التحديثات.",
+      "links": [
+        [
+          "Amazon Linux 2023 Guide",
+          "https://docs.aws.amazon.com/linux/al2023/ug/"
+        ],
+        [
+          "Amazon Linux 2023 Package Management",
+          "https://docs.aws.amazon.com/linux/al2023/ug/package-management.html"
+        ]
+      ]
+    },
+    {
+      "id": "gentoo",
+      "category": "independent",
+      "mark": "SRC",
+      "eyebrow": "SOURCE-BASED LINUX",
+      "title": "Gentoo Linux",
+      "subtitle": "تخصيص عميق وبناء البرامج من المصدر",
+      "distros": "Gentoo Linux",
+      "package": "Portage / emerge",
+      "init": "يدعم OpenRC وsystemd حسب الملف الشخصي والاختيارات",
+      "release": "نموذج rolling مع تحديثات مستمرة، وتخصيص يعتمد على profile وUSE flags.",
+      "role": "التعلم العميق لبناء البرامج، التحكم في خيارات الترجمة، وفهم اعتماديات النظام.",
+      "where": "غالبًا في مختبرات متقدمة ومجتمعات مستخدمين يحبون تخصيص النظام؛ ليس اختيارًا مطلوبًا لخطة Linux الحالية.",
+      "relationship": "توزيعة مستقلة. Portage يدير وصفات البناء والاعتماديات وUSE flags؛ تشتهر Gentoo بالبناء من المصدر، كما توجد خيارات binary packages بحسب الإعداد والمستودع.",
+      "why": "تعرّف على فكرة source-based وUSE flags لفهم اختلاف طريقة بناء البرامج، دون الدخول في تثبيت أو إدارة Gentoo الآن.",
+      "command": "emerge --search PACKAGE\nemerge --info",
+      "commandNote": "أمثلة تعريفية فقط. مزامنة الشجرة والبناء قد تستغرق وقتًا وتغيّر حالة النظام؛ لا تنفذها لمجرد التجربة.",
+      "links": [
+        [
+          "Gentoo Handbook",
+          "https://wiki.gentoo.org/wiki/Handbook:AMD64"
+        ]
+      ]
+    },
+    {
+      "id": "nixos",
+      "category": "independent",
+      "mark": "NIX",
+      "eyebrow": "DECLARATIVE SYSTEM",
+      "title": "NixOS",
+      "subtitle": "إدارة النظام بوصفه إعدادًا قابلًا لإعادة الإنتاج",
+      "distros": "NixOS",
+      "package": "Nix / Nixpkgs",
+      "init": "systemd",
+      "release": "قنوات مستقرة وغير مستقرة؛ تعتمد إدارة النظام على تعريف الحالة المطلوبة في ملفات الإعداد.",
+      "role": "بيئات قابلة لإعادة الإنتاج، فرق التطوير، وأجهزة تريد وصفًا صريحًا لحالة النظام.",
+      "where": "قد يظهر في فرق هندسة المنصات وDevOps التي تهتم بإعادة إنشاء بيئات متطابقة.",
+      "relationship": "توزيعة مستقلة ذات نموذج declarative. تغيّر النظام غالبًا بتعديل configuration ثم بناء/تفعيل جيل جديد، بدل إجراء تغييرات يدوية فقط.",
+      "why": "الفكرة تستحق المعرفة لأنها مختلفة جذريًا عن APT/DNF التقليديين. لا تحتاج إلى تعلم لغة Nix أو تثبيت NixOS في هذه المرحلة.",
+      "command": "sudo nixos-rebuild switch\nnix search nixpkgs PACKAGE",
+      "commandNote": "أمثلة للتعرف على النموذج فقط؛ الأمر الأول يطبق إعداد النظام وقد يغيره، فلا تنفذه خارج NixOS ومعرفة مسبقة.",
+      "links": [
+        [
+          "NixOS Manual",
+          "https://nixos.org/manual/nixos/stable/"
+        ],
+        [
+          "NixOS System Configuration",
+          "https://wiki.nixos.org/wiki/NixOS_system_configuration"
+        ]
+      ]
+    },
+    {
+      "id": "void",
+      "category": "independent",
+      "mark": "XBPS",
+      "eyebrow": "INDEPENDENT / RUNNIT",
+      "title": "Void Linux",
+      "subtitle": "توزيعة مستقلة بنظام خدمات مختلف",
+      "distros": "Void Linux",
+      "package": "XBPS",
+      "init": "runit افتراضيًا",
+      "release": "Rolling Release",
+      "role": "أنظمة شخصية ومختبرات لمن يريد بيئة مستقلة وخفيفة نسبيًا.",
+      "where": "قد تصادفها في مختبرات المستخدمين المتقدمين؛ اختلاف runit يجعلها مثالًا جيدًا على أن systemd ليس مدير الخدمات الوحيد.",
+      "relationship": "مستقلة وليست مشتقة من Debian أو RHEL أو Arch. تستخدم XBPS لإدارة الحزم وrunit لإدارة الخدمات.",
+      "why": "معرفتها توسع فهمك لمفهوم init/service supervision، لكن لا تحتاج إدارة Void ضمن المنهج الإلزامي.",
+      "command": "sudo xbps-install -S\nsudo xbps-install PACKAGE\nxbps-query -Rs PACKAGE",
+      "commandNote": "أمثلة تعرّفك على شكل أوامر XBPS؛ راجع دليل Void قبل الاستخدام.",
+      "links": [
+        [
+          "Void Linux Handbook – XBPS",
+          "https://docs.voidlinux.org/xbps/"
+        ],
+        [
+          "Void Linux",
+          "https://voidlinux.org/"
+        ]
+      ]
+    }
+  ]
+}
