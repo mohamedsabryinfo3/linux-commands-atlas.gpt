@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#101923">
-<meta name="description" content="موسوعة Linux تفاعلية: أوامر للحفظ، مرجع متقدم، مقارنة Debian وRocky، مختبرات، وربط SOC مؤجل.">
-<title>LINUX MASTER LAB — Systems Knowledge Atlas</title>
+<meta name="description" content="موسوعة Linux تفاعلية: أوامر للحفظ، TRK-02 · مرجع الأوامر، مقارنة Debian وRocky، مختبرات، وربط SOC مؤجل.">
+<title>SOC // Linux Deck — Linux Systems Knowledge Atlas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -12,8 +12,8 @@
 <body>
 <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
 <header class="topbar">
-  <a class="brand" href="#top" aria-label="Linux Master Lab home"><span class="brand-mark"><b>$_</b></span><span><strong>LINUX<span class="brand-accent"> MASTER LAB</span></strong><small>SYSTEMS KNOWLEDGE ATLAS</small></span></a>
-  <div class="topbar-center"><span class="live-dot"></span><span>FIELD GUIDE / DEBIAN + ROCKY</span><span class="topbar-sep">/</span><span class="topbar-version">EDITION 11.26</span></div>
+  <a class="brand" href="#top" aria-label="Linux Master Lab home"><span class="brand-mark"><b>$_</b></span><span><strong><span class="brand-accent">SOC // </span>LINUX DECK</strong><small>LINUX SYSTEMS KNOWLEDGE ATLAS · L1 → L2</small></span></a>
+  <div class="topbar-center"><span class="live-dot"></span><span>DEFENSIVE SYSTEMS / LINUX OPERATIONS</span><span class="topbar-sep">/</span><span class="topbar-version">DEBIAN × ROCKY · EDITION 01</span></div>
   <div class="top-actions"><button class="icon-btn" id="globalSearchBtn" title="بحث شامل">⌕</button><button class="icon-btn mobile-menu" id="mobileMenu" title="القائمة">☰</button><button class="export-btn" id="exportBtn">تصدير تقدمي <span>↗</span></button></div>
 </header>
 <div class="app-shell" id="top">
@@ -22,8 +22,8 @@
     <button class="side-link active" data-view="overview"><span class="side-icon">⌂</span><span>نظرة عامة</span><kbd>01</kbd></button>
     <div class="side-label spaced">LEARNING TRACKS</div>
     <button class="side-link" data-view="learn"><span class="side-icon">◫</span><span>موسوعة Linux</span><kbd>02</kbd></button>
-    <button class="side-link" data-view="core"><span class="side-icon">⌘</span><span>أوامر احفظها</span><em class="side-count" id="coreCountSide">48</em></button>
-    <button class="side-link" data-view="advanced"><span class="side-icon">▤</span><span>مرجع متقدم</span><em class="side-count" id="advancedCountSide">—</em></button>
+    <button class="side-link" data-view="core"><span class="side-icon">⌘</span><span>TRK-01 · حفظ الأوامر</span><em class="side-count" id="coreCountSide">48</em></button>
+    <button class="side-link" data-view="advanced"><span class="side-icon">▤</span><span>TRK-02 · مرجع الأوامر</span><em class="side-count" id="advancedCountSide">—</em></button>
     <button class="side-link" data-view="distros"><span class="side-icon">⇄</span><span>مقارنة Debian × Rocky</span></button>
     <button class="side-link" data-view="families"><span class="side-icon">◉</span><span>موسوعة التوزيعات</span><span class="read-only-mini">قراءة حرة</span></button>
     <button class="side-link" data-view="labs"><span class="side-icon">⚒</span><span>المعامل العملية</span></button>
@@ -40,28 +40,38 @@
     <section class="view active" id="view-overview">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="eyebrow-line"></span> LINUX SYSTEMS / OPERATIONS FIELD GUIDE</div>
-          <h1>افهم النظام.<br><span>أتقن الطرفية.</span></h1>
-          <p class="hero-lead">موسوعة عملية لتتعلم Linux بعمق: افهم ما يحدث داخل النظام، احفظ الأوامر اليومية، واحتفظ بمرجع متقدم لكل مهمة إدارية.</p>
-          <div class="hero-chips"><span>DEBIAN FAMILY</span><span>RHEL FAMILY</span><span>ADMINISTRATION</span><span>SECURITY</span></div>
-          <div class="hero-cta"><button class="primary-btn" data-go="core">ابدأ بالأوامر الأساسية <b>←</b></button><button class="secondary-btn" data-go="learn">استكشف الموسوعة <b>↗</b></button></div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> SOC ANALYST ROADMAP · DEFENSIVE OPS</div>
+          <h1>أتقن طرفية لينكس<br><span>وافهم ما يحدث داخل النظام</span></h1>
+          <p class="hero-lead">موسوعة Linux عملية وعميقة: مسار أول للأوامر التي يجب أن تتقنها، ومسار ثانٍ مرجعي للأوامر المتقدمة، وشرح بصري لإدارة النظام وتأمينه على Debian وRocky.</p>
+          <div class="hero-chips"><span>DEBIAN FAMILY</span><span>RHEL FAMILY</span><span>ADMINISTRATION</span><span>LINUX SECURITY</span><span>SOC LINK · LOCKED</span></div>
+          <div class="hero-cta"><button class="primary-btn" data-go="learn">ابدأ رحلة التعلم <b>←</b></button><button class="secondary-btn" data-go="core">أوامر يجب أن تتقنها <b>↗</b></button></div>
         </div>
         <div class="hero-console">
           <div class="console-head"><div class="traffic"><i></i><i></i><i></i></div><span>operator@linux-lab: ~</span><span class="console-tag">SESSION READY</span></div>
-          <div class="console-body"><div class="console-kicker">// START HERE</div><p><span class="prompt">$</span> cat /etc/os-release</p><div class="console-output">NAME="Rocky Linux"<br>VERSION="10.3 (Red Quartz)"<br>ID="rocky"</div><p><span class="prompt">$</span> uname -r</p><div class="console-output">6.x.x – kernel information</div><p><span class="prompt">$</span> <span class="cursor"></span></p></div>
+          <div class="console-body"><div class="console-kicker">// TWO SYSTEMS · ONE LEARNING PATH</div><p><span class="prompt">$</span> cat /etc/os-release</p><div class="console-output">PRETTY_NAME="Rocky Linux 10.3 (Red Quartz)"</div><p><span class="prompt">$</span> id && uname -r</p><div class="console-output">uid=1000(operator) gid=1000(operator)<br>kernel: 6.x.x · x86_64</div><p><span class="prompt">$</span> journalctl -p warning -b</p><div class="console-output">// READ → UNDERSTAND → EXECUTE → VERIFY</div><p><span class="prompt">$</span> <span class="cursor"></span></p></div>
           <div class="console-foot"><span><i class="live-dot"></i> بيئة تعلم افتراضية</span><span>NO COMMAND EXECUTION IN BROWSER</span></div>
         </div>
       </div>
+      <section class="journey-rail" aria-label="مسار الرحلة التعليمية">
+        <div class="journey-head"><div><span class="eyebrow">LEARNING ROUTE / SYSTEMS → OPERATIONS</span><h2>مسار الرحلة التعليمية</h2></div><span class="journey-stamp">ONE PATH · STEP BY STEP</span></div>
+        <div class="journey-steps">
+          <div class="journey-step current"><b>00</b><strong>أساسيات Linux</strong><small>Kernel · Shell · Filesystem</small></div>
+          <i>→</i><div class="journey-step"><b>01</b><strong>إدارة النظام</strong><small>Users · Services · Storage</small></div>
+          <i>→</i><div class="journey-step"><b>02</b><strong>الشبكات والأمان</strong><small>IP · SSH · Firewall</small></div>
+          <i>→</i><div class="journey-step"><b>03</b><strong>الأتمتة والتطبيق</strong><small>Bash · Labs · Hardening</small></div>
+          <i>→</i><div class="journey-step future"><b>04</b><strong>SOC Connection</strong><small>مؤجل حتى Linux + Security+</small></div>
+        </div>
+      </section>
       <div class="stats-grid">
         <article class="stat-card stat-highlight"><span class="stat-label">CORE / احفظها</span><strong id="statCore">48</strong><small>أمر ونمط استخدام يومي</small><span class="stat-mark">01</span></article>
         <article class="stat-card"><span class="stat-label">FIELD REFERENCE</span><strong id="statAdvanced">—</strong><small>أمر متقدم للرجوع عند الحاجة</small><span class="stat-mark">02</span></article>
         <article class="stat-card"><span class="stat-label">LEARNING MODULES</span><strong id="statModules">20</strong><small>وحدة من الأساس إلى الإدارة</small><span class="stat-mark">03</span></article>
         <article class="stat-card"><span class="stat-label">CORE DISTROS</span><strong>02</strong><small>بيئتا الدراسة العمليتان: Debian + Rocky 10</small><span class="stat-mark">04</span></article>
       </div>
-      <div class="section-heading"><div><span class="eyebrow">CHOOSE YOUR TRACK</span><h2>مساران. هدفان مختلفان.</h2><p>المسار الأول يبني الذاكرة العملية، والثاني مرجع واسع لا يُطلب منك حفظه.</p></div><span class="heading-stamp">LEARN / LOOKUP</span></div>
+      <div class="section-heading"><div><span class="eyebrow">TRK-01 / TRK-02 · COMMAND SYSTEM</span><h2>مساران للأوامر. وظيفة كل واحد واضحة.</h2><p>الأول للتذكر السريع والإتقان، والثاني مكتبة مهنية ترجع إليها وقت الحاجة ولا تحفظها كاملة.</p></div><span class="heading-stamp">LEARN / LOOKUP</span></div>
       <div class="track-grid">
-        <article class="track-card core-track"><div class="track-top"><span class="track-id">TRACK 01 / CORE MEMORY</span><span class="track-arrow">↗</span></div><div class="track-symbol">⌘</div><h3>أوامر يجب أن تتقنها</h3><p>أوامر أساسية تستخدمها باستمرار. افهمها، اكتبها بنفسك، وتدرّب حتى لا تحتاج إلى البحث عن صيغتها كل مرة.</p><div class="track-meta"><b id="trackCoreCount">48</b><span>أمر أساسي</span><span class="meta-divider"></span><span>حفظ + تطبيق</span></div><button data-go="core" class="track-open">افتح مسار الحفظ <b>←</b></button></article>
-        <article class="track-card ref-track"><div class="track-top"><span class="track-id">TRACK 02 / FIELD REFERENCE</span><span class="track-arrow">↗</span></div><div class="track-symbol">▤</div><h3>مرجع الأوامر المتقدمة</h3><p>أوامر إدارة التخزين، الشبكات، الخدمات، التدقيق، الأمان والبرمجة النصية. تعلّم الغرض منها واعرف أين تجدها وقت الحاجة.</p><div class="track-meta"><b id="trackAdvancedCount">—</b><span>مرجع متقدم</span><span class="meta-divider"></span><span>لا يُحفظ كاملًا</span></div><button data-go="advanced" class="track-open">افتح المرجع <b>←</b></button></article>
+        <article class="track-card core-track"><div class="track-top"><span class="track-id">TRACK 01 / CORE MEMORY</span><span class="track-arrow">↗</span></div><div class="track-symbol">⌘</div><h3>أوامر يجب أن تسكن في ذاكرتك</h3><p>أوامر أساسية تستخدمها باستمرار. افهمها، اكتبها بنفسك، وتدرّب حتى لا تحتاج إلى البحث عن صيغتها كل مرة.</p><div class="track-meta"><b id="trackCoreCount">48</b><span>أمر أساسي</span><span class="meta-divider"></span><span>حفظ + تطبيق</span></div><button data-go="core" class="track-open">افتح مسار الحفظ <b>←</b></button></article>
+        <article class="track-card ref-track"><div class="track-top"><span class="track-id">TRACK 02 / FIELD REFERENCE</span><span class="track-arrow">↗</span></div><div class="track-symbol">▤</div><h3>مرجع Linux التشغيلي المتقدم</h3><p>أوامر إدارة التخزين، الشبكات، الخدمات، التدقيق، الأمان والبرمجة النصية. تعلّم الغرض منها واعرف أين تجدها وقت الحاجة.</p><div class="track-meta"><b id="trackAdvancedCount">—</b><span>TRK-02 · مرجع الأوامر</span><span class="meta-divider"></span><span>لا يُحفظ كاملًا</span></div><button data-go="advanced" class="track-open">افتح المرجع <b>←</b></button></article>
       </div>
       <div class="home-lower">
         <section class="next-panel"><div class="panel-overline">YOUR LEARNING ROUTE</div><h3>كيف تستخدم الموسوعة؟</h3><div class="route-steps"><div><b>01</b><span><strong>افهم</strong><small>اقرأ الفكرة قبل كتابة الأمر.</small></span></div><div><b>02</b><span><strong>نفّذ</strong><small>جرّب في Debian أو Rocky VM.</small></span></div><div><b>03</b><span><strong>فسّر</strong><small>افهم الناتج والأخطاء المحتملة.</small></span></div><div><b>04</b><span><strong>أتقن</strong><small>علّم الأمر كمُتقن بعد التنفيذ.</small></span></div></div></section>
@@ -79,7 +89,7 @@
     </section>
 
     <section class="view" id="view-core">
-      <div class="page-header"><div><div class="eyebrow">TRACK 01 / CORE MEMORIZATION</div><h1 class="page-title">أوامر احفظها وأتقنها</h1><p>هذه المجموعة هي عضلاتك اليومية في Linux. لا تحفظ الاسم فقط؛ أتقن الصيغة والاستخدام والنتيجة الشائعة.</p></div><div class="header-counter accent-counter"><b id="coreDoneHeader">0%</b><span>إتقان المسار</span></div></div>
+      <div class="page-header"><div><div class="eyebrow">TRACK 01 / CORE MEMORIZATION</div><h1 class="page-title">TRK-01 · حفظ الأوامر وأتقنها</h1><p>هذه المجموعة هي عضلاتك اليومية في Linux. لا تحفظ الاسم فقط؛ أتقن الصيغة والاستخدام والنتيجة الشائعة.</p></div><div class="header-counter accent-counter"><b id="coreDoneHeader">0%</b><span>إتقان المسار</span></div></div>
       <div class="core-rule"><div class="rule-icon">⌘</div><div><b>قاعدة هذا المسار</b><p>اعتبر الأمر متقنًا عندما تستطيع كتابته دون نسخ، وتعرف متى تستخدمه، وتفسّر ناتجه. لا يكفي أن تقرأ المثال.</p></div><span class="rule-count" id="coreRuleCount">48 COMMANDS</span></div>
       <div class="command-controls"><label class="search-field"><span>⌕</span><input id="coreSearch" placeholder="ابحث باسم الأمر أو وظيفته أو مثال..." /></label><div class="filter-pills" id="coreFilters"></div><label class="select-wrap"><span>الحالة</span><select id="coreStatus"><option value="all">الكل</option><option value="todo">لم أتقنه</option><option value="done">أتقنته</option></select></label></div>
       <div class="results-line"><span id="coreResultText">عرض الأوامر الأساسية</span><span>CORE MEMORY / DRILL SET</span></div>
@@ -129,7 +139,7 @@
     </section>
   </main>
 </div>
-<footer class="site-footer"><span>LINUX MASTER LAB <b>·</b> SYSTEMS KNOWLEDGE ATLAS</span><span>Built for deliberate practice, not command collecting.</span><button id="sourcesBtn">المراجع الرسمية ↗</button></footer>
+<footer class="site-footer"><span>SOC // LINUX DECK <b>·</b> SYSTEMS KNOWLEDGE ATLAS</span><span>Built for systems understanding, disciplined practice & defensive operations.</span><button id="sourcesBtn">المراجع الرسمية ↗</button></footer>
 <div class="modal-backdrop" id="modalBackdrop"><div class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></div></div>
 <div class="toast" id="toast" role="status"></div>
 <input type="file" id="importFileTop" accept="application/json" hidden>
